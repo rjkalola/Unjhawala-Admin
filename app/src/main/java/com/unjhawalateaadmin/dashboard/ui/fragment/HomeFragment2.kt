@@ -25,21 +25,22 @@ import com.unjhawalateaadmin.databinding.FragmentHomeBinding
 import com.imateplus.utilities.callback.DialogButtonClickListener
 import com.imateplus.utilities.utils.AlertDialogHelper
 import com.imateplus.utilities.utils.StringHelper
+import com.unjhawalateaadmin.databinding.FragmentHome2Binding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pub.devrel.easypermissions.AppSettingsDialog
 import pub.devrel.easypermissions.EasyPermissions
 
-class HomeFragment : BaseFragment(), View.OnClickListener, EasyPermissions.PermissionCallbacks,
+class HomeFragment2 : BaseFragment(), View.OnClickListener, EasyPermissions.PermissionCallbacks,
     SelectItemListener, DialogButtonClickListener {
-    private lateinit var binding: FragmentHomeBinding
+    private lateinit var binding: FragmentHome2Binding
     private lateinit var mContext: Context
     private lateinit var pagerAdapter: ViewPagerAdapter
     private val dashboardViewModel: DashboardViewModel by viewModel()
     private var isInitial = true
 
     companion object {
-        fun newInstance(): HomeFragment {
-            return HomeFragment()
+        fun newInstance(): HomeFragment2 {
+            return HomeFragment2()
         }
     }
 
@@ -53,18 +54,38 @@ class HomeFragment : BaseFragment(), View.OnClickListener, EasyPermissions.Permi
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_home2, container, false)
         mContext = requireActivity()
         dashboardObservers()
         privacyPolicyResponseObservers()
         approveTermsConditionsResponseObservers()
-        /* showCustomProgressDialog(binding.progressBarView.routProgress)
-         dashboardViewModel.getDashboardResponse()*/
+        showCustomProgressDialog(binding.progressBarView.routProgress)
+        dashboardViewModel.getDashboardResponse()
 
-//        binding.txtUserName.text = AppUtils.getUserPreference(mContext)?.name
+        binding.txtUserName.text = AppUtils.getUserPreference(mContext)?.name
 
-        binding.routTeaConfiguration.setOnClickListener(this)
-        binding.routTeaSample.setOnClickListener(this)
+        binding.routRetailer.setOnClickListener(this)
+        binding.routAgencies.setOnClickListener(this)
+        binding.routTransferKg.setOnClickListener(this)
+        binding.routTransferKgAgency.setOnClickListener(this)
+        binding.routWorkingArea.setOnClickListener(this)
+        binding.routScanQrCode.setOnClickListener(this)
+        binding.routScanQrCodeAgency.setOnClickListener(this)
+        binding.routScanQrCodeRetailer.setOnClickListener(this)
+        binding.routToDo.setOnClickListener(this)
+        binding.routCaseCalculator.setOnClickListener(this)
+        binding.routMyOrder.setOnClickListener(this)
+        binding.routMyOrderAgency.setOnClickListener(this)
+        binding.routMyOrderRetailer.setOnClickListener(this)
+        binding.routKgHistory.setOnClickListener(this)
+        binding.routAccount.setOnClickListener(this)
+        binding.routAccountAgency.setOnClickListener(this)
+        binding.routAccountRetailer.setOnClickListener(this)
+        binding.routCurrentYearHistory.setOnClickListener(this)
+        binding.routPreviousYearHistory.setOnClickListener(this)
+        binding.routPendingOrders.setOnClickListener(this)
+        binding.routHelpRetailer.setOnClickListener(this)
+        binding.routHelpAgency.setOnClickListener(this)
 
         binding.routNewOrder.setOnClickListener {
 //            moveActivity(mContext, ProductsActivity::class.java, false, false, null)
@@ -90,25 +111,145 @@ class HomeFragment : BaseFragment(), View.OnClickListener, EasyPermissions.Permi
             }
         })
 
+        setViewByUserType()
+
         return binding.root
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.routTeaConfiguration -> moveActivity(
+           /* R.id.routRetailer -> moveActivity(
                 mContext,
-                TeaConfigurationActivity::class.java,
+                RetailersListActivity::class.java,
                 false,
                 false,
                 null
             )
-            R.id.routTeaSample -> moveActivity(
+            R.id.routAgencies -> moveActivity(
                 mContext,
-                TeaSamplesActivity::class.java,
+                AgenciesListActivity::class.java,
                 false,
                 false,
                 null
             )
+            R.id.routTransferKg, R.id.routTransferKgAgency -> {
+                *//* moveActivity(
+                     mContext,
+                     TransferKgActivity::class.java,
+                     false,
+                     false,
+                     null
+                 )*//*
+                val intent = Intent(mContext, TransferKgActivity::class.java)
+                transferKgResultActivity.launch(intent)
+            }
+            R.id.routWorkingArea -> moveActivity(
+                mContext,
+                WorkingAreaListActivity::class.java,
+                false,
+                false,
+                null
+            )
+            R.id.routScanQrCode, R.id.routScanQrCodeAgency, R.id.routScanQrCodeRetailer -> checkPermission()
+            R.id.routToDo -> moveActivity(
+                mContext,
+                ToDoListActivity::class.java,
+                false,
+                false,
+                null
+            )
+            R.id.routCaseCalculator -> moveActivity(
+                mContext,
+                CaseCalculatorActivity::class.java,
+                false,
+                false,
+                null
+            )
+            R.id.routMyOrder, R.id.routMyOrderAgency, R.id.routMyOrderRetailer -> moveActivity(
+                mContext,
+                MyOrdersActivity::class.java,
+                false,
+                false,
+                null
+            )
+            R.id.routKgHistory -> {
+                val bundle = Bundle()
+                bundle.putInt(AppConstants.IntentKey.HISTORY_TYPE, AppConstants.Type.KG_HISTORY)
+                moveActivity(
+                    mContext,
+                    KgHistoryActivity::class.java,
+                    false,
+                    false,
+                    bundle
+                )
+            }
+            R.id.routCurrentYearHistory -> {
+                val bundle = Bundle()
+                bundle.putInt(
+                    AppConstants.IntentKey.HISTORY_TYPE,
+                    AppConstants.Type.CURRENT_YEAR_KG_HISTORY
+                )
+                moveActivity(
+                    mContext,
+                    KgHistoryActivity::class.java,
+                    false,
+                    false,
+                    bundle
+                )
+            }
+            R.id.routPreviousYearHistory -> {
+                val bundle = Bundle()
+                bundle.putInt(
+                    AppConstants.IntentKey.HISTORY_TYPE,
+                    AppConstants.Type.LAST_YEAR_KG_HISTORY
+                )
+                moveActivity(
+                    mContext,
+                    KgHistoryActivity::class.java,
+                    false,
+                    false,
+                    bundle
+                )
+            }
+            R.id.routAccount, R.id.routAccountAgency, R.id.routAccountRetailer -> moveActivity(
+                mContext,
+                MarshalBookListActivity::class.java,
+                false,
+                false,
+                null
+            )
+            R.id.routPendingOrders -> moveActivity(
+                mContext,
+                OrdersActivity::class.java,
+                false,
+                false,
+                null
+            )
+            R.id.routHelpRetailer, R.id.routHelpAgency -> moveActivity(
+                mContext,
+                SupportActivity::class.java,
+                false,
+                false,
+                null
+            )*/
+        }
+    }
+
+    private fun setViewByUserType() {
+        when (AppUtils.getUserPreference(mContext)?.member_type_id) {
+            AppConstants.UserType.Dealer -> {
+                binding.routQuickLinksDealer.visibility = View.VISIBLE
+            }
+            AppConstants.UserType.Agency -> {
+                binding.routQuickLinksAgency.visibility = View.VISIBLE
+                binding.txtMyNetworkTitle.visibility = View.GONE
+                binding.routMyNetwork.visibility = View.GONE
+            }
+            AppConstants.UserType.Retailer -> {
+                binding.routQuickLinksRetailer.visibility = View.VISIBLE
+                binding.txtMyNetworkTitle.visibility = View.GONE
+                binding.routMyNetwork.visibility = View.GONE
+            }
         }
     }
 
@@ -128,6 +269,13 @@ class HomeFragment : BaseFragment(), View.OnClickListener, EasyPermissions.Permi
                     )
                 } else {
                     if (response.IsSuccess) {
+                        if (!StringHelper.isEmpty(response.available_kg))
+                            binding.txtAvailableKg.text = response.available_kg
+                        if (!StringHelper.isEmpty(response.current_year_kg))
+                            binding.txtCurrentYearKg.text = response.current_year_kg
+                        if (!StringHelper.isEmpty(response.previous_year_kg))
+                            binding.txtLastYearKg.text = response.previous_year_kg
+                        binding.txtTotalPendingOrder.text = response.dealer_pending_order.toString()
                         val user = AppUtils.getUserPreference(mContext);
                         user!!.total_kg = response.total_kg
                         user.first_letter = response.first_letter
@@ -263,15 +411,15 @@ class HomeFragment : BaseFragment(), View.OnClickListener, EasyPermissions.Permi
     }
 
     fun updateAppDialog(versionCode: Int) {
-        /* if (BuildConfig.VERSION_CODE < versionCode) {
-             AlertDialogHelper.showDialog(
-                 mContext, getString(R.string.title_update_app),
-                 getString(R.string.msg_update_app), mContext.getString(R.string.ok),
-                 null, false, this, AppConstants.DialogIdentifier.UPDATE_APP
-             )
-         }*/
+       /* if (BuildConfig.VERSION_CODE < versionCode) {
+            AlertDialogHelper.showDialog(
+                mContext, getString(R.string.title_update_app),
+                getString(R.string.msg_update_app), mContext.getString(R.string.ok),
+                null, false, this, AppConstants.DialogIdentifier.UPDATE_APP
+            )
+        }*/
     }
-
+    
     override fun onPositiveButtonClicked(dialogIdentifier: Int) {
         if (dialogIdentifier == AppConstants.DialogIdentifier.UPDATE_APP) {
             AppUtils.openPlayStore(mContext)

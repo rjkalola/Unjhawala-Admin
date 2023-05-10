@@ -62,7 +62,7 @@ class DashBoardActivity : BaseActivity(), View.OnClickListener, DialogButtonClic
 //        txtLogout.visibility = View.VISIBLE
         txtLogout.setOnClickListener(this)
 
-        getFcmToken()
+//        getFcmToken()
     }
 
     override fun onClick(v: View?) {
@@ -215,9 +215,9 @@ class DashBoardActivity : BaseActivity(), View.OnClickListener, DialogButtonClic
     }
 
     private fun setUserData() {
-        val user = AppUtils.getUserPreference(mContext)!!
-        if (!StringHelper.isEmpty(user.first_letter))
-            txtUserNameLetter.text = user.first_letter
+//        val user = AppUtils.getUserPreference(mContext)!!
+//        if (!StringHelper.isEmpty(user.first_letter))
+//            txtUserNameLetter.text = user.first_letter
     }
 
     override fun onResume() {

@@ -131,6 +131,12 @@
     <string name="to_do">To Do</string>
     <string name="cash_calculator_">Cash\nCalculator</string>
     <string name="terms_conditions">Terms &amp; Conditions</string>
+    <string name="tea_configuration_">Tea\nConfiguration</string>
+    <string name="tea_configuration">Tea Configuration</string>
+    <string name="tea_sample_">Tea\nSamples</string>
+    <string name="tea_samples">Tea Samples</string>
+    <string name="tea_testing_">Tea\nTesting</string>
+    <string name="tea_confirmation_">Tea\nConfirmation</string>
 
     <string name="msg_camera_permission">This application needs access to your camera</string>
     <string name="i_agree">I agree</string>
@@ -141,6 +147,12 @@
     <string name="support">Support</string>
     <string name="msg_otp_resend">OTP resend successfully</string>
     <string name="display_resend_otp_counter">Resend OTP in %s second</string>
+    <string name="error_empty_data">No data found</string>
+    <string name="loading_more">Loading more&#8230;</string>
+    <string name="search_here">Search here...</string>
+    <string name="clear_filter">Clear Filter</string>
+    <string name="view_all">View All</string>
+    <string name="sign_rupees">₹</string>
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->

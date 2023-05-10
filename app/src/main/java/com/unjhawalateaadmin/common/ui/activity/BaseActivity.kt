@@ -55,7 +55,7 @@ open class BaseActivity : AppCompatActivity() {
                 title.text = text
             }
             if (isShowBack) {
-                toolbar.setNavigationIcon(R.drawable.ic_arrow_back2)
+                toolbar.setNavigationIcon(R.drawable.ic_arrow_left_alt)
                 toolbar.setNavigationOnClickListener { v: View? -> onBackPressed() }
             }
         }

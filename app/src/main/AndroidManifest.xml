@@ -24,7 +24,7 @@
         tools:replace="android:theme">
 
         <activity
-            android:name="com.unjhawalateaadmin.authentication.ui.activity.SplashActivity"
+            android:name=".dashboard.ui.activity.DashBoardActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -93,175 +93,18 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+<!--        <activity-->
+<!--            android:name="com.unjhawalateaadmin.dashboard.ui.activity.DashBoardActivity"-->
+<!--            android:exported="false"-->
+<!--            android:screenOrientation="portrait" />-->
+
         <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.DashBoardActivity"
+            android:name="com.unjhawalateaadmin.dashboard.ui.activity.TeaConfigurationActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.ProfileActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.RetailersListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.AgenciesListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.AddMemberActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.RetailerDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.PendingRetailersListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.TransferKgActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.WorkingAreaListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.WorkingSubAreaListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.WorkingAreaDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.ScanQrCodeActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.RewardPointsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.ViewProfileActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.EditAvailableAgencyActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.EditPersonalDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.ChangePinActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.PrivacyPolicyActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.ProductsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.CartListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.ToDoListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.AddToDoListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.CaseCalculatorActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.MyDocumentsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.OrderHistoryActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.PendingMyOrdersActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.RatePrintActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.MyOrdersActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.PersonalDocumentListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.KgHistoryActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.MarshalBookListActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.OrdersActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.OrderDetailsActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.SupportActivity"
+            android:name="com.unjhawalateaadmin.dashboard.ui.activity.TeaSamplesActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
