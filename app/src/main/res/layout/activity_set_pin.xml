@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="loginRequest"
+            type="com.unjhawalateaadmin.authentication.data.model.LoginRequest" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLoginScreenBg"
+        android:fillViewport="true"
+        android:fitsSystemWindows="false">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/img_login_header" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/routSubmitBg"
+            android:layout_below="@id/imgHeader"
+            android:layout_marginTop="-30dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/routDetailsView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_login_footer_bg"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/size_40dp"
+                android:paddingBottom="@dimen/size_20dp">
+
+                <TextView
+                    android:id="@+id/txtTitle1"
+                    style="@style/VerySmallFontTextView"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:fontFamily="@font/be_vietnam_bold"
+                    android:text="@string/set_mpin"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtTitle2"
+                    style="@style/VerySmallFontTextView"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginTop="@dimen/size_2dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:fontFamily="@font/be_vietnam_regular"
+                    android:text="Set your 4 digit mpin for faster login"
+                    android:textColor="@color/colorSecondaryLightText"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:id="@+id/routOtp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_2dp"
+                    android:layout_marginTop="@dimen/size_22dp"
+                    android:layout_marginEnd="@dimen/size_2dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:layout_weight="1">
+
+                        <com.unjhawalateaadmin.common.utils.SquareImageViewByWidth
+                            android:id="@+id/imgSquare1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignStart="@id/imgSquare1"
+                            android:layout_alignTop="@id/imgSquare1"
+                            android:layout_alignEnd="@id/imgSquare1"
+                            android:layout_alignBottom="@id/imgSquare1"
+                            android:background="@drawable/pin_rectangle_bg"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/be_vietnam_medium"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_2"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:layout_weight="1">
+
+                        <com.unjhawalateaadmin.common.utils.SquareImageViewByWidth
+                            android:id="@+id/imgSquare2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignStart="@id/imgSquare2"
+                            android:layout_alignTop="@id/imgSquare2"
+                            android:layout_alignEnd="@id/imgSquare2"
+                            android:layout_alignBottom="@id/imgSquare2"
+                            android:background="@drawable/pin_rectangle_bg"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/be_vietnam_medium"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_3"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:layout_weight="1">
+
+                        <com.unjhawalateaadmin.common.utils.SquareImageViewByWidth
+                            android:id="@+id/imgSquare3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignStart="@id/imgSquare3"
+                            android:layout_alignTop="@id/imgSquare3"
+                            android:layout_alignEnd="@id/imgSquare3"
+                            android:layout_alignBottom="@id/imgSquare3"
+                            android:background="@drawable/pin_rectangle_bg"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/be_vietnam_medium"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_4"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:layout_weight="1">
+
+                        <com.unjhawalateaadmin.common.utils.SquareImageViewByWidth
+                            android:id="@+id/imgSquare4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignStart="@id/imgSquare4"
+                            android:layout_alignTop="@id/imgSquare4"
+                            android:layout_alignEnd="@id/imgSquare4"
+                            android:layout_alignBottom="@id/imgSquare4"
+                            android:background="@drawable/pin_rectangle_bg"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/be_vietnam_medium"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/routSubmitBg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorWindowBackground">
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/save_button_height_50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/size_14dp"
+                android:layout_marginTop="@dimen/size_14dp"
+                android:layout_marginEnd="@dimen/size_14dp"
+                android:layout_marginBottom="@dimen/size_14dp"
+                android:backgroundTint="@color/colorPrimary"
+                app:mrl_rippleColor="@color/colorRippleColor"
+                app:mrl_rippleDelayClick="true"
+                app:mrl_rippleDuration="@string/ripple_duration"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <TextView
+                    android:id="@+id/txtSubmit"
+                    style="@style/SmallFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/img_login_button_bg"
+                    android:fontFamily="@font/be_vietnam_bold"
+                    android:gravity="center"
+                    android:text="@string/set"
+                    android:textColor="@color/colorPrimaryText" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:fitsSystemWindows="true"
+            android:visibility="gone">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar_main" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_ellipse_5" />
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/toolbar">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/img_login_screen_logo" />
+
+                    <TextView
+                        style="@style/VerySmallFontTextView"
+                        android:layout_marginStart="@dimen/size_22dp"
+                        android:layout_marginTop="@dimen/size_60dp"
+                        android:fontFamily="@font/be_vietnam_bold"
+                        android:text="@string/sign"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="35sp" />
+
+                    <TextView
+                        style="@style/VerySmallFontTextView"
+                        android:layout_marginStart="@dimen/size_22dp"
+                        android:fontFamily="@font/be_vietnam_bold"
+                        android:text="@string/in"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="35sp" />
+
+                    <TextView
+                        style="@style/VerySmallFontTextView"
+                        android:layout_marginStart="@dimen/size_22dp"
+                        android:layout_marginTop="@dimen/size_8dp"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:text="@string/sign_in_screen_note"
+                        android:textColor="@color/colorSecondaryLightText"
+                        android:textSize="14sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutEmail"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_22dp"
+                        android:layout_marginTop="@dimen/size_26dp"
+                        android:layout_marginEnd="@dimen/size_22dp"
+                        android:layout_marginBottom="@dimen/size_14dp"
+                        android:textColorHint="@color/colorHint"
+                        app:errorIconDrawable="@null">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/be_vietnam_regular"
+                            android:hint="@string/email_id"
+                            android:imeOptions="actionNext"
+                            android:inputType="textEmailAddress"
+                            android:textSize="@dimen/text_size_15sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutPassword"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_22dp"
+                        android:layout_marginEnd="@dimen/size_22dp"
+                        android:textColorHint="@color/colorHint"
+                        app:errorIconDrawable="@null">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/be_vietnam_regular"
+                            android:hint="@string/password"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPassword"
+                            android:textSize="@dimen/text_size_15sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:id="@+id/txtForgotPassword"
+                        style="@style/SmallFontTextView"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="@dimen/size_20dp"
+                        android:fontFamily="@font/be_vietnam_medium"
+                        android:text="@string/forgot_password"
+                        android:textColor="@color/colorSecondaryLightText"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/size_30dp"
+                android:gravity="center_vertical"
+                android:visibility="gone">
+
+                <TextView
+                    style="@style/SmallFontTextView"
+                    android:text="@string/hint_sign_up_account"
+                    android:textColor="@color/colorSecondaryExtraLightText"
+                    android:textSize="@dimen/text_size_14sp" />
+
+                <TextView
+                    android:id="@+id/txtSignUp"
+                    style="@style/SmallFontTextView"
+                    android:layout_marginStart="@dimen/size_8dp"
+                    android:fontFamily="@string/font_family_medium"
+                    android:text="@string/sign_up"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="@dimen/text_size_14sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>
+

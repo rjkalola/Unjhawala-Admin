@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@color/colorAccentLight"
+    android:gravity="center_horizontal"
+    android:minHeight="?attr/actionBarSize"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    app:layout_collapseMode="pin"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    tools:ignore="MissingPrefix">
+
+    <TextView
+        android:id="@+id/toolBarNavigation"
+        style="@style/ToolbarTitleFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/colorPrimaryText" />
+
+    <TextView
+        android:id="@+id/txtLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_5dp"
+        android:visibility="gone"
+        android:textColor="@color/red"
+        android:layout_gravity="end"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:textSize="@dimen/text_size_15sp"
+        android:layout_marginEnd="@dimen/size_15dp"
+        android:text="@string/logout" />
+
+</androidx.appcompat.widget.Toolbar>

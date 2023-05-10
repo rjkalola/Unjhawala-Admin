@@ -1,0 +1,153 @@
+<resources>
+
+    <string name="app_name" translatable="false">Unjhawala Tea</string>
+    <string name="default_notification_channel_id" translatable="false">Unjhawala Tea</string>
+    <!--    <string name="font_family_regular" translatable="false">sans-serif</string>-->
+    <!--    <string name="font_family_medium" translatable="false">sans-serif-medium</string>-->
+    <string name="google_maps_key" translatable="false">AIzaSyDQha_WbwHoJqrtsFUqxPIdjp1IevSvkwU</string>
+
+    <string name="font_family_medium" translatable="false">sans-serif-medium</string>
+    <string name="font_family_regular" translatable="false">sans-serif</string>
+    <string name="ripple_duration" translatable="false">200</string>
+    <string name="desc_order" translatable="false">DESC</string>
+
+    <string name="error_bad_request_400">The request could not be understood by the server due to malformed syntax.</string>
+    <string name="error_unauthorized_401">The request requires user authentication. The response MUST include a WWW-Authenticate header field.</string>
+    <string name="error_forbidden_403">The server understood the request but is refusing to fulfill it.</string>
+    <string name="error_not_found_404">The server has not found anything matching the Request-URI.</string>
+    <string name="error_method_not_allowed_405">The method specified in the Request-Line is not allowed for the resource identified by the Request-URI.</string>
+    <string name="error_request_timeout_408">Your request timed out. Please retry the request.</string>
+    <string name="error_request_entity_too_large_413">The server is refusing to process a request because the request entity is larger than the server is willing or able to process.</string>
+    <string name="error_request_uri_too_long_414">The server is refusing to service the request because the Request-URI is longer than the server is willing to interpret.</string>
+    <string name="error_internal_server_error_500">The server encountered an unexpected condition which prevented it from fulfilling the request.</string>
+    <string name="error_unknown">An unknown error occurred</string>
+    <string name="msg_unauthorized">We are signing you out as we found your account access from another device</string>
+
+    //Error Strings
+    <!--    <string name="ERR100">Parameters Missing</string>-->
+
+    <string name="ok">Ok</string>
+
+    <!--Login-->
+    <string name="sign">Sign</string>
+
+    <string name="in">In.</string>
+    <string name="sign_in_screen_note">Hello there!\nWelcome back to Unique Power\nTechnologies</string>
+    <string name="email_id">Email Id</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="password">Password</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="msg_exit_app">Press again to exit</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="report">Report</string>
+    <string name="about">About</string>
+    <string name="error_empty_pin">Enter valid pin</string>
+    <string name="error_empty_otp">Enter valid otp</string>
+    <string name="close">Close</string>
+    <string name="msg_receive_otp_for_verification">You’ll receive 4 digit OTP for verification.</string>
+
+    <string name="msg_text_copied">Text copied to clipboard</string>
+
+    <!-- Sign In Screen -->
+    <string name="error_name_mandatory">Please enter name</string>
+    <string name="hint_sign_up_account">Don\'t have an account?</string>
+    <string name="hint_login_account">Already have an account?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="enter_phone_number">Please enter mobile number</string>
+    <!-- Sign Up Screen -->
+    <string name="phone_number">Phone Number</string>
+    <string name="error_phone_number_min_length">Please enter valid mobile number</string>
+
+    <!-- DashBoard -->
+    <string name="photos">Photos</string>
+    <string name="pdf">Pdf</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="set_mpin">Set MPIN</string>
+    <string name="enter_mpin">Enter MPIN</string>
+    <string name="set_mpin_note">Set your 4 digit mpin for faster login</string>
+    <string name="enter_mpin_note">Enter your 4 digit mpin for faster login</string>
+    <string name="set">Set</string>
+
+    <string name="display_otp_sent_to_mobile_number">OTP is sent to %s</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="submit">Submit</string>
+    <!-- Jobs -->
+
+    <!-- EditProfile -->
+    <string name="full_name">Full Name</string>
+    <string name="camera">Camera</string>
+
+    <!--        <string name=""></string>-->
+    <!--    <string name=""></string>-->
+
+    <!-- App Information -->
+
+    <string name="select_photos">Select Photos</string>
+
+    <string name="msg_no_application_found">No Application available to view this file</string>
+
+    <string name="sort_by">Sort By</string>
+
+
+    <string name="sort_by_name_ascending">Name A to Z</string>
+    <string name="sort_by_name_descending">Name Z to A</string>
+    <string name="sort_by_price_low_to_high">Price Low to High</string>
+    <string name="sort_by_price_high_to_low">Price High to Low</string>
+    <string name="sort_by_date_modified">Date Modified</string>
+
+    <string name="company_name">Company Name</string>
+    <string name="error_empty_company_name">Enter Company Name</string>
+    <string name="address_optional">Address (Optional)</string>
+    <string name="error_empty_state">Select State</string>
+    <string name="error_empty_city">Enter City</string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="logout">Logout</string>
+    <string name="logout_msg">Are you sure you want to logout?</string>
+    <string name="change_number">Change Number?</string>
+
+    <string name="available_kg">Available Kg</string>
+    <string name="current_year_kg">Current Year Kg</string>
+    <string name="last_year_kg">Last Year KG</string>
+    <string name="quick_links">Quick Links</string>
+    <string name="my_account_">My\nAccount</string>
+    <string name="my_order_">My\nOrder</string>
+    <string name="my_order">My Order</string>
+    <string name="pending_orders_">Pending\nOrders</string>
+    <string name="daily_sales_report_">Daily\nSalesReport</string>
+    <string name="scan_code">Scan Code</string>
+    <string name="transfer_kg">Transfer Kg</string>
+    <string name="my_network">My Network</string>
+    <string name="new_order">New Order</string>
+    <string name="agency">Agency</string>
+    <string name="retailor">Retailer</string>
+    <string name="working_area_">Working\nArea</string>
+    <string name="sales_person_">Sales\nPerson</string>
+    <string name="utilities">Utilities</string>
+    <string name="to_do">To Do</string>
+    <string name="cash_calculator_">Cash\nCalculator</string>
+    <string name="terms_conditions">Terms &amp; Conditions</string>
+
+    <string name="msg_camera_permission">This application needs access to your camera</string>
+    <string name="i_agree">I agree</string>
+
+    <string name="lbl_filter_by_date">Filter By Date</string>
+    <string name="title_update_app">Update Available</string>
+    <string name="msg_update_app">There is newer version of this application available, Click on OK to update</string>
+    <string name="support">Support</string>
+    <string name="msg_otp_resend">OTP resend successfully</string>
+    <string name="display_resend_otp_counter">Resend OTP in %s second</string>
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+
+</resources>

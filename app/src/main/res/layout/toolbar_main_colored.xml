@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:background="@color/colorAccentDark"
+    android:gravity="center_horizontal"
+    android:minHeight="?attr/actionBarSize"
+    app:contentInsetLeft="0dp"
+    app:contentInsetStart="0dp"
+    app:contentInsetStartWithNavigation="0dp"
+    app:layout_collapseMode="pin"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    tools:ignore="MissingPrefix">
+
+    <RelativeLayout
+        android:id="@+id/routUserProfile"
+        android:layout_width="@dimen/size_30dp"
+        android:layout_height="@dimen/size_30dp"
+        android:visibility="gone"
+        android:layout_marginStart="@dimen/size_16dp">
+
+        <RelativeLayout
+            android:id="@+id/routEmptyProfileImage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:background="@drawable/img_circle_accent_corner_with_transparent_solid"
+            android:backgroundTint="#263238">
+
+            <TextView
+                android:id="@+id/txtUserNameLetter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/be_vietnam_bold"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:padding="0dp"
+                android:textColor="@color/colorPrimaryText"
+                android:textSize="@dimen/text_size_16sp" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/toolBarNavigation"
+        style="@style/ToolbarTitleFont"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ellipsize="end"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:singleLine="true"
+        android:text=""
+        android:textColor="@color/colorPrimaryText" />
+
+    <TextView
+        android:id="@+id/txtLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/size_15dp"
+        android:fontFamily="@font/be_vietnam_medium"
+        android:padding="@dimen/size_5dp"
+        android:text="@string/logout"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_size_15sp"
+        android:visibility="gone" />
+
+</androidx.appcompat.widget.Toolbar>

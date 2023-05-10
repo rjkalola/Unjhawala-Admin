@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    <color name="colorPrimary">#068fc3</color>-->
+    <!--    <color name="colorPrimary">#f6a144</color>-->
+    <!--    <color name="colorPrimaryDark">#f6a144</color>-->
+    <!--    <color name="colorAccent">#f6a144</color>-->
+
+    <color name="colorPrimary">#000222</color>
+
+    <color name="colorPrimaryDark">#000222</color>
+    <!--    <color name="colorAccent">#4ECC99</color>-->
+    <color name="colorAccent">#000222</color>
+    <color name="colorLoginScreenBg">#F9B900</color>
+
+    <color name="colorAccentDark">#F8CD76</color>
+    <color name="colorAccentLight">#FDF6E7</color>
+    <color name="colorAccentText">#CB8E4E</color>
+
+    <color name="colorActiveIcon">#D4A744</color>
+    <color name="colorDeActiveIcon">#4F4F4F</color>
+
+    <color name="colorWindowBackground">#ffffff</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorYellow">#F9B900</color>
+    <color name="colorDivider">#ebe9e6</color>
+    <color name="colorPrimaryText">#212121</color>
+    <color name="colorPrimaryText2">#263238</color>
+    <color name="colorSecondaryLightText">#8B8B8B</color>
+    <color name="colorSecondaryExtraLightText">#ACABAB</color>
+    <!--    <color name="colorInActiveTab">#D3D3D3</color>-->
+
+    <color name="colorHint">#9d9d9d</color>
+    <color name="green">#00ae46</color>
+    <color name="colorRippleColor">#FFFF</color>
+    <color name="colorPopupBackground">#ffffff</color>
+    <color name="red">#e50914</color>
+</resources>

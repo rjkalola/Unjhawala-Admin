@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".DashboardActivity">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main_colored" />
+
+        <include
+            android:id="@+id/contentDashboard"
+            android:layout_below="@id/toolbar"
+            layout="@layout/content_dashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+</layout>

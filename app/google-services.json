@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "210095294167",
+    "project_id": "upt-app",
+    "storage_bucket": "upt-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210095294167:android:4820ab97aa115162cf9292",
+        "android_client_info": {
+          "package_name": "com.imateplus.upt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210095294167-4r7oe4j6ocle8l4sm0oc3oe6gfau3smj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQha_WbwHoJqrtsFUqxPIdjp1IevSvkwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210095294167-4r7oe4j6ocle8l4sm0oc3oe6gfau3smj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210095294167:android:2810d9ba0f992e27cf9292",
+        "android_client_info": {
+          "package_name": "com.imateplus.uptbranch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210095294167-4r7oe4j6ocle8l4sm0oc3oe6gfau3smj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQha_WbwHoJqrtsFUqxPIdjp1IevSvkwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210095294167-4r7oe4j6ocle8l4sm0oc3oe6gfau3smj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210095294167:android:49ec588f18bb6880cf9292",
+        "android_client_info": {
+          "package_name": "com.unjhawalateaadmin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210095294167-4r7oe4j6ocle8l4sm0oc3oe6gfau3smj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQha_WbwHoJqrtsFUqxPIdjp1IevSvkwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210095294167-4r7oe4j6ocle8l4sm0oc3oe6gfau3smj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210095294167:android:40ce882e0e905e13cf9292",
+        "android_client_info": {
+          "package_name": "com.imateplus.uptuser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210095294167-4r7oe4j6ocle8l4sm0oc3oe6gfau3smj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQha_WbwHoJqrtsFUqxPIdjp1IevSvkwU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210095294167-4r7oe4j6ocle8l4sm0oc3oe6gfau3smj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

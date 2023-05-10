@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/routTabsView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccentLight"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <LinearLayout
+            android:id="@+id/routHomeTab"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/size_9dp"
+            android:paddingBottom="@dimen/size_9dp"
+            android:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgHomeTab"
+                android:layout_width="@dimen/size_56dp"
+                android:layout_height="@dimen/size_28dp"
+                android:padding="@dimen/size_4dp"
+                android:background="@drawable/ic_dashboard_tab_icon_bg"
+                app:srcCompat="@drawable/ic_dashboard" />
+
+            <TextView
+                android:id="@+id/txtHomeTab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_4dp"
+                android:fontFamily="@font/be_vietnam_regular"
+                android:maxLines="1"
+                android:text="@string/dashboard"
+                android:textColor="#263238"
+                android:textSize="@dimen/text_size_11sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/routReport"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/size_9dp"
+            android:paddingBottom="@dimen/size_9dp"
+            android:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgReport"
+                android:layout_width="@dimen/size_56dp"
+                android:layout_height="@dimen/size_28dp"
+                android:padding="@dimen/size_4dp"
+                app:srcCompat="@drawable/ic_report_tab" />
+
+            <TextView
+                android:id="@+id/txtReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_4dp"
+                android:fontFamily="@font/be_vietnam_regular"
+                android:maxLines="1"
+                android:text="@string/report"
+                android:textColor="#263238"
+                android:textSize="@dimen/text_size_11sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/routAbout"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/size_9dp"
+            android:paddingBottom="@dimen/size_9dp"
+            android:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgAbout"
+                android:layout_width="@dimen/size_56dp"
+                android:layout_height="@dimen/size_28dp"
+                android:padding="@dimen/size_4dp"
+                app:srcCompat="@drawable/ic_about_tab" />
+
+            <TextView
+                android:id="@+id/txtAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_4dp"
+                android:fontFamily="@font/be_vietnam_regular"
+                android:maxLines="1"
+                android:text="@string/about"
+                android:textColor="#263238"
+                android:textSize="@dimen/text_size_11sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

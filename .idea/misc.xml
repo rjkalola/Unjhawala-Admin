@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/AndroidProjects/LatestWorkingCopy/New OTM SYSTEM/OTM Jobs git/app/src/main/res/layout/activity_pj_job_details.xml" value="0.14444444444444443" />
+        <entry key="..\:/AndroidProjects/LatestWorkingCopy/New OTM SYSTEM/OTM Jobs git/app/src/main/res/layout/activity_signup_2.xml" value="0.25" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT Qc Git/app/src/main/res/layout/activity_add_inspection.xml" value="0.33" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT Qc Git/app/src/main/res/layout/activity_add_qc_details.xml" value="0.25" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT Qc Git/app/src/main/res/layout/fragment_drive_inward_details.xml" value="0.2989583333333333" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT Qc Git/app/src/main/res/layout/fragment_home.xml" value="0.14" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT Qc Git/app/src/main/res/layout/fragment_inspection_template_details.xml" value="0.2989583333333333" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT Qc Git/app/src/main/res/layout/fragment_outward.xml" value="0.3265625" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT User Git/app/src/main/res/layout/activity_add_component.xml" value="0.17831813576494426" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT User Git/app/src/main/res/layout/activity_add_inspection.xml" value="0.358695652173913" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT User Git/app/src/main/res/layout/fragment_drive_inward_details.xml" value="0.358695652173913" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT User Git/app/src/main/res/layout/fragment_inspection_template_details.xml" value="0.25" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable-nodpi/add_drive_title_bg.xml" value="0.2095" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable-nodpi/img_close_btton_bg_bg.xml" value="0.2095" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable-nodpi/product_resources_item_bg.xml" value="0.2095" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable/ic_account_balance.xml" value="0.2095" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable/ic_arrow_down.xml" value="0.2095" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable/ic_camera_capture.xml" value="0.1255" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable/ic_camera_capture_normal.xml" value="0.1255" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable/ic_camera_capture_pressed.xml" value="0.1255" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable/ic_description.xml" value="0.2095" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable/ic_flash_auto.xml" value="0.1255" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable/ic_picture_as_pdf.xml" value="0.2095" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/drawable/ic_upload.xml" value="0.2095" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_add_drive.xml" value="0.33" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_add_inspection.xml" value="0.25" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_camera.xml" value="0.17798913043478262" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_customers_list.xml" value="0.2557291666666667" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_inspection_details.xml" value="0.253125" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_inward_outward.xml" value="0.1595744680851064" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_login.xml" value="0.2557291666666667" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_mainview.xml" value="0.16" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_product_details.xml" value="0.33229166666666665" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_set_pin.xml" value="0.27760416666666665" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_sign_up.xml" value="0.16893115942028986" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/activity_user_details.xml" value="0.358695652173913" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/bottom_sheet_dialog_select_item.xml" value="0.17798913043478262" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/dialog_select_inspection_attachment.xml" value="0.3359375" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_camera.xml" value="0.17798913043478262" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_drive_inward_details.xml" value="0.253125" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_inspection_template_details.xml" value="0.253125" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_inward.xml" value="0.25364583333333335" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_po_details.xml" value="0.358695652173913" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_product_details_equivalent.xml" value="0.358695652173913" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_product_details_location.xml" value="0.358695652173913" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_product_details_resources.xml" value="0.16893115942028986" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_product_details_stock.xml" value="0.358695652173913" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/fragment_vendor_details.xml" value="0.33" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/inspection_attachment_item.xml" value="0.27760416666666665" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/main.xml" value="0.3067708333333333" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/row_inspection_attachment_item.xml" value="0.25" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/row_inspection_questions_item.xml" value="0.2" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/row_inward_list_item.xml" value="0.25" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/row_product_details_location_item.xml" value="0.33" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/row_product_details_resources_item.xml" value="0.358695652173913" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/row_product_item.xml" value="0.2557291666666667" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/row_product_location_item.xml" value="0.22" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/row_product_resources_item.xml" value="0.33229166666666665" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/row_product_stock_item.xml" value="0.33229166666666665" />
+        <entry key="..\:/Project Work/rk/Ahmedabad/Kroonal/UPT v2 Git/app/src/main/res/layout/toolbar_main_colored.xml" value="0.358695652173913" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/circle_off_white.xml" value="0.2965" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/circle_red.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/circle_red_white_corner.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/dashboard_bottom_tab_bg.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/edittext_light_bg_solid.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/edittext_light_bg_transparent_solid.xml" value="0.229" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/edittext_light_bg_transperant_solid.xml" value="0.229" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_arrow_down.xml" value="0.229" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_arrow_down_light.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_tick.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_vector.xml" value="0.1545" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/membership_plan_bg.xml" value="0.136" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/rounded_black_button_bg_transperent.xml" value="0.162" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/rounded_gray_button_bg_transperent.xml" value="0.188" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/seller_details_background.xml" value="0.202" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/subscription_bottom_bg.xml" value="0.2965" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_baseline_edit.xml" value="0.202" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_compare.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_compare2.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_empty_image_placeholder.xml" value="0.162" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_watchlist.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_watchlist2.xml" value="0.202" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/drawable/ic_watchlist_active.xml" value="0.224" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/font/my_custom_font.xml" value="0.31197916666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_add_product.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_compare_product.xml" value="0.2578125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_dashboard.xml" value="0.17028985507246377" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_edit_profile.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_filters.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_introduction.xml" value="0.27291666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_my_products.xml" value="0.33125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_product_details.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_seller_details.xml" value="0.32447916666666665" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_seller_details2.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_signup_2.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_splash.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_subscription.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_subscription2.xml" value="0.2223731884057971" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_verify_otp.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/activity_webview.xml" value="0.36666666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/app_bar_dashboard.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/bottom_dialog_select_item.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/bottom_sheet_dialog_select_item.xml" value="0.26979166666666665" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/content_dashboard.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_contact_reached.xml" value="0.36666666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_report_product.xml" value="0.23854166666666668" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_seller_details.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_seller_details2.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_sort_by_product.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_sort_by_seller.xml" value="0.36666666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/dialog_view_free_contact.xml" value="0.36666666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_directory.xml" value="0.2546875" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_market.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_product_watchlist.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist_products.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist_sellers.xml" value="0.24375" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/layout_compare_count.xml" value="0.2" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/layout_progressbar.xml" value="0.265625" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/nav_header_dashboard.xml" value="0.17028985507246377" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_bottom_dialog_select_item.xml" value="0.278125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_compare_details_title.xml" value="0.2578125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_compare_details_value.xml" value="0.2578125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_compare_product.xml" value="0.2578125" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_contry_flag_list.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_dashboard_banner_pager.xml" value="0.3067708333333333" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_filter_items_list.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_filters_list.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_introduction_pager.xml" value="0.17831813576494426" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_introduction_pager_dots.xml" value="0.27291666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_login_users.xml" value="0.17028985507246377" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_product.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_seller.xml" value="0.33" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/row_sort_by_item.xml" value="0.2871376811594203" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/seller_details_dialog.xml" value="0.31145833333333334" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/layout/toolbar_main.xml" value="0.2" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/menu/dashboard_navigation_drawer.xml" value="0.36666666666666664" />
+        <entry key="..\:/Rk Project/Tiles Bajar/Tiles Bazar Git/app/src/main/res/menu/single_item_text_menu.xml" value="0.3489583333333333" />
+        <entry key="..\:/rk/Ahmedabad/Ripal/Swastik Enterprises/app/src/main/res/drawable-nodpi/rounded_button_bg_solid.xml" value="0.202" />
+        <entry key="..\:/rk/Ahmedabad/Ripal/Swastik Enterprises/app/src/main/res/drawable-nodpi/rounded_button_bg_transperent.xml" value="0.202" />
+        <entry key="..\:/rk/Ahmedabad/Ripal/Swastik Enterprises/app/src/main/res/layout/activity_edit_profile.xml" value="0.1707193515704154" />
+        <entry key="..\:/rk/Ahmedabad/Ripal/Swastik Enterprises/app/src/main/res/layout/activity_introduction.xml" value="0.1621376811594203" />
+        <entry key="..\:/rk/Ahmedabad/Ripal/Swastik Enterprises/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Ripal/Swastik Enterprises/app/src/main/res/layout/activity_splash.xml" value="0.2" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/edittext_light_bg_transparent_solid.xml" value="0.219" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_check_circle_green_24dp.xml" value="0.279" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/ic_empty_user.xml" value="0.219" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/membership_plan_active_bg.xml" value="0.202" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/membership_plan_bg.xml" value="0.23" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/rounded_button_bg.xml" value="0.2035" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable-nodpi/rounded_transperent_button_bg.xml" value="0.2035" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable/ic_baseline_check_circle.xml" value="0.279" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable/ic_baseline_error_outline.xml" value="0.192" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/drawable/ic_compare2.xml" value="0.279" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_add_product.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_app_information.xml" value="0.3385416666666667" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_category_list.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_category_products.xml" value="0.3463541666666667" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_compare_product.xml" value="0.2" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_dashboard.xml" value="0.16995947315096252" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_edit_profile.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_featured_products.xml" value="0.334375" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_filters.xml" value="0.3458333333333333" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_introduction.xml" value="0.28229166666666666" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_login.xml" value="0.1634963768115942" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_my_products.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_product_details.xml" value="0.1" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_seller_details.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_seller_details2.xml" value="0.31875" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_splash.xml" value="0.28229166666666666" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_subscription.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/activity_subscription2.xml" value="0.31875" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/app_bar_dashboard.xml" value="0.28229166666666666" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/bottom_sheet_dialog_select_item.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/content_dashboard.xml" value="0.16995947315096252" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_add_product_alert.xml" value="0.30364583333333334" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_add_product_reached.xml" value="0.30364583333333334" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_contact_alert.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_free_contact_reached.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_report_product.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_search_post_code.xml" value="0.23958333333333334" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_select_date_range.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_sort_by_product.xml" value="0.33489583333333334" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/dialog_view_free_contact.xml" value="0.1" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_market.xml" value="0.18" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_profile.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist.xml" value="0.2318840579710145" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/fragment_watchlist_products.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/layout_compare_count.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/layout_progressbar.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_bottom_dialog_select_item.xml" value="0.18840579710144928" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_category_item.xml" value="0.3078125" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_compare_details_title.xml" value="0.2318840579710145" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_compare_details_value.xml" value="0.15526849037487336" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_compare_product.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_dashboard_banner_pager.xml" value="0.20969202898550723" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_introduction_pager.xml" value="0.2" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_introduction_pager_dots.xml" value="0.20052083333333334" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_product.xml" value="0.1" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_seller.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/layout/row_sort_by_item.xml" value="0.20969202898550723" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/app/src/main/res/menu/dashboard_navigation_drawer.xml" value="0.3171875" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar Git/utilities/src/main/res/layout/dialog_loading.xml" value="0.286231884057971" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/drawable-nodpi/ic_empty_place_holder.xml" value="0.164" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_app_information.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_change_password.xml" value="0.12771739130434784" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_dashboard.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_edit_profile.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_forgot_password.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_job_history.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_main.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_my_jobs_details.xml" value="0.2027097446586764" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_select_trade.xml" value="0.2760416666666667" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/activity_trade_person_details.xml" value="0.2760416666666667" />
+        <entry key="..\:/rk/Ahmedabad/Tiles Bazar/Tiles Bazar/app/src/main/res/layout/row_my_jobs.xml" value="0.28532608695652173" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT Branch Git/app/src/main/res/layout/activity_add_drive.xml" value="0.21710526315789475" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT Branch Git/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT Branch Git/app/src/main/res/layout/fragment_vendor_details.xml" value="0.18" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT Qc Git/app/src/main/res/drawable-nodpi/mark_all_read_bg.xml" value="0.1865" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT Qc Git/app/src/main/res/layout/activity_notifications_list.xml" value="0.358695652173913" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT Qc Git/app/src/main/res/layout/fragment_home.xml" value="0.358695652173913" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT Qc Git/app/src/main/res/layout/row_notification_item.xml" value="0.358695652173913" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT Qc Git/app/src/main/res/layout/toolbar_main.xml" value="0.20104166666666667" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT Qc Git/app/src/main/res/layout/toolbar_main_colored.xml" value="0.20104166666666667" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/activity_add_component.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/activity_add_drive.xml" value="0.24736842105263157" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/activity_add_inspection.xml" value="0.12360754070265638" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/activity_attachment_note.xml" value="0.2" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/activity_components_list.xml" value="0.25087719298245614" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/activity_products_list.xml" value="0.25087719298245614" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/bottom_sheet_dialog_select_item.xml" value="0.2530701754385965" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/dialog_component_update_quantity.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/dialog_store_component.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/fragment_inspection_template_details.xml" value="0.21" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/fragment_inward.xml" value="0.1" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/fragment_technician_details.xml" value="0.25877192982456143" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/row_component_item.xml" value="0.22587719298245615" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/row_customer_item.xml" value="0.25877192982456143" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/row_product_item.xml" value="0.22587719298245615" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT User Git/app/src/main/res/layout/row_technician_component_item.xml" value="0.25877192982456143" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/add_drive_title_bg.xml" value="0.1635" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/dashboard_button_rectangle_bg.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/ic_arrow_back.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/ic_undraw_mobile_login_re_9ntv_1.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/inward_date_bg.xml" value="0.1635" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/inward_item_bg.xml" value="0.1635" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/pin_rectangle_bg.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/product_description_rectangle_bg.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/product_resources_item_bg.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable-nodpi/rounded_button_bg_solid.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable/ic_arrow_down.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable/ic_drive_details.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable/ic_favorite.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable/ic_favorite_active.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/drawable/ic_upload.xml" value="0.212" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/font/my_custom_font.xml" value="0.28125" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_add_drive.xml" value="0.16286727456940223" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_add_inspection.xml" value="0.15081405312767782" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_crop_image.xml" value="0.25104166666666666" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_customers_list.xml" value="0.16286727456940223" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_dashboard.xml" value="0.1" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_inward_outward.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_inward_outwardt.xml" value="0.3038949275362319" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_login.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_product_details.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_products_list.xml" value="0.17831813576494426" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_set_pin.xml" value="0.21" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_sign_up.xml" value="0.17831813576494426" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_user_details.xml" value="0.1" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/activity_verify_otp.xml" value="0.25104166666666666" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/app_bar_dashboard.xml" value="0.2511724856696196" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/bottom_sheet_dialog_select_item.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/content_dashboard.xml" value="0.2" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/dialog_select_attachment.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/fragment_drive_inward_details.xml" value="0.29438405797101447" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/fragment_home.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/fragment_inspection_template_details.xml" value="0.29438405797101447" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/fragment_inward.xml" value="0.18" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/fragment_product_details_equivalent.xml" value="0.2807017543859649" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/fragment_product_details_location.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/fragment_vendor_details.xml" value="0.22" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/layout_bottom_tabs.xml" value="0.33" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/layout_progressbar.xml" value="0.25104166666666666" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/row_bottom_dialog_select_item.xml" value="0.32155797101449274" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/row_customer_item.xml" value="0.14969604863221886" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/row_inspection_questions_item.xml" value="0.15081405312767782" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/row_inward_list_item.xml" value="0.25" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/row_product_details_location_item.xml" value="0.25921052631578945" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/row_product_details_resources_item.xml" value="0.20482456140350877" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/row_product_details_stock_item.xml" value="0.2802631578947368" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/row_product_resources_item.xml" value="0.32155797101449274" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/toolbar_main.xml" value="0.25104166666666666" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2 Git/app/src/main/res/layout/toolbar_main_colored.xml" value="0.16" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2/app/src/main/res/layout/activity_app_information.xml" value="0.16438703140830802" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2/app/src/main/res/layout/activity_change_password.xml" value="0.32155797101449274" />
+        <entry key="..\:/rk/Ahmedabad/UPT/UPT v2/app/src/main/res/layout/activity_login.xml" value="0.17119565217391305" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
+  </component>
+</project>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLoginScreenBg"
+        android:fillViewport="true"
+        android:fitsSystemWindows="false">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/img_login_header" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/routSubmitBg"
+            android:layout_below="@id/imgHeader"
+            android:layout_marginTop="-30dp"
+            android:fillViewport="true"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/routDetailsView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/img_login_footer_bg"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/size_40dp"
+                android:paddingBottom="@dimen/size_20dp">
+
+                <TextView
+                    style="@style/VerySmallFontTextView"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:fontFamily="@font/be_vietnam_bold"
+                    android:text="@string/enter_otp"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/txtDisplayOtpPhoneNumber"
+                    style="@style/VerySmallFontTextView"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginTop="@dimen/size_2dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:fontFamily="@font/be_vietnam_regular"
+                    android:text="OTP is sent to 9876543210"
+                    android:textColor="@color/colorSecondaryLightText"
+                    android:textSize="15sp" />
+
+                <LinearLayout
+                    android:id="@+id/routOtp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_2dp"
+                    android:layout_marginTop="@dimen/size_22dp"
+                    android:layout_marginEnd="@dimen/size_2dp"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:layout_weight="1">
+
+                        <com.unjhawalateaadmin.common.utils.SquareImageViewByWidth
+                            android:id="@+id/imgSquare1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignStart="@id/imgSquare1"
+                            android:layout_alignTop="@id/imgSquare1"
+                            android:layout_alignEnd="@id/imgSquare1"
+                            android:layout_alignBottom="@id/imgSquare1"
+                            android:background="@drawable/pin_rectangle_bg"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/be_vietnam_medium"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_2"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:layout_weight="1">
+
+                        <com.unjhawalateaadmin.common.utils.SquareImageViewByWidth
+                            android:id="@+id/imgSquare2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignStart="@id/imgSquare2"
+                            android:layout_alignTop="@id/imgSquare2"
+                            android:layout_alignEnd="@id/imgSquare2"
+                            android:layout_alignBottom="@id/imgSquare2"
+                            android:background="@drawable/pin_rectangle_bg"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/be_vietnam_medium"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_3"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:layout_weight="1">
+
+                        <com.unjhawalateaadmin.common.utils.SquareImageViewByWidth
+                            android:id="@+id/imgSquare3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignStart="@id/imgSquare3"
+                            android:layout_alignTop="@id/imgSquare3"
+                            android:layout_alignEnd="@id/imgSquare3"
+                            android:layout_alignBottom="@id/imgSquare3"
+                            android:background="@drawable/pin_rectangle_bg"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/be_vietnam_medium"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:nextFocusForward="@+id/edtVerifyCode_4"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:layout_weight="1">
+
+                        <com.unjhawalateaadmin.common.utils.SquareImageViewByWidth
+                            android:id="@+id/imgSquare4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+
+                        <EditText
+                            android:id="@+id/edtVerifyCode_4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_alignStart="@id/imgSquare4"
+                            android:layout_alignTop="@id/imgSquare4"
+                            android:layout_alignEnd="@id/imgSquare4"
+                            android:layout_alignBottom="@id/imgSquare4"
+                            android:background="@drawable/pin_rectangle_bg"
+                            android:digits="0123456789"
+                            android:fontFamily="@font/be_vietnam_medium"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="1"
+                            android:padding="@dimen/size_14dp"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_20sp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_10dp">
+
+                    <TextView
+                        android:id="@+id/txtChangeNumber"
+                        style="@style/VerySmallFontTextView"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:paddingTop="@dimen/size_4dp"
+                        android:paddingBottom="@dimen/size_4dp"
+                        android:text="@string/change_number"
+                        android:textColor="@color/colorSecondaryLightText"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtReSendOTP"
+                        style="@style/VerySmallFontTextView"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:paddingTop="@dimen/size_4dp"
+                        android:visibility="gone"
+                        android:paddingBottom="@dimen/size_4dp"
+                        android:text="@string/resend_otp"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/txtReSendOTPCounter"
+                        style="@style/VerySmallFontTextView"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_20dp"
+                        android:layout_centerVertical="true"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:paddingTop="@dimen/size_4dp"
+                        android:paddingBottom="@dimen/size_4dp"
+                        android:text="Resend OTP in 30 second"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="14sp" />
+
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <RelativeLayout
+            android:id="@+id/routSubmitBg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorWindowBackground">
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/btnSubmit"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/save_button_height_50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/size_14dp"
+                android:layout_marginTop="@dimen/size_14dp"
+                android:layout_marginEnd="@dimen/size_14dp"
+                android:layout_marginBottom="@dimen/size_14dp"
+                android:backgroundTint="@color/colorPrimary"
+                app:mrl_rippleColor="@color/colorRippleColor"
+                app:mrl_rippleDelayClick="true"
+                app:mrl_rippleDuration="@string/ripple_duration"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <TextView
+                    android:id="@+id/txtSubmit"
+                    style="@style/SmallFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/img_login_button_bg"
+                    android:fontFamily="@font/be_vietnam_bold"
+                    android:gravity="center"
+                    android:text="@string/submit"
+                    android:textColor="@color/colorPrimaryText" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</layout>
+

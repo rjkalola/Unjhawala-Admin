@@ -1,0 +1,1144 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:layout_marginTop="@dimen/size_26dp"
+                    android:layout_marginEnd="@dimen/size_16dp"
+                    android:background="@drawable/ic_dashboard_header_details_bg"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/size_16dp"
+                    android:paddingTop="@dimen/size_16dp"
+                    android:paddingEnd="@dimen/size_16dp"
+                    android:paddingBottom="@dimen/size_16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/size_16dp"
+                            android:layout_toStartOf="@id/imgStoreFront"
+                            android:orientation="vertical">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/size_16dp"
+                                android:adjustViewBounds="true"
+                                app:srcCompat="@drawable/ic_welcome" />
+
+                            <TextView
+                                android:id="@+id/txtUserName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_4dp"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/be_vietnam_medium"
+                                android:singleLine="true"
+                                android:textColor="@color/colorPrimaryText"
+                                android:textSize="18sp" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/imgStoreFront"
+                            android:layout_width="@dimen/size_26dp"
+                            android:layout_height="@dimen/size_22dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:alpha="0.2"
+                            app:srcCompat="@drawable/ic_storefront" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_15dp"
+                        android:background="@drawable/ic_dashboard_header_details_item_bg"
+                        android:orientation="horizontal"
+                        android:paddingTop="@dimen/size_12dp"
+                        android:paddingBottom="@dimen/size_12dp">
+
+                        <LinearLayout
+                            android:id="@+id/routKgHistory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:singleLine="true"
+                                android:text="@string/available_kg"
+                                android:textColor="#EBEBEB"
+                                android:textSize="@dimen/text_size_12sp" />
+
+                            <TextView
+                                android:id="@+id/txtAvailableKg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/be_vietnam_bold"
+                                android:singleLine="true"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/routCurrentYearHistory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:singleLine="true"
+                                android:text="@string/current_year_kg"
+                                android:textColor="#EBEBEB"
+                                android:textSize="@dimen/text_size_12sp" />
+
+                            <TextView
+                                android:id="@+id/txtCurrentYearKg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/be_vietnam_bold"
+                                android:singleLine="true"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/routPreviousYearHistory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:singleLine="true"
+                                android:text="@string/last_year_kg"
+                                android:textColor="#EBEBEB"
+                                android:textSize="@dimen/text_size_12sp" />
+
+                            <TextView
+                                android:id="@+id/txtLastYearKg"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:fontFamily="@font/be_vietnam_bold"
+                                android:singleLine="true"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/routQuickLinksDealer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_16dp"
+                        android:layout_marginTop="@dimen/size_26dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/be_vietnam_semi_bold"
+                        android:singleLine="true"
+                        android:text="@string/quick_links"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_10dp"
+                        android:layout_marginTop="@dimen/size_12dp"
+                        android:layout_marginEnd="@dimen/size_10dp"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/routAccount"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:layout_marginEnd="@dimen/size_6dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#cf975c"
+                            app:cardCornerRadius="6dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_quick_links_item_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/size_14dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_32dp"
+                                    android:layout_height="@dimen/size_32dp"
+                                    android:background="@drawable/ic_circle_white"
+                                    android:padding="@dimen/size_6dp"
+                                    app:srcCompat="@drawable/ic_my_account"
+                                    tools:ignore="ImageContrastCheck" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_12dp"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/be_vietnam_bold"
+                                    android:maxLines="2"
+                                    android:text="@string/my_account_"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/text_size_14sp"
+                                    tools:ignore="TextContrastCheck" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/routPendingOrders"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:layout_marginEnd="@dimen/size_6dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#cf975c"
+                            app:cardCornerRadius="6dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_quick_links_item_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/size_14dp">
+
+                                <RelativeLayout
+                                    android:layout_width="@dimen/size_32dp"
+                                    android:layout_height="@dimen/size_32dp"
+                                    android:background="@drawable/ic_circle_white">
+
+                                    <TextView
+                                        android:id="@+id/txtTotalPendingOrder"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:ellipsize="end"
+                                        android:gravity="center"
+                                        android:singleLine="true"
+                                        android:textColor="@color/colorAccentText"
+                                        android:textSize="@dimen/text_size_14sp" />
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="@dimen/size_8dp"
+                                        android:layout_height="@dimen/size_8dp"
+                                        android:layout_alignParentEnd="true"
+                                        android:layout_alignParentBottom="true"
+                                        android:layout_margin="@dimen/size_1dp"
+                                        app:srcCompat="@drawable/ic_circle_status_green" />
+
+                                </RelativeLayout>
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_12dp"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/be_vietnam_bold"
+                                    android:maxLines="2"
+                                    android:text="@string/pending_orders_"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/text_size_14sp" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/routDailySalesReport"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:layout_marginEnd="@dimen/size_6dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#cf975c"
+                            app:cardCornerRadius="6dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_quick_links_item_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/size_14dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_32dp"
+                                    android:layout_height="@dimen/size_32dp"
+                                    android:background="@drawable/ic_circle_white"
+                                    android:padding="@dimen/size_8dp"
+                                    app:srcCompat="@drawable/ic_daily_sales_report" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_12dp"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/be_vietnam_bold"
+                                    android:maxLines="2"
+                                    android:text="@string/daily_sales_report_"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/text_size_14sp" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_16dp"
+                        android:layout_marginTop="@dimen/size_22dp"
+                        android:layout_marginEnd="@dimen/size_16dp">
+
+                        <LinearLayout
+                            android:id="@+id/routScanQrCode"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/size_4dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/img_scan_code_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingStart="@dimen/size_14dp"
+                            android:paddingTop="@dimen/size_12dp"
+                            android:paddingEnd="@dimen/size_14dp"
+                            android:paddingBottom="@dimen/size_12dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_20dp"
+                                android:layout_height="@dimen/size_20dp"
+                                app:srcCompat="@drawable/ic_scan_code" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_4dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text="@string/scan_code"
+                                android:textColor="@color/colorAccentText"
+                                android:textSize="@dimen/text_size_15sp"
+                                tools:ignore="TextContrastCheck" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/routTransferKg"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_4dp"
+                            android:layout_marginEnd="@dimen/size_4dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/img_scan_code_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingStart="@dimen/size_14dp"
+                            android:paddingTop="@dimen/size_12dp"
+                            android:paddingEnd="@dimen/size_10dp"
+                            android:paddingBottom="@dimen/size_12dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_20dp"
+                                android:layout_height="@dimen/size_20dp"
+                                app:srcCompat="@drawable/ic_transfer_kg" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_4dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text="@string/transfer_kg"
+                                android:textColor="@color/colorAccentText"
+                                android:textSize="@dimen/text_size_15sp"
+                                tools:ignore="TextContrastCheck" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/routMyOrder"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_4dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/img_scan_code_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingStart="@dimen/size_14dp"
+                            android:paddingTop="@dimen/size_12dp"
+                            android:paddingEnd="@dimen/size_14dp"
+                            android:paddingBottom="@dimen/size_12dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_20dp"
+                                android:layout_height="@dimen/size_20dp"
+                                app:srcCompat="@drawable/ic_my_document"
+                                app:tint="@color/colorAccentText" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_4dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text="@string/my_order"
+                                android:textColor="@color/colorAccentText"
+                                android:textSize="@dimen/text_size_15sp"
+                                tools:ignore="TextContrastCheck" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/routQuickLinksAgency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_16dp"
+                        android:layout_marginTop="@dimen/size_26dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/be_vietnam_semi_bold"
+                        android:singleLine="true"
+                        android:text="@string/quick_links"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_10dp"
+                        android:layout_marginTop="@dimen/size_12dp"
+                        android:layout_marginEnd="@dimen/size_10dp"
+                        android:orientation="horizontal">
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/routAccountAgency"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:layout_marginEnd="@dimen/size_6dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#cf975c"
+                            app:cardCornerRadius="6dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_quick_links_item_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/size_14dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_32dp"
+                                    android:layout_height="@dimen/size_32dp"
+                                    android:background="@drawable/ic_circle_white"
+                                    android:padding="@dimen/size_6dp"
+                                    app:srcCompat="@drawable/ic_my_account"
+                                    tools:ignore="ImageContrastCheck" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_12dp"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/be_vietnam_bold"
+                                    android:maxLines="2"
+                                    android:text="@string/my_account_"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/text_size_14sp"
+                                    tools:ignore="TextContrastCheck" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/routMyOrderAgency"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:layout_marginEnd="@dimen/size_6dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#cf975c"
+                            app:cardCornerRadius="6dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_quick_links_item_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/size_14dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_32dp"
+                                    android:layout_height="@dimen/size_32dp"
+                                    android:background="@drawable/ic_circle_white"
+                                    android:padding="@dimen/size_6dp"
+                                    android:tint="@color/colorAccentText"
+                                    app:srcCompat="@drawable/ic_my_document" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_12dp"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/be_vietnam_bold"
+                                    android:maxLines="2"
+                                    android:text="@string/my_order_"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/text_size_14sp" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/routHelpAgency"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:layout_marginEnd="@dimen/size_6dp"
+                            android:layout_weight="1"
+                            app:cardBackgroundColor="#cf975c"
+                            app:cardCornerRadius="6dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/ic_quick_links_item_bg"
+                                android:orientation="vertical"
+                                android:padding="@dimen/size_14dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_32dp"
+                                    android:layout_height="@dimen/size_32dp"
+                                    android:background="@drawable/ic_circle_white"
+                                    android:padding="@dimen/size_6dp"
+                                    app:srcCompat="@drawable/ic_help"
+                                    tools:ignore="ImageContrastCheck" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_12dp"
+                                    android:ellipsize="end"
+                                    android:fontFamily="@font/be_vietnam_bold"
+                                    android:lines="2"
+                                    android:gravity="center"
+                                    android:text="@string/support"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="@dimen/text_size_14sp"
+                                    tools:ignore="TextContrastCheck" />
+
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_16dp"
+                        android:layout_marginTop="@dimen/size_22dp"
+                        android:layout_marginEnd="@dimen/size_16dp">
+
+                        <LinearLayout
+                            android:id="@+id/routScanQrCodeAgency"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/size_6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/img_scan_code_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingStart="@dimen/size_14dp"
+                            android:paddingTop="@dimen/size_12dp"
+                            android:paddingEnd="@dimen/size_14dp"
+                            android:paddingBottom="@dimen/size_12dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_20dp"
+                                android:layout_height="@dimen/size_20dp"
+                                app:srcCompat="@drawable/ic_scan_code" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_4dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text="@string/scan_code"
+                                android:textColor="@color/colorAccentText"
+                                android:textSize="@dimen/text_size_15sp"
+                                tools:ignore="TextContrastCheck" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/routTransferKgAgency"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_6dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/img_scan_code_bg"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical"
+                            android:paddingStart="@dimen/size_14dp"
+                            android:paddingTop="@dimen/size_12dp"
+                            android:paddingEnd="@dimen/size_10dp"
+                            android:paddingBottom="@dimen/size_12dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_20dp"
+                                android:layout_height="@dimen/size_20dp"
+                                app:srcCompat="@drawable/ic_transfer_kg" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_4dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text="@string/transfer_kg"
+                                android:textColor="@color/colorAccentText"
+                                android:textSize="@dimen/text_size_15sp"
+                                tools:ignore="TextContrastCheck" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/routQuickLinksRetailer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_16dp"
+                        android:layout_marginTop="@dimen/size_26dp"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/be_vietnam_semi_bold"
+                        android:singleLine="true"
+                        android:text="@string/quick_links"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="20sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_10dp"
+                            android:layout_marginTop="@dimen/size_12dp"
+                            android:layout_marginEnd="@dimen/size_10dp"
+                            android:orientation="horizontal">
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/routAccountRetailer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/size_6dp"
+                                android:layout_marginEnd="@dimen/size_6dp"
+                                android:layout_weight="1"
+                                app:cardBackgroundColor="#cf975c"
+                                app:cardCornerRadius="6dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_quick_links_item_bg"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/size_14dp">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="@dimen/size_32dp"
+                                        android:layout_height="@dimen/size_32dp"
+                                        android:background="@drawable/ic_circle_white"
+                                        android:padding="@dimen/size_6dp"
+                                        app:srcCompat="@drawable/ic_my_account"
+                                        tools:ignore="ImageContrastCheck" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/size_12dp"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/be_vietnam_bold"
+                                        android:maxLines="2"
+                                        android:text="@string/my_account_"
+                                        android:textColor="@color/colorWhite"
+                                        android:textSize="@dimen/text_size_14sp"
+                                        tools:ignore="TextContrastCheck" />
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/routMyOrderRetailer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/size_6dp"
+                                android:layout_marginEnd="@dimen/size_6dp"
+                                android:layout_weight="1"
+                                app:cardBackgroundColor="#cf975c"
+                                app:cardCornerRadius="6dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@drawable/ic_quick_links_item_bg"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/size_14dp">
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="@dimen/size_32dp"
+                                        android:layout_height="@dimen/size_32dp"
+                                        android:background="@drawable/ic_circle_white"
+                                        android:padding="@dimen/size_6dp"
+                                        android:tint="@color/colorAccentText"
+                                        app:srcCompat="@drawable/ic_my_document" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/size_12dp"
+                                        android:ellipsize="end"
+                                        android:fontFamily="@font/be_vietnam_bold"
+                                        android:maxLines="2"
+                                        android:text="@string/my_order_"
+                                        android:textColor="@color/colorWhite"
+                                        android:textSize="@dimen/text_size_14sp" />
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/size_10dp"
+                            android:layout_marginTop="@dimen/size_12dp"
+                            android:layout_marginEnd="@dimen/size_10dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:id="@+id/routScanQrCodeRetailer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/size_6dp"
+                                android:layout_marginStart="@dimen/size_6dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/img_scan_code_bg"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingStart="@dimen/size_14dp"
+                                android:paddingTop="@dimen/size_12dp"
+                                android:paddingEnd="@dimen/size_14dp"
+                                android:paddingBottom="@dimen/size_12dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_20dp"
+                                    android:layout_height="@dimen/size_20dp"
+                                    app:srcCompat="@drawable/ic_scan_code" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_4dp"
+                                    android:fontFamily="@font/be_vietnam_regular"
+                                    android:text="@string/scan_code"
+                                    android:textColor="@color/colorAccentText"
+                                    android:textSize="@dimen/text_size_15sp"
+                                    tools:ignore="TextContrastCheck" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/routHelpRetailer"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/size_6dp"
+                                android:layout_weight="1"
+                                android:layout_marginStart="@dimen/size_6dp"
+                                android:background="@drawable/img_scan_code_bg"
+                                android:gravity="center_vertical"
+                                android:orientation="vertical"
+                                android:paddingStart="@dimen/size_14dp"
+                                android:paddingTop="@dimen/size_12dp"
+                                android:paddingEnd="@dimen/size_14dp"
+                                android:paddingBottom="@dimen/size_12dp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/size_20dp"
+                                    android:layout_height="@dimen/size_20dp"
+                                    app:srcCompat="@drawable/ic_help" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/size_4dp"
+                                    android:fontFamily="@font/be_vietnam_regular"
+                                    android:text="@string/support"
+                                    android:textColor="@color/colorAccentText"
+                                    android:textSize="@dimen/text_size_15sp"
+                                    tools:ignore="TextContrastCheck" />
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtMyNetworkTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:layout_marginTop="@dimen/size_26dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/be_vietnam_semi_bold"
+                    android:singleLine="true"
+                    android:text="@string/my_network"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="20sp" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/routMyNetwork"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:layout_marginTop="@dimen/size_12dp"
+                    android:layout_marginEnd="@dimen/size_16dp"
+                    app:cardBackgroundColor="#F2F2F2"
+                    app:cardCornerRadius="6dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/size_12dp"
+                        android:paddingEnd="@dimen/size_12dp">
+
+                        <LinearLayout
+                            android:id="@+id/routAgencies"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/size_18dp"
+                            android:paddingBottom="@dimen/size_14dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_40dp"
+                                android:layout_height="@dimen/size_40dp"
+                                android:background="@drawable/ic_circle_white"
+                                android:backgroundTint="@color/colorAccentDark"
+                                android:padding="@dimen/size_11dp"
+                                app:srcCompat="@drawable/ic_store"
+                                app:tint="@color/colorBlack"
+                                tools:ignore="ImageContrastCheck" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_9dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:text="@string/agency"
+                                android:textColor="#263238"
+                                android:textSize="@dimen/text_size_15sp"
+                                tools:ignore="TextContrastCheck" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/routRetailer"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/size_18dp"
+                            android:paddingBottom="@dimen/size_14dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_40dp"
+                                android:layout_height="@dimen/size_40dp"
+                                android:background="@drawable/ic_circle_white"
+                                android:backgroundTint="@color/colorAccentDark"
+                                android:padding="@dimen/size_11dp"
+                                app:srcCompat="@drawable/ic_storefront"
+                                app:tint="@color/colorBlack" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_9dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:gravity="center"
+                                android:lines="2"
+                                android:text="@string/retailor"
+                                android:textColor="#263238"
+                                android:textSize="@dimen/text_size_15sp"
+                                tools:ignore="TextContrastCheck" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/routWorkingArea"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/size_18dp"
+                            android:paddingBottom="@dimen/size_14dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_40dp"
+                                android:layout_height="@dimen/size_40dp"
+                                android:background="@drawable/ic_circle_white"
+                                android:backgroundTint="@color/colorAccentDark"
+                                android:padding="@dimen/size_11dp"
+                                app:srcCompat="@drawable/ic_working_area"
+                                app:tint="@color/colorBlack" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_9dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:gravity="center"
+                                android:text="@string/working_area_"
+                                android:textColor="#263238"
+                                android:textSize="@dimen/text_size_15sp"
+                                tools:ignore="TextContrastCheck" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:orientation="vertical"
+                            android:paddingTop="@dimen/size_18dp"
+                            android:paddingBottom="@dimen/size_14dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="@dimen/size_40dp"
+                                android:layout_height="@dimen/size_40dp"
+                                android:background="@drawable/ic_circle_white"
+                                android:backgroundTint="@color/colorAccentDark"
+                                android:padding="@dimen/size_11dp"
+                                app:srcCompat="@drawable/ic_account_circle"
+                                app:tint="@color/colorBlack"
+                                tools:ignore="ImageContrastCheck" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/size_9dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:gravity="center"
+                                android:text="@string/sales_person_"
+                                android:textColor="#263238"
+                                android:textSize="@dimen/text_size_15sp"
+                                tools:ignore="TextContrastCheck" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:layout_marginTop="@dimen/size_26dp"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/be_vietnam_semi_bold"
+                    android:singleLine="true"
+                    android:text="@string/utilities"
+                    android:textColor="@color/colorPrimaryText"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:layout_marginTop="@dimen/size_12dp"
+                    android:layout_marginEnd="@dimen/size_16dp"
+                    android:layout_marginBottom="@dimen/size_20dp">
+
+                    <LinearLayout
+                        android:id="@+id/routToDo"
+                        android:layout_width="@dimen/size_112dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/img_utility_item_bg"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/size_22dp"
+                        android:paddingBottom="@dimen/size_14dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_50dp"
+                            android:layout_height="@dimen/size_50dp"
+                            android:background="@drawable/ic_circle_white"
+                            android:backgroundTint="@color/colorAccentDark"
+                            android:padding="@dimen/size_16dp"
+                            app:srcCompat="@drawable/ic_to_do"
+                            app:tint="@color/colorBlack"
+                            tools:ignore="ImageContrastCheck" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_9dp"
+                            android:fontFamily="@font/be_vietnam_regular"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:text="@string/to_do"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_15sp"
+                            tools:ignore="TextContrastCheck" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/routCaseCalculator"
+                        android:layout_width="@dimen/size_112dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/size_16dp"
+                        android:background="@drawable/img_utility_item_bg"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/size_22dp"
+                        android:paddingBottom="@dimen/size_14dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/size_50dp"
+                            android:layout_height="@dimen/size_50dp"
+                            android:background="@drawable/ic_circle_white"
+                            android:backgroundTint="@color/colorAccentDark"
+                            android:padding="@dimen/size_16dp"
+                            app:srcCompat="@drawable/ic_case_calculator"
+                            app:tint="@color/colorBlack"
+                            tools:ignore="ImageContrastCheck" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_9dp"
+                            android:fontFamily="@font/be_vietnam_regular"
+                            android:gravity="center"
+                            android:lines="2"
+                            android:text="@string/cash_calculator_"
+                            android:textColor="@color/colorPrimaryText"
+                            android:textSize="@dimen/text_size_15sp"
+                            tools:ignore="TextContrastCheck" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/routNewOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="@dimen/size_16dp"
+            android:layout_marginBottom="@dimen/size_16dp"
+            android:backgroundTint="#1C1818"
+            android:text="@string/new_order"
+            android:textColor="@android:color/white"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@android:color/white"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended" />
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+
+</layout>
