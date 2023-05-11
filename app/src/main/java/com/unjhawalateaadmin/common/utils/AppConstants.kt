@@ -65,6 +65,12 @@ object AppConstants {
         const val RATE_PRINT_TYPE = "RATE_PRINT_TYPE"
     }
 
+    object Direction {
+        const val LEFT = 1
+        const val RIGHT = 2
+        const val CLEAR = 3
+    }
+
     object SharedPrefKey {
         const val USER_INFO = "USER_INFO"
         const val USERS = "USERS"
@@ -84,25 +90,10 @@ object AppConstants {
 
     object DialogIdentifier {
         const val LOGOUT = 1
-        const val PLACE_ORDER = 2
-        const val DELETE_NOTE = 3
-        const val SELECT_COUNTRY = 4
-        const val SELECT_STATE = 5
-        const val SELECT_DISRICT = 6
-        const val SELECT_TALUKA = 7
-        const val SELECT_CITY = 8
-        const val SELECT_AREA = 9
-        const val SELECT_FIRM_TYPE = 10
-        const val PLACE_ORDER_SUCCESS = 11
-        const val REJECT_ORDER = 12
-        const val DELIVER_ORDER = 13
-        const val UPDATE_APP = 14
-        const val DELETE_ORDER_ITEM = 15
+        const val DELETE_ITEM = 2
+        const val UPDATE_APP = 3
 
         const val BIRTH_DATE = "BIRTH_DATE"
-        const val ANNIVERSARY_DATE = "ANNIVERSARY_DATE"
-        const val REMINDER_DATE = "REMINDER_DATE"
-        const val REMINDER_TIME = "REMINDER_TIME"
     }
 
     object LocationMode {

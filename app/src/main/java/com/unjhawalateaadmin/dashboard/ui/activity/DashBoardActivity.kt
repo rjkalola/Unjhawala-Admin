@@ -52,7 +52,7 @@ class DashBoardActivity : BaseActivity(), View.OnClickListener, DialogButtonClic
         setupViewPager(bindingContent!!.viewPager);
         storeDeviceTokenObservers()
         routUserProfile = findViewById(R.id.routUserProfile)
-        routUserProfile.visibility = View.VISIBLE
+//        routUserProfile.visibility = View.VISIBLE
         bindingContent!!.routTabsView.routHomeTab.setOnClickListener(this)
         bindingContent!!.routTabsView.routReport.setOnClickListener(this)
         bindingContent!!.routTabsView.routAbout.setOnClickListener(this)
@@ -223,12 +223,11 @@ class DashBoardActivity : BaseActivity(), View.OnClickListener, DialogButtonClic
     override fun onResume() {
         super.onResume()
         setUserData()
-        Log.e("test","onResume")
-        for (i in 0 until pagerAdapter.getmFragmentList().size) {
+       /* for (i in 0 until pagerAdapter.getmFragmentList().size) {
             if (pagerAdapter.getmFragmentList()[i] is HomeFragment) {
                 (pagerAdapter.getmFragmentList()[i] as HomeFragment).refreshDashboardData()
             }
-        }
+        }*/
     }
 }
 

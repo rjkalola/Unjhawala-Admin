@@ -8,14 +8,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
-import com.unjhawalateaadmin.common.ui.activity.BaseActivity
-import com.unjhawalateaadmin.common.utils.AppConstants
-import com.unjhawalateaadmin.dashboard.ui.activity.GardenAreaActivity
-import com.unjhawalateaadmin.dashboard.ui.activity.TeaGardenActivity
 import com.unjhawalateaadmin.databinding.RowTeaConfigurationBinding
+import com.unjhawalateaadmin.databinding.RowTeaGardenListItemBinding
+import com.unjhawalateaadmin.databinding.RowTeaSampleListItemBinding
 
 
-class TeaConfigurationAdapter(
+class TeaGardenListAdapter(
     var mContext: Context,
 //    var list: MutableList<RetailerInfo>,
     var listener: SelectItemListener?,
@@ -29,36 +27,17 @@ class TeaConfigurationAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemView: View =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.row_tea_configuration, parent, false)
+                .inflate(R.layout.row_tea_garden_list_item, parent, false)
         return ItemViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemViewHolder = holder as ItemViewHolder
 
-        if (position == 2) {
-            itemViewHolder.binding.txtTitle.text = "Tea Garden"
-        }
+
 
         itemViewHolder.binding.routMainView.setOnClickListener {
 //            listener!!.onSelectItem(position, AppConstants.Action.RETAILER_DETAILS, 0)
-//            if (position == 0) {
-            (mContext as BaseActivity).moveActivity(
-                mContext,
-                GardenAreaActivity::class.java,
-                false,
-                false,
-                null
-            )
-//            } else if (position == 2) {
-//                (mContext as BaseActivity).moveActivity(
-//                    mContext,
-//                    TeaGardenActivity::class.java,
-//                    false,
-//                    false,
-//                    null
-//                )
-//            }
         }
 
     }
@@ -77,7 +56,7 @@ class TeaConfigurationAdapter(
 
     private inner class ItemViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        var binding: RowTeaConfigurationBinding = DataBindingUtil.bind(itemView)!!
+        var binding: RowTeaGardenListItemBinding = DataBindingUtil.bind(itemView)!!
 //        fun getData(info: RetailerInfo?) {
 //            binding.info = info
 //        }

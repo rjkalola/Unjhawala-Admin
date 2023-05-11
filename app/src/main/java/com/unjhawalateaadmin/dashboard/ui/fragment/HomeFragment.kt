@@ -66,30 +66,6 @@ class HomeFragment : BaseFragment(), View.OnClickListener, EasyPermissions.Permi
         binding.routTeaConfiguration.setOnClickListener(this)
         binding.routTeaSample.setOnClickListener(this)
 
-        binding.routNewOrder.setOnClickListener {
-//            moveActivity(mContext, ProductsActivity::class.java, false, false, null)
-        }
-
-        binding.nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY -> // the delay of the extension of the FAB is set for 12 items
-            if (scrollY > oldScrollY + 12 && binding.routNewOrder.isExtended) {
-                binding.routNewOrder.shrink()
-                if (activity is DashBoardActivity) (activity as DashBoardActivity?)!!.hideBottomTabs()
-            }
-
-            // the delay of the extension of the FAB is set for 12 items
-            if (scrollY < oldScrollY - 12 && !binding.routNewOrder.isExtended) {
-                binding.routNewOrder.extend()
-                if (activity is DashBoardActivity) (activity as DashBoardActivity?)!!.showBottomTabs()
-            }
-
-            // if the nestedScrollView is at the first item of the list then the
-            // extended floating action should be in extended state
-            if (scrollY == 0) {
-                binding.routNewOrder.extend()
-                if (activity is DashBoardActivity) (activity as DashBoardActivity?)!!.showBottomTabs()
-            }
-        })
-
         return binding.root
     }
 

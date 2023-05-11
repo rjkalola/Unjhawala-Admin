@@ -14,6 +14,7 @@ import com.unjhawalateaadmin.common.utils.AppUtils
 import com.unjhawalateaadmin.databinding.ActivityLoginBinding
 import com.imateplus.utilities.utils.AlertDialogHelper
 import com.imateplus.utilities.utils.ValidationUtil
+import com.unjhawalateaadmin.dashboard.ui.activity.DashBoardActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
@@ -40,10 +41,11 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.txtLogin
             -> {
-                if (valid()) {
-                    showProgressDialog(mContext, "")
-                    authenticationViewModel.login(binding.edtMobileNumber.text.toString().trim())
-                }
+//                if (valid()) {
+//                    showProgressDialog(mContext, "")
+//                    authenticationViewModel.login(binding.edtMobileNumber.text.toString().trim())
+//                }
+                moveActivity(mContext, DashBoardActivity::class.java, true, true, null)
             }
         }
     }

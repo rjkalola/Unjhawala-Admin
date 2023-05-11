@@ -2,6 +2,8 @@ package com.unjhawalateaadmin.dashboard.ui.activity
 
 import android.content.Context
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -199,6 +201,21 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
 
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
 //        showOrderHistoryItemsDialog(adapter!!.list[position])
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.add_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_add -> {
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
    /* var pendingMemberResultActivity =

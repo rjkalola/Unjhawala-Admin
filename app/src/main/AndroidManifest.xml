@@ -24,7 +24,7 @@
         tools:replace="android:theme">
 
         <activity
-            android:name=".dashboard.ui.activity.DashBoardActivity"
+            android:name=".authentication.ui.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -93,10 +93,10 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
-<!--        <activity-->
-<!--            android:name="com.unjhawalateaadmin.dashboard.ui.activity.DashBoardActivity"-->
-<!--            android:exported="false"-->
-<!--            android:screenOrientation="portrait" />-->
+        <activity
+            android:name="com.unjhawalateaadmin.dashboard.ui.activity.DashBoardActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
 
         <activity
             android:name="com.unjhawalateaadmin.dashboard.ui.activity.TeaConfigurationActivity"
@@ -105,6 +105,16 @@
 
         <activity
             android:name="com.unjhawalateaadmin.dashboard.ui.activity.TeaSamplesActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.unjhawalateaadmin.dashboard.ui.activity.TeaGardenActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.unjhawalateaadmin.dashboard.ui.activity.GardenAreaActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 

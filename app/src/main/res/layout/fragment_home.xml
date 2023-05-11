@@ -200,22 +200,6 @@
 
         </androidx.core.widget.NestedScrollView>
 
-        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-            android:id="@+id/routNewOrder"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_gravity="end|bottom"
-            android:layout_marginEnd="@dimen/size_16dp"
-            android:layout_marginBottom="@dimen/size_16dp"
-            android:backgroundTint="#1C1818"
-            android:text="@string/new_order"
-            android:textColor="@android:color/white"
-            app:icon="@drawable/ic_add"
-            app:iconTint="@android:color/white"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended" />
-
         <include
             android:id="@+id/progressBarView"
             layout="@layout/layout_progressbar"
