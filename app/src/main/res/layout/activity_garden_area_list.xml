@@ -104,24 +104,25 @@
 
         </LinearLayout>
 
-        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-            android:id="@+id/swipeRefreshLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/routPendingView"
-            android:layout_below="@id/routFilter"
-            android:layout_marginTop="@dimen/size_10dp"
-            android:layout_marginBottom="@dimen/size_10dp">
+<!--        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--            android:id="@+id/swipeRefreshLayout"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_above="@id/routPendingView"-->
+<!--            android:layout_below="@id/routFilter"-->
+<!--            android:layout_marginTop="@dimen/size_10dp"-->
+<!--            android:layout_marginBottom="@dimen/size_10dp">-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                    android:layout_above="@id/routPendingView"
+                    android:layout_below="@id/routFilter"
                 android:layout_height="match_parent">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_above="@id/loadMore"
                     android:visibility="visible" />
 
                 <TextView
@@ -162,7 +163,7 @@
 
             </RelativeLayout>
 
-        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+<!--        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
 
         <RelativeLayout
             android:id="@+id/routPendingView"

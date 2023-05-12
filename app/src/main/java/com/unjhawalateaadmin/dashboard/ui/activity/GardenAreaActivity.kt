@@ -13,14 +13,16 @@ import com.imateplus.utilities.callback.DialogButtonClickListener
 import com.imateplus.utilities.utils.AlertDialogHelper
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
+import com.unjhawalateaadmin.common.data.model.SwipeItemInfo
 import com.unjhawalateaadmin.common.ui.activity.BaseActivity
 import com.unjhawalateaadmin.common.utils.AppConstants
+import com.unjhawalateaadmin.common.utils.SwipeAndDragHelper
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.GardenAreaListAdapter
-import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaGardenListAdapter
+import com.unjhawalateaadmin.dashboard.data.ui.adapter.GardenAreaManagePositionListAdapter
 import com.unjhawalateaadmin.dashboard.ui.dialog.AddGardenAreaDialog
+import com.unjhawalateaadmin.dashboard.ui.dialog.GardenAreaManagePositionDialog
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
 import com.unjhawalateaadmin.databinding.ActivityGardenAreaListBinding
-import com.unjhawalateaadmin.databinding.ActivityTeaGardenListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
 
@@ -58,15 +60,16 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
 //
 //        loadData(true, false, false, false, false)
 
+        binding.imgChangePosition.setOnClickListener(this)
+
         setAdapter()
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-//            R.id.routCall -> {
-//
-//            }
-
+            R.id.imgChangePosition -> {
+                showManagePositionDialog()
+            }
         }
     }
 
@@ -99,7 +102,7 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     }
 
     //    private fun setAdapter(list: MutableList<OrderInfo>?) {
-    private fun setAdapter() {
+  /*  private fun setAdapter() {
 //        if (list != null && list.size > 0) {
         binding.recyclerView.visibility = View.VISIBLE
         binding.txtEmptyPlaceHolder.visibility = View.GONE
@@ -115,6 +118,36 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
 //            binding.rvUsers.visibility = View.GONE
 //            binding.txtEmptyPlaceHolder.visibility = View.VISIBLE
 //        }
+    }*/
+
+    private fun setAdapter() {
+        val list: MutableList<SwipeItemInfo> = ArrayList()
+
+        val aa = SwipeItemInfo()
+        aa.name = "One"
+        list.add(aa)
+
+        val bb = SwipeItemInfo()
+        bb.name = "Two"
+        list.add(bb)
+
+        val cc = SwipeItemInfo()
+        cc.name = "Threess"
+        list.add(cc)
+
+        val dd = SwipeItemInfo()
+        dd.name = "Four"
+        list.add(dd)
+
+        val adapter = GardenAreaManagePositionListAdapter(mContext,list);
+        val swipeAndDragHelper = SwipeAndDragHelper(adapter!!)
+        val touchHelper = ItemTouchHelper(swipeAndDragHelper)
+        adapter!!.setTouchHelper(touchHelper)
+        binding.recyclerView.adapter = adapter
+        touchHelper.attachToRecyclerView(binding.recyclerView)
+        val linearLayoutManager =
+            LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+        binding.recyclerView.layoutManager = linearLayoutManager
     }
 
     private fun enableSwipeToDeleteAndUndo() {
@@ -262,6 +295,14 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
             AddGardenAreaDialog.newInstance(mContext)
         addProductQuantityDialog.setCancelable(false)
         addProductQuantityDialog.show()
+    }
+
+    fun showManagePositionDialog(
+    ) {
+        val gardenAreaManagePositionDialog =
+            GardenAreaManagePositionDialog.newInstance(mContext)
+        gardenAreaManagePositionDialog.setCancelable(false)
+        gardenAreaManagePositionDialog.show()
     }
 
     /* var pendingMemberResultActivity =

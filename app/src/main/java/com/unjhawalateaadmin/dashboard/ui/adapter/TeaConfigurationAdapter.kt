@@ -20,7 +20,7 @@ class TeaConfigurationAdapter(
 //    var list: MutableList<RetailerInfo>,
     var listener: SelectItemListener?,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-//    private var listAll: MutableList<RetailerInfo> = ArrayList()
+    //    private var listAll: MutableList<RetailerInfo> = ArrayList()
 
     init {
 //        this.listAll.addAll(list)

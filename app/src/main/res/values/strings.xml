@@ -165,8 +165,8 @@
     <string name="Status">Status</string>
     <string name="disabled">Disabled</string>
     <string name="enabled">Enabled</string>
-        <string name="save">Save</string>
-    <!--    <string name=""></string>-->
+    <string name="save">Save</string>
+    <string name="managing_positions">Managing Positions</string>
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->
