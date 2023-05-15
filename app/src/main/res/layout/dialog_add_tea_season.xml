@@ -116,41 +116,15 @@
                     android:layout_marginStart="@dimen/size_20dp"
                     android:layout_marginTop="@dimen/size_12dp"
                     android:fontFamily="@font/be_vietnam_regular"
-                    android:text="@string/Status"
+                    android:text="@string/quality"
                     android:textColor="@color/colorSecondaryLightText"
                     android:textSize="@dimen/text_size_16sp" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/size_20dp"
-                        android:fontFamily="@font/be_vietnam_regular"
-                        android:text="@string/disabled"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="@dimen/text_size_18sp" />
-
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:id="@+id/switchStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/size_12dp"
-                        android:layout_marginEnd="@dimen/size_12dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/be_vietnam_medium"
-                        android:text="@string/enabled"
-                        android:textColor="@color/colorPrimaryText"
-                        android:textSize="@dimen/text_size_18sp" />
-
-
-                </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView"
+                    android:layout_marginTop="@dimen/size_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <com.balysv.materialripple.MaterialRippleLayout
                     android:id="@+id/btnSave"

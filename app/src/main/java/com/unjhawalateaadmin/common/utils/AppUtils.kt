@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.Settings
 import android.provider.Settings.Secure
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
@@ -976,5 +977,9 @@ object AppUtils {
                 )
             )
         }
+    }
+
+    fun getDeviceUniqueId(mContext: Context): String {
+        return Settings.Secure.getString(mContext.contentResolver, Settings.Secure.ANDROID_ID)
     }
 }

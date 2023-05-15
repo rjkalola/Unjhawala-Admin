@@ -87,12 +87,14 @@ class AuthenticationViewModel(val authenticationRepository: AuthenticationReposi
         }
     }
 
-    fun validateOtp(userId: String, otp: String) {
+    fun validateOtp(userId: String, otp: String,deviceId:String) {
         val userIdBody: RequestBody = AppUtils.getRequestBody(userId)
         val otpBody: RequestBody = AppUtils.getRequestBody(otp)
+        val deviceIdBody: RequestBody = AppUtils.getRequestBody(deviceId)
+
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val userResponse = authenticationRepository.validateOtp(userIdBody, otpBody)
+                val userResponse = authenticationRepository.validateOtp(userIdBody, otpBody,deviceIdBody)
                 withContext(Dispatchers.Main) {
                     loginResponse.value = userResponse
                 }

@@ -14,7 +14,7 @@ interface AuthenticationRepository {
     suspend fun resendOTP(mobile_number: RequestBody): UserResponse
 
     suspend fun validateOtp(
-        user_id: RequestBody, otp: RequestBody
+        user_id: RequestBody, otp: RequestBody,device_id: RequestBody
     ): UserResponse
 
     suspend fun setLoginPin(

@@ -9,6 +9,7 @@ class ModuleInfo(
     var _id: String = "",
     var position: Int = 0,
     var name: String = "",
+    var icon: Int = 0,
     var value: String = "",
     var count: Int = 0,
     var quantity: Int = 0,

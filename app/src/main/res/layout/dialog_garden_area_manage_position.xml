@@ -8,15 +8,16 @@
 
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/transfer_kg_dialog_bg">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/size_20dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -53,43 +54,55 @@
                 android:layout_marginEnd="@dimen/size_16dp"
                 android:background="#BDBDBD" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
 
-            <com.balysv.materialripple.MaterialRippleLayout
-                android:id="@+id/btnSave"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/save_button_height_50dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginStart="@dimen/size_14dp"
-                android:layout_marginTop="@dimen/size_20dp"
-                android:layout_marginEnd="@dimen/size_14dp"
-                android:layout_marginBottom="@dimen/size_20dp"
-                android:backgroundTint="@color/colorPrimary"
-                app:mrl_rippleColor="@color/colorRippleColor"
-                app:mrl_rippleDelayClick="true"
-                app:mrl_rippleDuration="@string/ripple_duration"
-                app:mrl_rippleHover="true"
-                app:mrl_rippleOverlay="true">
-
-                <TextView
-                    android:id="@+id/txtSave"
-                    style="@style/SmallFont"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/img_login_button_bg"
-                    android:fontFamily="@font/be_vietnam_bold"
-                    android:gravity="center"
-                    android:text="@string/save"
-                    android:textColor="@color/colorPrimaryText" />
-            </com.balysv.materialripple.MaterialRippleLayout>
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <com.balysv.materialripple.MaterialRippleLayout
+                        android:id="@+id/btnSave"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/save_button_height_50dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="@dimen/size_14dp"
+                        android:layout_marginTop="@dimen/size_20dp"
+                        android:layout_marginEnd="@dimen/size_14dp"
+                        android:backgroundTint="@color/colorPrimary"
+                        app:mrl_rippleColor="@color/colorRippleColor"
+                        app:mrl_rippleDelayClick="true"
+                        app:mrl_rippleDuration="@string/ripple_duration"
+                        app:mrl_rippleHover="true"
+                        app:mrl_rippleOverlay="true">
+
+                        <TextView
+                            android:id="@+id/txtSave"
+                            style="@style/SmallFont"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/img_login_button_bg"
+                            android:fontFamily="@font/be_vietnam_bold"
+                            android:gravity="center"
+                            android:text="@string/save"
+                            android:textColor="@color/colorPrimaryText" />
+                    </com.balysv.materialripple.MaterialRippleLayout>
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
 
         </LinearLayout>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
 
 </layout>

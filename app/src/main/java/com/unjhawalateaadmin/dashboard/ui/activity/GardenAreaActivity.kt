@@ -2,24 +2,35 @@ package com.unjhawalateaadmin.dashboard.ui.activity
 
 import android.content.Context
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.imateplus.utilities.callback.DialogButtonClickListener
 import com.imateplus.utilities.utils.AlertDialogHelper
+import com.imateplus.utilities.utils.StringHelper
+import com.imateplus.utilities.utils.ToastHelper
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
-import com.unjhawalateaadmin.common.data.model.SwipeItemInfo
 import com.unjhawalateaadmin.common.ui.activity.BaseActivity
 import com.unjhawalateaadmin.common.utils.AppConstants
-import com.unjhawalateaadmin.common.utils.SwipeAndDragHelper
+import com.unjhawalateaadmin.common.utils.AppUtils
+import com.unjhawalateaadmin.dashboard.callback.AddConfigurationItemListener
+import com.unjhawalateaadmin.dashboard.callback.StoreConfigurationItemPositionListener
+import com.unjhawalateaadmin.dashboard.data.model.ConfigurationItemInfo
+import com.unjhawalateaadmin.dashboard.data.model.TeaGardenConfigurationResponse
+import com.unjhawalateaadmin.dashboard.data.model.TeaSeasonConfigurationResponse
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.GardenAreaListAdapter
-import com.unjhawalateaadmin.dashboard.data.ui.adapter.GardenAreaManagePositionListAdapter
 import com.unjhawalateaadmin.dashboard.ui.dialog.AddGardenAreaDialog
+import com.unjhawalateaadmin.dashboard.ui.dialog.AddTeaGardenDialog
+import com.unjhawalateaadmin.dashboard.ui.dialog.AddTeaSeasonDialog
 import com.unjhawalateaadmin.dashboard.ui.dialog.GardenAreaManagePositionDialog
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
 import com.unjhawalateaadmin.databinding.ActivityGardenAreaListBinding
@@ -27,7 +38,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import pl.kitek.rvswipetodelete.SwipeToDeleteCallback
 
 class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListener,
-    DialogButtonClickListener {
+    DialogButtonClickListener, AddConfigurationItemListener,
+    StoreConfigurationItemPositionListener {
     private lateinit var binding: ActivityGardenAreaListBinding
     private lateinit var mContext: Context
     private val dashboardViewModel: DashboardViewModel by viewModel()
@@ -36,14 +48,16 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     var totalItemCount = 0
     var pastVisibleItems = 0
     var offset = 0
-    var sort = 0
+    var selectedPosition = 0
+    var configurationType = 0
+    var configurationTypeName: String = ""
     var search = ""
-    var filters = ""
-    var filtersData = ""
     var loading = true
     var mIsLastPage = false
     private var isUpdated = false
     private var swipeToDeleteCallback: SwipeToDeleteCallback? = null
+    private var teaGardenConfigurationResponse: TeaGardenConfigurationResponse? = null
+    private var teaSeasonConfigurationResponse: TeaSeasonConfigurationResponse? = null
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,24 +65,64 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         mContext = this
         binding = DataBindingUtil.setContentView(this, R.layout.activity_garden_area_list)
         mContext = this
-        setupToolbar(getString(R.string.garden_area), true)
-//        orderHistoryResponseObservers()
 
-//        binding.swipeRefreshLayout.setOnRefreshListener {
-//            loadData(false, true, true, true, true)
-//        }
-//
-//        loadData(true, false, false, false, false)
+        configurationItemsListResponseObservers()
+        configurationAllItemsListResponseObservers()
+        storeConfigurationResponseObservers()
+        deleteConfigurationResponseObservers()
+        storeConfigurationItemPositionResponseObservers()
+        teaGardenConfigurationResponseObservers()
+        teaSeasonConfigurationResponseObservers()
+
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.edtSearch.setText("")
+            loadData(false, true, true)
+        }
+
+        binding.edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                Log.e("test", "afterTextChanged")
+                if (!binding.swipeRefreshLayout.isRefreshing) {
+                    Log.e("test", "afterTextChanged222")
+                    binding.progressSearchUser.visibility = View.VISIBLE
+                    search = binding.edtSearch.text.toString().trim()
+                    loadData(false, true, false)
+                }
+            }
+        })
 
         binding.imgChangePosition.setOnClickListener(this)
 
-        setAdapter()
+        getIntentData()
+    }
+
+    private fun getIntentData() {
+        if (intent.extras != null) {
+            configurationType = intent.getIntExtra(AppConstants.IntentKey.CONFIGURATION_TYPE, 0)
+            configurationTypeName =
+                intent.getStringExtra(AppConstants.IntentKey.CONFIGURATION_TYPE_NAME)!!
+            setupToolbar(configurationTypeName, true)
+            loadData(true, false, false)
+            if (configurationType == AppConstants.TeaConfiguration.TEA_GARDEN)
+                dashboardViewModel.getTeaGardenConfigurationResponse()
+            else if (configurationType == AppConstants.TeaConfiguration.TEA_SEASON)
+                dashboardViewModel.getTeaSeasonConfigurationResponse()
+        }
     }
 
     override fun onClick(v: View) {
         when (v.id) {
             R.id.imgChangePosition -> {
-                showManagePositionDialog()
+                showProgressDialog(mContext, "")
+                dashboardViewModel.getConfigurationAllItemList(configurationType)
             }
         }
     }
@@ -76,8 +130,6 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     fun loadData(
         isProgress: Boolean,
         isClearOffset: Boolean,
-        isClearFilter: Boolean,
-        isClearSort: Boolean,
         isClearSearch: Boolean
     ) {
         if (isProgress)
@@ -86,75 +138,39 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         if (isClearOffset)
             offset = 0
 
-        if (isClearFilter)
-            filters = ""
-
-        if (isClearSort)
-            sort = 0
-
-        if (isClearSearch)
+        if (isClearSearch) {
             search = ""
+        }
 
-//        dashboardViewModel.orderHistoryList(
-//            AppConstants.DataLimit.USERS_LIMIT,
-//            offset,
-//        )
+        dashboardViewModel.getConfigurationItemList(
+            AppConstants.DataLimit.CONFIGURATION_ITEM_LIMIT,
+            offset, search, configurationType
+        )
     }
 
-    //    private fun setAdapter(list: MutableList<OrderInfo>?) {
-  /*  private fun setAdapter() {
-//        if (list != null && list.size > 0) {
-        binding.recyclerView.visibility = View.VISIBLE
-        binding.txtEmptyPlaceHolder.visibility = View.GONE
-        binding.recyclerView.setHasFixedSize(true)
-        adapter = GardenAreaListAdapter(mContext, this)
-        binding.recyclerView.adapter = adapter
-        val linearLayoutManager =
-            LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
-        binding.recyclerView.layoutManager = linearLayoutManager
-        enableSwipeToDeleteAndUndo()
-//            recyclerViewScrollListener(linearLayoutManager)
-//        } else {
-//            binding.rvUsers.visibility = View.GONE
-//            binding.txtEmptyPlaceHolder.visibility = View.VISIBLE
-//        }
-    }*/
 
-    private fun setAdapter() {
-        val list: MutableList<SwipeItemInfo> = ArrayList()
-
-        val aa = SwipeItemInfo()
-        aa.name = "One"
-        list.add(aa)
-
-        val bb = SwipeItemInfo()
-        bb.name = "Two"
-        list.add(bb)
-
-        val cc = SwipeItemInfo()
-        cc.name = "Threess"
-        list.add(cc)
-
-        val dd = SwipeItemInfo()
-        dd.name = "Four"
-        list.add(dd)
-
-        val adapter = GardenAreaManagePositionListAdapter(mContext,list);
-        val swipeAndDragHelper = SwipeAndDragHelper(adapter!!)
-        val touchHelper = ItemTouchHelper(swipeAndDragHelper)
-        adapter!!.setTouchHelper(touchHelper)
-        binding.recyclerView.adapter = adapter
-        touchHelper.attachToRecyclerView(binding.recyclerView)
-        val linearLayoutManager =
-            LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
-        binding.recyclerView.layoutManager = linearLayoutManager
+    private fun setAdapter(list: MutableList<ConfigurationItemInfo>) {
+        if (list.isNotEmpty()) {
+            binding.recyclerView.visibility = View.VISIBLE
+            binding.txtEmptyPlaceHolder.visibility = View.GONE
+            binding.recyclerView.setHasFixedSize(true)
+            adapter = GardenAreaListAdapter(mContext, list, this)
+            binding.recyclerView.adapter = adapter
+            val linearLayoutManager =
+                LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+            binding.recyclerView.layoutManager = linearLayoutManager
+            recyclerViewScrollListener(linearLayoutManager)
+            enableSwipeToDeleteAndUndo()
+        } else {
+            binding.recyclerView.visibility = View.GONE
+            binding.txtEmptyPlaceHolder.visibility = View.VISIBLE
+        }
     }
 
     private fun enableSwipeToDeleteAndUndo() {
         val swipeHandler = object : SwipeToDeleteCallback(this) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-//                val adapter = binding.recyclerView.adapter as SimpleAdapter
-//                adapter.removeAt(viewHolder.adapterPosition)
+                selectedPosition = viewHolder.adapterPosition
                 adapter?.notifyItemChanged(viewHolder.adapterPosition)
                 AlertDialogHelper.showDialog(
                     mContext,
@@ -173,7 +189,16 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     }
 
     override fun onPositiveButtonClicked(dialogIdentifier: Int) {
+        if (dialogIdentifier == AppConstants.DialogIdentifier.DELETE_ITEM) {
+            dashboardViewModel.deleteConfigurationItem(
+                adapter?.list!![selectedPosition].id,
+                configurationType
+            )
+            adapter?.list!!.removeAt(selectedPosition)
+            adapter?.notifyItemRemoved(selectedPosition)
+            adapter?.notifyItemRangeChanged(selectedPosition, adapter?.list!!.size)
 
+        }
     }
 
     override fun onNegativeButtonClicked(dialogIdentifier: Int) {
@@ -193,7 +218,7 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
                             if (!mIsLastPage) {
                                 loading = false
                                 binding.loadMore.setVisibility(View.VISIBLE)
-                                loadData(false, false, false, false, false)
+                                loadData(false, false, false)
                             }
                         }
                     }
@@ -202,24 +227,23 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         })
     }
 
-    /* private fun orderHistoryResponseObservers() {
-         dashboardViewModel.orderHistoryResponse.observe(this) { response ->
-             hideCustomProgressDialog(binding.progressBarView.routProgress)
-             binding.swipeRefreshLayout.isRefreshing = false
-             binding.loadMore.visibility = View.GONE
-             binding.progressSearchUser.visibility = View.GONE
-             try {
-                 if (response == null) {
-                     AlertDialogHelper.showDialog(
-                         mContext, null,
-                         mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
-                         null, false, null, 0
-                     )
-                 } else {
-                     if (response.IsSuccess) {
-                         binding.edtSearch.setText("")
-                         if (offset == 0) {
-                             if (response.pending_count > 0) {
+    private fun configurationItemsListResponseObservers() {
+        dashboardViewModel.mConfigurationItemListResponse.observe(this) { response ->
+            hideCustomProgressDialog(binding.progressBarView.routProgress)
+            binding.swipeRefreshLayout.isRefreshing = false
+            binding.loadMore.visibility = View.GONE
+            binding.progressSearchUser.visibility = View.GONE
+            try {
+                if (response == null) {
+                    AlertDialogHelper.showDialog(
+                        mContext, null,
+                        mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
+                        null, false, null, 0
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        if (offset == 0) {
+                            /* if (response.pending_count > 0) {
                                  binding.routPendingView.visibility = View.VISIBLE
                                  binding.txtNumberOfPendingMember.text = String.format(
                                      getString(R.string.display_number_of_pending_orders),
@@ -227,29 +251,191 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
                                  )
                              } else {
                                  binding.routPendingView.visibility = View.GONE
-                             }
-                             setAdapter(response.Data)
-                         } else if (response.Data.isNotEmpty()) {
-                             if (adapter != null) {
-                                 adapter!!.addData(response.Data)
-                                 loading = true
-                             }
-                         } else if (response.offset == 0) {
-                             loading = true
-                         }
-                         offset = response.offset
+                             }*/
+                            setAdapter(response.Data)
+                        } else if (response.Data.isNotEmpty()) {
+                            if (adapter != null) {
+                                adapter!!.addData(response.Data)
+                                loading = true
+                            }
+                        } else if (response.offset == 0) {
+                            loading = true
+                        }
+                        offset = response.offset
 
-                         mIsLastPage = offset == 0
+                        mIsLastPage = offset == 0
 
-                     } else {
-                         AppUtils.handleUnauthorized(mContext, response)
-                     }
-                 }
-             } catch (e: Exception) {
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response)
+                    }
+                }
+            } catch (e: Exception) {
 
-             }
-         }
-     }*/
+            }
+        }
+    }
+
+    private fun configurationAllItemsListResponseObservers() {
+        dashboardViewModel.mConfigurationAllItemListResponse.observe(this) { response ->
+            hideCustomProgressDialog(binding.progressBarView.routProgress)
+            hideProgressDialog()
+            try {
+                if (response == null) {
+                    AlertDialogHelper.showDialog(
+                        mContext, null,
+                        mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
+                        null, false, null, 0
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        showManagePositionDialog(response.Data)
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun storeConfigurationResponseObservers() {
+        dashboardViewModel.storeConfigurationItem.observe(this) { response ->
+            hideCustomProgressDialog(binding.progressBarView.routProgress)
+            try {
+                if (response == null) {
+                    AlertDialogHelper.showDialog(
+                        mContext, null,
+                        mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
+                        null, false, null, 0
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        if (selectedPosition == -1) {
+                            loadData(true, true, true)
+                        }
+                        if (!StringHelper.isEmpty(response.Message))
+                            ToastHelper.normal(
+                                mContext,
+                                response.Message!!,
+                                Toast.LENGTH_SHORT,
+                                false
+                            )
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun deleteConfigurationResponseObservers() {
+        dashboardViewModel.deleteConfigurationItem.observe(this) { response ->
+            hideCustomProgressDialog(binding.progressBarView.routProgress)
+            try {
+                if (response == null) {
+                    AlertDialogHelper.showDialog(
+                        mContext, null,
+                        mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
+                        null, false, null, 0
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        if (!StringHelper.isEmpty(response.Message))
+                            ToastHelper.normal(
+                                mContext,
+                                response.Message!!,
+                                Toast.LENGTH_SHORT,
+                                false
+                            )
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun storeConfigurationItemPositionResponseObservers() {
+        dashboardViewModel.storeConfigurationItemPosition.observe(this) { response ->
+            hideCustomProgressDialog(binding.progressBarView.routProgress)
+            try {
+                if (response == null) {
+                    AlertDialogHelper.showDialog(
+                        mContext, null,
+                        mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
+                        null, false, null, 0
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        if (!StringHelper.isEmpty(response.Message))
+                            ToastHelper.normal(
+                                mContext,
+                                response.Message!!,
+                                Toast.LENGTH_SHORT,
+                                false
+                            )
+                        loadData(true, true, true)
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun teaGardenConfigurationResponseObservers() {
+        dashboardViewModel.teaGardenConfigurationResponse.observe(this) { response ->
+            hideCustomProgressDialog(binding.progressBarView.routProgress)
+            try {
+                if (response == null) {
+                    AlertDialogHelper.showDialog(
+                        mContext, null,
+                        mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
+                        null, false, null, 0
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        teaGardenConfigurationResponse = response
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
+    private fun teaSeasonConfigurationResponseObservers() {
+        dashboardViewModel.teaSeasonConfigurationResponse.observe(this) { response ->
+            hideCustomProgressDialog(binding.progressBarView.routProgress)
+            try {
+                if (response == null) {
+                    AlertDialogHelper.showDialog(
+                        mContext, null,
+                        mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
+                        null, false, null, 0
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        teaSeasonConfigurationResponse = response
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response)
+                    }
+                }
+            } catch (e: Exception) {
+
+            }
+        }
+    }
+
 
     /* var resultApplyFilter =
          registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -272,6 +458,18 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
 
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
 //        showOrderHistoryItemsDialog(adapter!!.list[position])
+        if (action == AppConstants.Action.EDIT_CONFIGURATION_ITEM) {
+            selectedPosition = position
+            if (configurationType == AppConstants.TeaConfiguration.TEA_GARDEN) {
+                showTeaGardenDialog(adapter!!.list[position])
+            } else if (configurationType == AppConstants.TeaConfiguration.TEA_SEASON) {
+                showTeaSeasonDialog(adapter!!.list[position])
+            } else if (configurationType == AppConstants.TeaConfiguration.TEA_SOURCE) {
+
+            } else {
+                showAddGardenAreaDialog(adapter!!.list[position])
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -283,26 +481,124 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_add -> {
-                showAddGardenAreaDialog()
+                selectedPosition = -1
+                if (configurationType == AppConstants.TeaConfiguration.TEA_GARDEN) {
+                    showTeaGardenDialog(null)
+                } else if (configurationType == AppConstants.TeaConfiguration.TEA_SEASON) {
+                    showTeaSeasonDialog(null)
+                } else if (configurationType == AppConstants.TeaConfiguration.TEA_SOURCE) {
+
+                } else {
+                    showAddGardenAreaDialog(null)
+                }
+
+
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
     fun showAddGardenAreaDialog(
+        info: ConfigurationItemInfo?
     ) {
         val addProductQuantityDialog =
-            AddGardenAreaDialog.newInstance(mContext)
+            AddGardenAreaDialog.newInstance(
+                mContext,
+                info,
+                configurationType,
+                configurationTypeName,
+                this
+            )
         addProductQuantityDialog.setCancelable(false)
         addProductQuantityDialog.show()
     }
 
+    fun showTeaGardenDialog(
+        info: ConfigurationItemInfo?
+    ) {
+        if(teaGardenConfigurationResponse !=null){
+            val addTeaGardenDialog =
+                AddTeaGardenDialog.newInstance(
+                    mContext,
+                    info,
+                    teaGardenConfigurationResponse,
+                    configurationType,
+                    configurationTypeName,
+                    this
+                )
+            addTeaGardenDialog.setCancelable(false)
+            addTeaGardenDialog.show()
+        }
+    }
+
+    fun showTeaSeasonDialog(
+        info: ConfigurationItemInfo?
+    ) {
+        if(teaSeasonConfigurationResponse !=null){
+            val addTeaSeasonDialog =
+                AddTeaSeasonDialog.newInstance(
+                    mContext,
+                    info,
+                    teaSeasonConfigurationResponse,
+                    configurationType,
+                    configurationTypeName,
+                    this
+                )
+            addTeaSeasonDialog.setCancelable(false)
+            addTeaSeasonDialog.show()
+        }
+    }
+
     fun showManagePositionDialog(
+        list: MutableList<ConfigurationItemInfo>
     ) {
         val gardenAreaManagePositionDialog =
-            GardenAreaManagePositionDialog.newInstance(mContext)
+            GardenAreaManagePositionDialog.newInstance(mContext, list, configurationType, this)
         gardenAreaManagePositionDialog.setCancelable(false)
         gardenAreaManagePositionDialog.show()
+    }
+
+    override fun onAddConfigurationItem(itemType: Int, info: ConfigurationItemInfo) {
+        if (selectedPosition != -1) {
+            Log.e("test", "selectedPosition:$selectedPosition")
+            adapter?.updateItem(selectedPosition, info)
+        }
+        if (itemType == AppConstants.TeaConfiguration.TEA_GARDEN) {
+            dashboardViewModel.storeTeaGardenItem(
+                info.id,
+                info.name,
+                info.status,
+                info.lu_leaf_type_id,
+                info.lu_garden_area_id,
+                configurationType
+            )
+        } else if (itemType == AppConstants.TeaConfiguration.TEA_SEASON) {
+            dashboardViewModel.storeTeaSeasonItem(info)
+        } else if (itemType == AppConstants.TeaConfiguration.TEA_SOURCE) {
+
+        } else {
+            dashboardViewModel.storeConfigurationItem(
+                info.id,
+                info.name,
+                info.status,
+                configurationType
+            )
+        }
+    }
+
+    override fun onStorePosition(itemType: Int, data: String) {
+//        if (itemType == AppConstants.TeaConfiguration.TEA_GARDEN) {
+//
+//        } else if (itemType == AppConstants.TeaConfiguration.TEA_SEASON) {
+//
+//        } else if (itemType == AppConstants.TeaConfiguration.TEA_SOURCE) {
+//
+//        } else {
+        dashboardViewModel.storeConfigurationItemPosition(
+            data.replace(" ", ""),
+            configurationType
+        )
+//        }
     }
 
     /* var pendingMemberResultActivity =

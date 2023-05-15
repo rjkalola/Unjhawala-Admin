@@ -125,7 +125,8 @@ class VerifyOtpActivity : BaseActivity(), View.OnClickListener, View.OnKeyListen
                     showProgressDialog(mContext, "")
                     authenticationViewModel.validateOtp(
                         userId,
-                        code
+                        code,
+                        AppUtils.getDeviceUniqueId(mContext)
                     )
                 }
             }

@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name" translatable="false">Unjhawala Tea</string>
+    <string name="app_name" translatable="false">Unjhawala Admin</string>
     <string name="default_notification_channel_id" translatable="false">Unjhawala Tea</string>
     <!--    <string name="font_family_regular" translatable="false">sans-serif</string>-->
     <!--    <string name="font_family_medium" translatable="false">sans-serif-medium</string>-->
@@ -137,7 +137,7 @@
     <string name="tea_samples">Tea Samples</string>
     <string name="tea_testing_">Tea\nTesting</string>
     <string name="tea_confirmation_">Tea\nConfirmation</string>
-    <string name="tea_garden">Tea Garden</string>
+
 
     <string name="msg_camera_permission">This application needs access to your camera</string>
     <string name="i_agree">I agree</string>
@@ -163,11 +163,28 @@
     <string name="area_compulsory">Area*</string>
     <string name="name_compulsory">Name*</string>
     <string name="Status">Status</string>
+    <string name="quality">Quality</string>
     <string name="disabled">Disabled</string>
     <string name="enabled">Enabled</string>
     <string name="save">Save</string>
     <string name="managing_positions">Managing Positions</string>
-    <!--    <string name=""></string>-->
+    <string name="tea_garden_area">Tea Garden Area</string>
+    <string name="leaf_type">Leaf Type</string>
+    <string name="tea_garden">Tea Garden</string>
+    <string name="tea_grade">Tea Grade</string>
+    <string name="tea_quality">Tea Quality</string>
+    <string name="tea_type">Tea Type</string>
+    <string name="tea_colour">Tea Colour</string>
+    <string name="tea_density">Tea Density</string>
+    <string name="tea_season">Tea Season</string>
+    <string name="tea_product_preference">Tea Product Preference</string>
+    <string name="tea_inward_bag_type">Tea Inward Bag Type</string>
+    <string name="tea_source">Tea Source</string>
+    <string name="empty_edittext_error">Required Field</string>
+    <string name="leaf_type_compulsory">Leaf Type*</string>
+    <string name="select_leaf_type">Select Leaf Type</string>
+    <string name="select_area">Select Area</string>
+    <string name="enter_number_of_days">Enter no of days</string>
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->

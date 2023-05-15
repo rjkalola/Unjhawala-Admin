@@ -41,11 +41,11 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         when (v?.id) {
             R.id.txtLogin
             -> {
-//                if (valid()) {
-//                    showProgressDialog(mContext, "")
-//                    authenticationViewModel.login(binding.edtMobileNumber.text.toString().trim())
-//                }
-                moveActivity(mContext, DashBoardActivity::class.java, true, true, null)
+                if (valid()) {
+                    showProgressDialog(mContext, "")
+                    authenticationViewModel.login(binding.edtMobileNumber.text.toString().trim())
+                }
+//                moveActivity(mContext, DashBoardActivity::class.java, true, true, null)
             }
         }
     }

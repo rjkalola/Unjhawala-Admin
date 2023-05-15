@@ -2,7 +2,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <variable
+            name="info"
+            type="com.unjhawalateaadmin.dashboard.data.model.ConfigurationItemInfo" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -35,7 +37,7 @@
                 android:fontFamily="@font/be_vietnam_medium"
                 android:includeFontPadding="false"
                 android:singleLine="true"
-                android:text="Cachar"
+                android:text="@{info.name}"
                 android:textColor="@color/colorPrimaryText2"
                 android:textSize="14sp" />
 

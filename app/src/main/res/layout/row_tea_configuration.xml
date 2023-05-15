@@ -4,6 +4,9 @@
 
     <data>
 
+        <variable
+            name="info"
+            type="com.unjhawalateaadmin.common.data.model.ModuleInfo" />
 
     </data>
 
@@ -26,22 +29,22 @@
             android:id="@+id/imgCircle"
             android:layout_width="@dimen/size_36dp"
             android:layout_height="@dimen/size_36dp"
-            android:backgroundTint="@color/colorAccentDark"
             android:background="@drawable/img_circle_accent"
+            android:backgroundTint="@color/colorAccentDark"
             android:padding="@dimen/size_7dp"
-            app:tint="@color/colorPrimaryText2"
-            app:srcCompat="@drawable/ic_keyboard_command_key" />
+            app:srcCompat="@drawable/ic_keyboard_command_key"
+            app:tint="#1C1B1F" />
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginStart="@dimen/size_14dp"
             android:layout_toStartOf="@id/imgArrow"
-            android:layout_centerVertical="true"
             android:layout_toEndOf="@id/imgCircle"
-            android:text="Tea Garden Area"
             android:fontFamily="@font/be_vietnam_regular"
+            android:text="@{info.name}"
             android:textColor="@color/colorPrimaryText2"
             android:textSize="@dimen/text_size_16sp" />
 

@@ -26,43 +26,21 @@ object AppConstants {
 
     object IntentKey {
         const val PHONE_NUMBER = "PHONE_NUMBER"
+        const val NOTIFICATION_TYPE = "NOTIFICATION_TYPE"
+        const val USER_ID = "USER_ID"
+        const val WEB_URL = "WEB_URL"
+        const val TITLE = "TITLE"
+        const val AGENCY_DETAILS = "AGENCY_DETAILS"
+        const val CONFIGURATION_TYPE = "CONFIGURATION_TYPE"
+        const val CONFIGURATION_TYPE_NAME = "CONFIGURATION_TYPE_NAME"
+        const val IS_FROM_NOTIFICATION = "IS_FROM_NOTIFICATION"
         const val IMAGE_URI = "image_uri"
         const val CROP_RATIO_X = "crop_ratio_X"
         const val CROP_RATIO_Y = "crop_ratio_Y"
         const val FILE_EXTENSION = "file_extension"
-        const val PRODUCT_INFO = "PRODUCT_INFO"
-        const val NOTIFICATION_TYPE = "NOTIFICATION_TYPE"
-        const val IS_FROM_NOTIFICATION = "IS_FROM_NOTIFICATION"
-        const val PRODUCT_ID = "PRODUCT_ID"
-        const val PRODUCT_RESOURCES = "PRODUCT_RESOURCES"
-        const val PRODUCT_DETAILS = "PRODUCT_DETAILS"
-        const val USER_DETAILS = "USER_DETAILS"
-        const val PRODUCT_STOCKS = "PRODUCT_STOCKS"
-        const val USER_ID = "USER_ID"
-        const val USER_TYPE = "USER_TYPE"
-        const val WEB_URL = "WEB_URL"
-        const val TITLE = "TITLE"
-        const val INWARD_ID = "INWARD_ID"
-        const val DRIVE_INWARD_DETAILS = "DRIVE_INWARD_DETAILS"
-        const val FROM_AGENCY = "FROM_AGENCY"
-        const val AREA_ID = "AREA_ID"
-        const val CITY_ID = "CITY_ID"
-        const val AREA_NAME = "AREA_NAME"
-        const val WORKING_AREA_DETAILS = "WORKING_AREA_DETAILS"
-        const val AGENCY_DETAILS = "AGENCY_DETAILS"
-        const val PERSONAL_DETAILS = "PERSONAL_DETAILS"
-        const val POLICY_TYPE = "POLICY_TYPE"
-        const val TO_DO_DETAILS = "TO_DO_DETAILS"
-        const val PERSONAL_DOCUMENTS = "PERSONAL_DOCUMENTS"
-        const val PERSONAL_DOCUMENT_TITLE = "PERSONAL_DOCUMENT_TITLE"
-        const val SCAN_ORDER_DATA = "SCAN_ORDER_DATA"
-        const val REQUEST_CROP_IMAGE = 1
-        const val EXTERNAL_STORAGE_PERMISSION = 2
-        const val CAMERA_PERMISSION = 3
-        const val HISTORY_TYPE = "HISTORY_TYPE"
-        const val ORDER_TYPE = "ORDER_TYPE"
-        const val ORDER_DETAILS = "ORDER_DETAILS"
-        const val RATE_PRINT_TYPE = "RATE_PRINT_TYPE"
+
+        const val CAMERA_PERMISSION = 1
+        const val REQUEST_CROP_IMAGE = 2
     }
 
     object Direction {
@@ -92,6 +70,8 @@ object AppConstants {
         const val LOGOUT = 1
         const val DELETE_ITEM = 2
         const val UPDATE_APP = 3
+        const val SELECT_LEAF_TYPE = 4
+        const val SELECT_AREA = 5
 
         const val BIRTH_DATE = "BIRTH_DATE"
     }
@@ -100,17 +80,26 @@ object AppConstants {
         const val LOCATION_MODE_HIGH_ACCURACY = 1
     }
 
+    object TeaConfiguration {
+        const val TEA_GARDEN_AREA = 1
+        const val LEAF_TYPE = 2
+        const val TEA_GARDEN = 3
+        const val TEA_GRADE = 4
+        const val TEA_QUALITY = 5
+        const val TEA_TYPE = 6
+        const val TEA_COLOR = 7
+        const val TEA_DENSITY = 8
+        const val TEA_SEASON = 9
+        const val TEA_PRODUCT_PREFERENCE = 10
+        const val TEA_INWARD_BAG_TYPE = 11
+        const val TEA_SOURCE = 12
+    }
+
     object Action {
         const val RETAILER_DETAILS = 1
-        const val WORKING_AREA_DETAILS = 2
-        const val DONE_REWARD = 3
-        const val AGENCY_DETAILS = 4
-        const val SELECT_PRODUCT = 5
-        const val SELECT_PRODUCT_COMPONENT = 6
-        const val DECREASE_QUANTITY = 7
-        const val INCREASE_QUANTITY = 8
-        const val ADD_TO_DO_NOTE = 9
-        const val APPROVE_TERMS_CONDITIONS = 10
+        const val APPROVE_TERMS_CONDITIONS = 2
+        const val CONFIGURATION_DETAILS = 3
+        const val EDIT_CONFIGURATION_ITEM = 4
     }
 
     object UserType {
@@ -185,7 +174,7 @@ object AppConstants {
 
     object DataLimit {
         const val USERS_LIMIT = 20
-        const val PRODUCTS_LIMIT = 20
+        const val CONFIGURATION_ITEM_LIMIT = 20
         const val DRIVE_INWARD_LIMIT = 15
     }
 

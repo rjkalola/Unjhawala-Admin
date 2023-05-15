@@ -1,15 +1,26 @@
 package com.unjhawalateaadmin.dashboard.ui.activity
 
+import android.app.Activity
 import android.content.Context
+import android.graphics.RectF
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.imateplus.imagepickers.transformation.RoundedCornersTransformation
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
+import com.unjhawalateaadmin.common.data.model.ModuleInfo
+import com.unjhawalateaadmin.common.data.model.SwipeItemInfo
 import com.unjhawalateaadmin.common.ui.activity.BaseActivity
+import com.unjhawalateaadmin.common.utils.AppConstants
+import com.unjhawalateaadmin.common.utils.SwipeAndDragHelper
+import com.unjhawalateaadmin.dashboard.data.ui.adapter.GardenAreaManagePositionListAdapter
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaConfigurationAdapter
+import com.unjhawalateaadmin.dashboard.ui.dialog.GardenAreaManagePositionDialog
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
 import com.unjhawalateaadmin.databinding.ActivityTeaConfigurationListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,6 +31,7 @@ class TeaConfigurationActivity : BaseActivity(), View.OnClickListener, SelectIte
     private lateinit var mContext: Context
     private val dashboardViewModel: DashboardViewModel by viewModel()
     private var adapter: TeaConfigurationAdapter? = null
+    private var adapterSwipe: GardenAreaManagePositionListAdapter? = null
     var visibleItemCount = 0
     var totalItemCount = 0
     var pastVisibleItems = 0
@@ -39,15 +51,9 @@ class TeaConfigurationActivity : BaseActivity(), View.OnClickListener, SelectIte
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tea_configuration_list)
         mContext = this
         setupToolbar(getString(R.string.tea_configuration), true)
-//        orderHistoryResponseObservers()
 
-//        binding.swipeRefreshLayout.setOnRefreshListener {
-//            loadData(false, true, true, true, true)
-//        }
-//
-//        loadData(true, false, false, false, false)
-
-        setAdapter()
+        setAdapter(getConfigurationItems())
+//        setSwipeAdapter()
     }
 
     override fun onClick(v: View) {
@@ -59,155 +65,119 @@ class TeaConfigurationActivity : BaseActivity(), View.OnClickListener, SelectIte
         }
     }
 
-    fun loadData(
-        isProgress: Boolean,
-        isClearOffset: Boolean,
-        isClearFilter: Boolean,
-        isClearSort: Boolean,
-        isClearSearch: Boolean
-    ) {
-        if (isProgress)
-            showCustomProgressDialog(binding.progressBarView.routProgress)
-
-        if (isClearOffset)
-            offset = 0
-
-        if (isClearFilter)
-            filters = ""
-
-        if (isClearSort)
-            sort = 0
-
-        if (isClearSearch)
-            search = ""
-
-//        dashboardViewModel.orderHistoryList(
-//            AppConstants.DataLimit.USERS_LIMIT,
-//            offset,
-//        )
+    private fun setAdapter(list: MutableList<ModuleInfo>) {
+        binding.rvUsers.visibility = View.VISIBLE
+        binding.txtEmptyPlaceHolder.visibility = View.GONE
+        binding.rvUsers.setHasFixedSize(true)
+        adapter = TeaConfigurationAdapter(mContext, list, this)
+        binding.rvUsers.adapter = adapter
+        val linearLayoutManager =
+            LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+        binding.rvUsers.layoutManager = linearLayoutManager
     }
 
-//    private fun setAdapter(list: MutableList<OrderInfo>?) {
-    private fun setAdapter() {
-//        if (list != null && list.size > 0) {
-            binding.rvUsers.visibility = View.VISIBLE
-            binding.txtEmptyPlaceHolder.visibility = View.GONE
-            binding.rvUsers.setHasFixedSize(true)
-            adapter = TeaConfigurationAdapter(mContext, this)
-            binding.rvUsers.adapter = adapter
-            val linearLayoutManager =
-                LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
-            binding.rvUsers.layoutManager = linearLayoutManager
-            recyclerViewScrollListener(linearLayoutManager)
-//        } else {
-//            binding.rvUsers.visibility = View.GONE
-//            binding.txtEmptyPlaceHolder.visibility = View.VISIBLE
-//        }
+    private fun getConfigurationItems(): MutableList<ModuleInfo> {
+        val list: MutableList<ModuleInfo> = ArrayList()
+
+        var info: ModuleInfo? = null
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_GARDEN_AREA
+        info.name = getString(R.string.tea_garden_area)
+        info.icon = R.drawable.ic_area_chart
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.LEAF_TYPE
+        info.name = getString(R.string.leaf_type)
+        info.icon = R.drawable.ic_nest_eco_leaf
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_GARDEN
+        info.name = getString(R.string.tea_garden)
+        info.icon = R.drawable.ic_yard
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_GRADE
+        info.name = getString(R.string.tea_grade)
+        info.icon = R.drawable.ic_grade
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_QUALITY
+        info.name = getString(R.string.tea_quality)
+        info.icon = R.drawable.ic_high_quality
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_TYPE
+        info.name = getString(R.string.tea_type)
+        info.icon = R.drawable.ic_content_cut
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_COLOR
+        info.name = getString(R.string.tea_colour)
+        info.icon = R.drawable.ic_invert_colors
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_DENSITY
+        info.name = getString(R.string.tea_density)
+        info.icon = R.drawable.ic_specific_gravity
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_SEASON
+        info.name = getString(R.string.tea_season)
+        info.icon = R.drawable.ic_onsen
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_PRODUCT_PREFERENCE
+        info.name = getString(R.string.tea_product_preference)
+        info.icon = R.drawable.ic_temp_preferences_eco
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_INWARD_BAG_TYPE
+        info.name = getString(R.string.tea_inward_bag_type)
+        info.icon = R.drawable.ic_shopping_bag
+        list.add(info)
+
+        info = ModuleInfo()
+        info.id = AppConstants.TeaConfiguration.TEA_SOURCE
+        info.name = getString(R.string.tea_source)
+        info.icon = R.drawable.ic_soup_kitchen
+        list.add(info)
+
+        return list
     }
-
-    private fun recyclerViewScrollListener(layoutManager: LinearLayoutManager) {
-        binding.rvUsers.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                if (dy > 0) {
-                    visibleItemCount = recyclerView.childCount
-                    totalItemCount = (recyclerView.layoutManager as LinearLayoutManager).itemCount
-                    pastVisibleItems =
-                        (recyclerView.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
-                    if (loading) {
-                        if (visibleItemCount + pastVisibleItems >= totalItemCount) {
-                            if (!mIsLastPage) {
-                                loading = false
-                                binding.loadMore.setVisibility(View.VISIBLE)
-                                loadData(false, false, false, false, false)
-                            }
-                        }
-                    }
-                }
-            }
-        })
-    }
-
-   /* private fun orderHistoryResponseObservers() {
-        dashboardViewModel.orderHistoryResponse.observe(this) { response ->
-            hideCustomProgressDialog(binding.progressBarView.routProgress)
-            binding.swipeRefreshLayout.isRefreshing = false
-            binding.loadMore.visibility = View.GONE
-            binding.progressSearchUser.visibility = View.GONE
-            try {
-                if (response == null) {
-                    AlertDialogHelper.showDialog(
-                        mContext, null,
-                        mContext.getString(R.string.error_unknown), mContext.getString(R.string.ok),
-                        null, false, null, 0
-                    )
-                } else {
-                    if (response.IsSuccess) {
-                        binding.edtSearch.setText("")
-                        if (offset == 0) {
-                            if (response.pending_count > 0) {
-                                binding.routPendingView.visibility = View.VISIBLE
-                                binding.txtNumberOfPendingMember.text = String.format(
-                                    getString(R.string.display_number_of_pending_orders),
-                                    response.pending_count.toString()
-                                )
-                            } else {
-                                binding.routPendingView.visibility = View.GONE
-                            }
-                            setAdapter(response.Data)
-                        } else if (response.Data.isNotEmpty()) {
-                            if (adapter != null) {
-                                adapter!!.addData(response.Data)
-                                loading = true
-                            }
-                        } else if (response.offset == 0) {
-                            loading = true
-                        }
-                        offset = response.offset
-
-                        mIsLastPage = offset == 0
-
-                    } else {
-                        AppUtils.handleUnauthorized(mContext, response)
-                    }
-                }
-            } catch (e: Exception) {
-
-            }
-        }
-    }*/
-
-    /* var resultApplyFilter =
-         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-             if (result.resultCode == Activity.RESULT_OK) {
-                 val intent: Intent? = result.data
-                 if (intent!!.hasExtra(AppConstants.IntentKey.FILTER_DATA)
-                     && Parcels.unwrap<FiltersResponse?>(intent.getParcelableExtra(AppConstants.IntentKey.FILTER_DATA)) != null
-                 ) {
-                     val data =
-                         Parcels.unwrap<FiltersResponse?>(intent.getParcelableExtra(AppConstants.IntentKey.FILTER_DATA))
-                     filtersData = AppUtils.getFiltersResponseString(mContext, data)
-                     filters = AppUtils.getFilterString(data)
-                     offset = 0
-                     sort = 0
-                     mIsLastPage = false
-                     loadData(true, false)
-                 }
-             }
-         }*/
 
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
-//        showOrderHistoryItemsDialog(adapter!!.list[position])
+         if (action == AppConstants.TeaConfiguration.TEA_SOURCE) {
+
+        } else {
+            val bundle = Bundle()
+            bundle.putInt(AppConstants.IntentKey.CONFIGURATION_TYPE, action)
+            bundle.putString(
+                AppConstants.IntentKey.CONFIGURATION_TYPE_NAME,
+                getConfigurationItems()[position].name
+            )
+            moveActivity(mContext, GardenAreaActivity::class.java, false, false, bundle)
+        }
     }
 
-   /* var pendingMemberResultActivity =
+
+    var configurationResultActivity =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result != null
                 && result.resultCode == Activity.RESULT_OK
             ) {
-                isUpdated = true
-                loadData(true, true, true, true, true)
+
             }
         }
-*/
 
 }

@@ -61,7 +61,7 @@
                     android:background="#BDBDBD" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layoutFirmType"
+                    android:id="@+id/layoutLeafType"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,16 +70,43 @@
                     android:layout_marginEnd="@dimen/size_20dp"
                     android:layout_marginBottom="@dimen/size_12dp"
                     android:textColorHint="@color/colorHint"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:errorIconDrawable="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtFirmType"
+                        android:id="@+id/edtLeafType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/leaf_type_compulsory"
+                        android:text="@{info.leaf_type_name}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutArea"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    android:visibility="visible"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtArea"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawableEnd="@drawable/ic_arrow_down"
                         android:focusable="false"
                         android:hint="@string/area_compulsory"
+                        android:text="@{info.area_name}"
                         android:imeOptions="actionNext"
                         android:inputType="textCapWords"
                         android:textSize="@dimen/text_size_15sp" />
@@ -92,7 +119,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/size_20dp"
-                    android:layout_marginTop="@dimen/size_20dp"
                     android:layout_marginEnd="@dimen/size_20dp"
                     android:layout_marginBottom="@dimen/size_12dp"
                     android:textColorHint="@color/colorHint"

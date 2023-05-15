@@ -23,8 +23,8 @@ class AuthenticationRepositoryImp(
         return authenticationInterface.resendOTP(mobile_number)
     }
 
-    override suspend fun validateOtp(user_id: RequestBody, otp: RequestBody): UserResponse {
-        return authenticationInterface.validateOtp(user_id, otp)
+    override suspend fun validateOtp(user_id: RequestBody, otp: RequestBody, device_id: RequestBody): UserResponse {
+        return authenticationInterface.validateOtp(user_id, otp,device_id)
     }
 
     override suspend fun setLoginPin(

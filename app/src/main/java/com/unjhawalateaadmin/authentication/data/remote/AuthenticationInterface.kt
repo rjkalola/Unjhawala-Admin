@@ -23,7 +23,7 @@ interface AuthenticationInterface {
     @Multipart
     @POST("kk-validate-otp")
     suspend fun validateOtp(
-        @Part("user_id") user_id: RequestBody, @Part("otp") otp: RequestBody
+        @Part("user_id") user_id: RequestBody, @Part("otp") otp: RequestBody, @Part("device_id") device_id: RequestBody
     ): UserResponse
 
     @Multipart
