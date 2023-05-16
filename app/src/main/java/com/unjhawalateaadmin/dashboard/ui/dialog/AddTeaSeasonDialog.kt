@@ -2,6 +2,7 @@ package com.unjhawalateaadmin.dashboard.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
@@ -20,6 +21,13 @@ import com.unjhawalateaadmin.dashboard.data.model.TeaSeasonConfigurationResponse
 import com.unjhawalateaadmin.dashboard.data.model.TeaSeasonQualityInfo
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaSeasonQualityListAdapter
 import com.unjhawalateaadmin.databinding.DialogAddTeaSeasonBinding
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.concurrent.schedule
 
 class AddTeaSeasonDialog(mContext: Context?) :
     BottomSheetDialog(mContext!!, R.style.CustomBottomSheetDialogTheme) {
@@ -56,16 +64,21 @@ class AddTeaSeasonDialog(mContext: Context?) :
                 for (i in teaSeasonConfigurationResponse?.Data!!.indices) {
                     var position = -1
                     for (j in info.tea_season_quality.indices) {
-                        if (teaSeasonConfigurationResponse.Data[i]._id == info.tea_season_quality[j].lu_tea_quality_id) {
-                            position = i
+                        if (!StringHelper.isEmpty(info.tea_season_quality[j].id)
+                            && teaSeasonConfigurationResponse.Data[i]._id == info.tea_season_quality[j].lu_tea_quality_id
+                        ) {
+                            position = j
                         }
                     }
                     if (position != -1) {
+                        Log.e("test", i.toString() + " position:" + position)
                         info.tea_season_quality[position].check = true
                         list.add(info.tea_season_quality[position])
                     } else {
+                        Log.e("test", i.toString() + " position:" + position)
                         val data = TeaSeasonQualityInfo()
-                        data.id = teaSeasonConfigurationResponse.Data[i]._id
+                        data.check = false
+                        data.lu_tea_quality_id = teaSeasonConfigurationResponse.Data[i]._id
                         data.name = teaSeasonConfigurationResponse.Data[i].name
                         list.add(data)
                     }
@@ -77,7 +90,7 @@ class AddTeaSeasonDialog(mContext: Context?) :
                 val list: MutableList<TeaSeasonQualityInfo> = ArrayList()
                 for (i in teaSeasonConfigurationResponse?.Data!!) {
                     val data = TeaSeasonQualityInfo()
-                    data.id = i._id
+                    data.lu_tea_quality_id = i._id
                     data.name = i.name
                     list.add(data)
                 }
@@ -100,9 +113,18 @@ class AddTeaSeasonDialog(mContext: Context?) :
             binding.txtTitle.text = "Add $itemName"
 
         binding.txtSave.setOnClickListener {
-            if (valid()) {
-                mListener?.onAddConfigurationItem(itemType, mConfigurationItemInfo!!)
-                dismiss()
+            adapter?.checkValidation()
+            Timer().schedule(500) {
+                MainScope().launch {
+                    withContext(Dispatchers.Default) {
+
+                    }
+                    Log.e("test", "valid>>>>>:" + valid())
+                    if (valid()) {
+                        mListener?.onAddConfigurationItem(itemType, mConfigurationItemInfo!!)
+                        dismiss()
+                    }
+                }
             }
         }
 
@@ -115,16 +137,12 @@ class AddTeaSeasonDialog(mContext: Context?) :
     private fun valid(): Boolean {
         var valid = true
 
-//        if (!ValidationUtil.isEmptyEditText(binding.edtLeafType.text.toString().trim())) {
-//            binding.layoutLeafType.error = null
-//            binding.layoutLeafType.isErrorEnabled = false
-//        } else {
-//            ValidationUtil.setErrorIntoInputTextLayout(
-//                binding.edtLeafType, binding.layoutLeafType,
-//                mContext.getString(R.string.empty_edittext_error)
-//            )
-//            valid = false
-//        }
+        if (adapter?.validate!!) {
+            valid = true
+            mConfigurationItemInfo!!.tea_season_quality = adapter?.list!!
+        } else {
+            valid = false
+        }
 
         if (!ValidationUtil.isEmptyEditText(binding.edtName.text.toString().trim())) {
             binding.layoutName.error = null
@@ -136,9 +154,6 @@ class AddTeaSeasonDialog(mContext: Context?) :
             )
             valid = false
         }
-
-        adapter?.checkValidation()
-        valid = adapter?.validate!!
 
         return valid
     }

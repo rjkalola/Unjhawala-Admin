@@ -1,6 +1,7 @@
 package com.unjhawalateaadmin.dashboard.data.ui.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,6 +71,8 @@ class TeaSeasonQualityListAdapter(
             if (buttonView.isPressed) {
                 info.check = isChecked
                 if (!isChecked) {
+                    info.number_of_days = ""
+                    itemViewHolder.binding.edtDays.setText("")
                     itemViewHolder.binding.layoutDays.visibility = View.GONE
                 } else {
                     itemViewHolder.binding.layoutDays.visibility = View.VISIBLE
