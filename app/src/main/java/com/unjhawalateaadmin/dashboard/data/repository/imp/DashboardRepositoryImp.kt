@@ -342,4 +342,11 @@ class DashboardRepositoryImp(
         return dashboardInterface.storeTeaSeasonsPosition(data)
     }
 
+    override suspend fun getTeaSampleList(
+        limit: RequestBody,
+        offset: RequestBody,
+        search: RequestBody
+    ): TeaSampleListResponse {
+        return dashboardInterface.getTeaSampleList(limit, offset, search)
+    }
 }

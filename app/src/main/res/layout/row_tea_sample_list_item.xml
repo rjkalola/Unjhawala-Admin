@@ -3,7 +3,9 @@
 
     <data>
 
-
+    <variable
+        name="info"
+        type="com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -77,7 +79,7 @@
                         android:fontFamily="@font/be_vietnam_medium"
                         android:includeFontPadding="false"
                         android:singleLine="true"
-                        android:text="PF"
+                        android:text="@{info.tea_grade_name}"
                         android:textColor="@color/colorPrimaryText2"
                         android:textSize="14sp" />
 
@@ -86,12 +88,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size_6dp"
+                    android:layout_marginTop="@dimen/size_4dp"
                     android:gravity="center_vertical">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="@dimen/size_14dp"
-                        android:layout_height="@dimen/size_14dp"
+                        android:layout_width="@dimen/size_12dp"
+                        android:layout_height="@dimen/size_12dp"
                         app:srcCompat="@drawable/ic_currency_rupee"
                         app:tint="@color/colorPrimaryText2" />
 
@@ -101,7 +103,7 @@
                         android:layout_marginStart="@dimen/size_6dp"
                         android:fontFamily="@font/be_vietnam_regular"
                         android:includeFontPadding="false"
-                        android:text="230"
+                        android:text="@{info.rate}"
                         android:textColor="@color/colorPrimaryText2"
                         android:textSize="12sp" />
 
@@ -126,7 +128,43 @@
                         android:layout_marginStart="@dimen/size_6dp"
                         android:fontFamily="@font/be_vietnam_regular"
                         android:includeFontPadding="false"
-                        android:text="90*80 Kg = 7,200"
+                        android:text="@{info.bag}"
+                        android:textColor="@color/colorPrimaryText2"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:includeFontPadding="false"
+                        android:text="*"
+                        android:textColor="@color/colorPrimaryText2"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:includeFontPadding="false"
+                        android:text="@{info.weight}"
+                        android:textColor="@color/colorPrimaryText2"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:includeFontPadding="false"
+                        android:text=" Kg = "
+                        android:textColor="@color/colorPrimaryText2"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:includeFontPadding="false"
+                        android:text="@{info.total_quantity}"
                         android:textColor="@color/colorPrimaryText2"
                         android:textSize="12sp" />
 
@@ -138,7 +176,7 @@
                     android:layout_marginTop="@dimen/size_6dp"
                     android:fontFamily="@font/be_vietnam_regular"
                     android:includeFontPadding="false"
-                    android:text="Shree Vinayak Tea Enterprise"
+                    android:text="@{info.vendor_name}"
                     android:textColor="@color/colorPrimaryText2"
                     android:textSize="12sp" />
 
@@ -153,7 +191,7 @@
                 android:fontFamily="@font/be_vietnam_regular"
                 android:includeFontPadding="false"
                 android:singleLine="true"
-                android:text="07/05/2023"
+                android:text="@{info.show_created_date}"
                 android:textColor="@color/colorSecondaryExtraLightText"
                 android:textSize="12sp" />
 

@@ -8,9 +8,13 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.imateplus.utilities.utils.AlertDialogHelper
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
 import com.unjhawalateaadmin.common.ui.activity.BaseActivity
+import com.unjhawalateaadmin.common.utils.AppConstants
+import com.unjhawalateaadmin.common.utils.AppUtils
+import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaConfigurationAdapter
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaSamplesAdapter
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
@@ -43,15 +47,13 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         binding = DataBindingUtil.setContentView(this, R.layout.activity_tea_sample_list)
         mContext = this
         setupToolbar(getString(R.string.tea_samples), true)
-//        orderHistoryResponseObservers()
+        teaSampleListResponseObservers()
 
-//        binding.swipeRefreshLayout.setOnRefreshListener {
-//            loadData(false, true, true, true, true)
-//        }
-//
-//        loadData(true, false, false, false, false)
+        binding.swipeRefreshLayout.setOnRefreshListener {
+            loadData(false, true, true)
+        }
 
-        setAdapter()
+        loadData(true, false, false)
     }
 
     override fun onClick(v: View) {
@@ -59,7 +61,6 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
 //            R.id.routCall -> {
 //
 //            }
-
         }
     }
 
@@ -67,8 +68,6 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         isProgress: Boolean,
         isClearOffset: Boolean,
         isClearFilter: Boolean,
-        isClearSort: Boolean,
-        isClearSearch: Boolean
     ) {
         if (isProgress)
             showCustomProgressDialog(binding.progressBarView.routProgress)
@@ -79,34 +78,28 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         if (isClearFilter)
             filters = ""
 
-        if (isClearSort)
-            sort = 0
-
-        if (isClearSearch)
-            search = ""
-
-//        dashboardViewModel.orderHistoryList(
-//            AppConstants.DataLimit.USERS_LIMIT,
-//            offset,
-//        )
+        dashboardViewModel.getTeaSampleList(
+            AppConstants.DataLimit.USERS_LIMIT,
+            offset,
+            search,
+        )
     }
 
-//    private fun setAdapter(list: MutableList<OrderInfo>?) {
-    private fun setAdapter() {
-//        if (list != null && list.size > 0) {
+    private fun setAdapter(list: MutableList<TeaSampleInfo>?) {
+        if (list != null && list.size > 0) {
             binding.rvUsers.visibility = View.VISIBLE
             binding.txtEmptyPlaceHolder.visibility = View.GONE
             binding.rvUsers.setHasFixedSize(true)
-            adapter = TeaSamplesAdapter(mContext, this)
+            adapter = TeaSamplesAdapter(mContext, list,this)
             binding.rvUsers.adapter = adapter
             val linearLayoutManager =
                 LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
             binding.rvUsers.layoutManager = linearLayoutManager
-//            recyclerViewScrollListener(linearLayoutManager)
-//        } else {
-//            binding.rvUsers.visibility = View.GONE
-//            binding.txtEmptyPlaceHolder.visibility = View.VISIBLE
-//        }
+            recyclerViewScrollListener(linearLayoutManager)
+        } else {
+            binding.rvUsers.visibility = View.GONE
+            binding.txtEmptyPlaceHolder.visibility = View.VISIBLE
+        }
     }
 
     private fun recyclerViewScrollListener(layoutManager: LinearLayoutManager) {
@@ -121,8 +114,8 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
                         if (visibleItemCount + pastVisibleItems >= totalItemCount) {
                             if (!mIsLastPage) {
                                 loading = false
-                                binding.loadMore.setVisibility(View.VISIBLE)
-                                loadData(false, false, false, false, false)
+                                binding.loadMore.visibility = View.VISIBLE
+                                loadData(false, false, false)
                             }
                         }
                     }
@@ -131,8 +124,8 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         })
     }
 
-   /* private fun orderHistoryResponseObservers() {
-        dashboardViewModel.orderHistoryResponse.observe(this) { response ->
+    private fun teaSampleListResponseObservers() {
+        dashboardViewModel.mTeaSampleListResponse.observe(this) { response ->
             hideCustomProgressDialog(binding.progressBarView.routProgress)
             binding.swipeRefreshLayout.isRefreshing = false
             binding.loadMore.visibility = View.GONE
@@ -148,15 +141,6 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
                     if (response.IsSuccess) {
                         binding.edtSearch.setText("")
                         if (offset == 0) {
-                            if (response.pending_count > 0) {
-                                binding.routPendingView.visibility = View.VISIBLE
-                                binding.txtNumberOfPendingMember.text = String.format(
-                                    getString(R.string.display_number_of_pending_orders),
-                                    response.pending_count.toString()
-                                )
-                            } else {
-                                binding.routPendingView.visibility = View.GONE
-                            }
                             setAdapter(response.Data)
                         } else if (response.Data.isNotEmpty()) {
                             if (adapter != null) {
@@ -178,7 +162,7 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
 
             }
         }
-    }*/
+    }
 
     /* var resultApplyFilter =
          registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -218,15 +202,15 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         return super.onOptionsItemSelected(item)
     }
 
-   /* var pendingMemberResultActivity =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result != null
-                && result.resultCode == Activity.RESULT_OK
-            ) {
-                isUpdated = true
-                loadData(true, true, true, true, true)
-            }
-        }
-*/
+    /* var pendingMemberResultActivity =
+         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+             if (result != null
+                 && result.resultCode == Activity.RESULT_OK
+             ) {
+                 isUpdated = true
+                 loadData(true, true, true, true, true)
+             }
+         }
+ */
 
 }

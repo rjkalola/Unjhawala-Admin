@@ -30,6 +30,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val storeConfigurationItemPosition = MutableLiveData<BaseResponse>()
     val teaGardenConfigurationResponse = MutableLiveData<TeaGardenConfigurationResponse>()
     val teaSeasonConfigurationResponse = MutableLiveData<TeaSeasonConfigurationResponse>()
+    val mTeaSampleListResponse = MutableLiveData<TeaSampleListResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -313,7 +314,14 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         }
     }
 
-    fun storeTeaGardenItem(id: String, name: String, status: Int,leafTypeId:String,gardenAreaId:String, type: Int) {
+    fun storeTeaGardenItem(
+        id: String,
+        name: String,
+        status: Int,
+        leafTypeId: String,
+        gardenAreaId: String,
+        type: Int
+    ) {
         val idBody: RequestBody = AppUtils.getRequestBody(id)
         val nameBody: RequestBody = AppUtils.getRequestBody(name)
         val statusBody: RequestBody = AppUtils.getRequestBody(status.toString())
@@ -322,7 +330,13 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                var response: BaseResponse = dashboardRepository.storeTeaGarden(idBody, nameBody, statusBody,leafTypeIdBody,gardenAreaIdBody);
+                var response: BaseResponse = dashboardRepository.storeTeaGarden(
+                    idBody,
+                    nameBody,
+                    statusBody,
+                    leafTypeIdBody,
+                    gardenAreaIdBody
+                );
                 withContext(Dispatchers.Main) {
                     storeConfigurationItem.value = response
                 }
@@ -376,6 +390,27 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                 var response: BaseResponse = dashboardRepository.storeTeaSeason(info);
                 withContext(Dispatchers.Main) {
                     storeConfigurationItem.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getTeaSampleList(limit: Int, offset: Int, search: String) {
+        val limitBody: RequestBody = AppUtils.getRequestBody(limit.toString())
+        val offsetBody: RequestBody = AppUtils.getRequestBody(offset.toString())
+        val searchBody: RequestBody = AppUtils.getRequestBody(search)
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var response: TeaSampleListResponse = dashboardRepository.getTeaSampleList(limitBody, offsetBody, searchBody)
+                withContext(Dispatchers.Main) {
+                    mTeaSampleListResponse.value = response
                 }
             } catch (e: JSONException) {
                 traceErrorException(e)

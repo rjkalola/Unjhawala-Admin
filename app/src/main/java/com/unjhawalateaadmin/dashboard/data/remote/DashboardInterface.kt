@@ -381,6 +381,12 @@ interface DashboardInterface {
         @Part("data") data: RequestBody,
     ): BaseResponse
 
-
+    @Multipart
+    @POST("tea-samples/lists")
+    suspend fun getTeaSampleList(
+        @Part("limit") limit: RequestBody,
+        @Part("offset") offset: RequestBody,
+        @Part("search") search: RequestBody
+    ): TeaSampleListResponse
 }
 

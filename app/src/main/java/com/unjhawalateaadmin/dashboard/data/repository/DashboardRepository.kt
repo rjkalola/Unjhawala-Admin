@@ -4,7 +4,9 @@ import com.unjhawalateaadmin.common.data.model.BaseResponse
 import com.unjhawalateaadmin.dashboard.data.model.*
 import okhttp3.RequestBody
 import retrofit2.http.Body
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface DashboardRepository {
     suspend fun getDashboard(
@@ -277,5 +279,9 @@ interface DashboardRepository {
         data: RequestBody,
     ): BaseResponse
 
-
+    suspend fun getTeaSampleList(
+        limit: RequestBody,
+        offset: RequestBody,
+        search: RequestBody
+    ): TeaSampleListResponse
 }

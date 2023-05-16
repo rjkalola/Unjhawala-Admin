@@ -8,19 +8,21 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
+import com.unjhawalateaadmin.dashboard.data.model.ConfigurationItemInfo
+import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
 import com.unjhawalateaadmin.databinding.RowTeaConfigurationBinding
 import com.unjhawalateaadmin.databinding.RowTeaSampleListItemBinding
 
 
 class TeaSamplesAdapter(
     var mContext: Context,
-//    var list: MutableList<RetailerInfo>,
+    var list: MutableList<TeaSampleInfo>,
     var listener: SelectItemListener?,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-//    private var listAll: MutableList<RetailerInfo> = ArrayList()
+    private var listAll: MutableList<TeaSampleInfo> = ArrayList()
 
     init {
-//        this.listAll.addAll(list)
+        this.listAll.addAll(list)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -32,7 +34,8 @@ class TeaSamplesAdapter(
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val itemViewHolder = holder as ItemViewHolder
-
+        val info = list[position]
+        itemViewHolder.getData(info)
         itemViewHolder.binding.routMainView.setOnClickListener {
 //            listener!!.onSelectItem(position, AppConstants.Action.RETAILER_DETAILS, 0)
         }
@@ -40,7 +43,7 @@ class TeaSamplesAdapter(
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return list.size
     }
 
     override fun getItemId(position: Int): Long {
@@ -54,10 +57,17 @@ class TeaSamplesAdapter(
     private inner class ItemViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
         var binding: RowTeaSampleListItemBinding = DataBindingUtil.bind(itemView)!!
-//        fun getData(info: RetailerInfo?) {
-//            binding.info = info
-//        }
+        fun getData(info: TeaSampleInfo?) {
+            binding.info = info
+        }
 
+    }
+
+    fun addData(list: MutableList<TeaSampleInfo>) {
+        listAll.addAll(list)
+        this.list.clear()
+        this.list.addAll(listAll)
+        notifyDataSetChanged()
     }
 
 }
