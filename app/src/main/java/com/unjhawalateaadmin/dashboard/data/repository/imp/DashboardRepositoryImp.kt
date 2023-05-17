@@ -4,6 +4,7 @@ import com.unjhawalateaadmin.common.data.model.BaseResponse
 import com.unjhawalateaadmin.dashboard.data.model.*
 import com.unjhawalateaadmin.dashboard.data.remote.DashboardInterface
 import com.unjhawalateaadmin.dashboard.data.repository.DashboardRepository
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 class DashboardRepositoryImp(
@@ -348,5 +349,32 @@ class DashboardRepositoryImp(
         search: RequestBody
     ): TeaSampleListResponse {
         return dashboardInterface.getTeaSampleList(limit, offset, search)
+    }
+
+    override suspend fun getTeaSampleConfiguration(): TeaSampleConfigurationResponse {
+        return dashboardInterface.getTeaSampleConfiguration()
+    }
+
+    override suspend fun storeTeaSample(teaSampleInfo: TeaSampleInfo): BaseResponse {
+        return dashboardInterface.storeTeaSample(teaSampleInfo)
+    }
+
+    override suspend fun storeTeaSampleTesting(
+        id: RequestBody,
+        lu_tea_personal_grade_id: RequestBody,
+        lu_tea_cutting_id: RequestBody,
+        lu_tea_colour_id: RequestBody,
+        lu_tea_density_id: RequestBody,
+        lu_tea_source_level_1_id: RequestBody,
+        lu_tea_source_level_2_id: RequestBody,
+        lu_tea_source_level_3_id: RequestBody,
+        lu_tea_season_detail_id: RequestBody,
+        our_quality_id: RequestBody,
+        lu_tea_product_preference_id: RequestBody,
+        manufacturer_date: RequestBody,
+        note: RequestBody,
+        image: MultipartBody.Part?
+    ): BaseResponse {
+        return dashboardInterface.storeTeaSampleTesting(id, lu_tea_personal_grade_id, lu_tea_cutting_id, lu_tea_colour_id, lu_tea_density_id, lu_tea_source_level_1_id, lu_tea_source_level_2_id, lu_tea_source_level_3_id, lu_tea_season_detail_id, our_quality_id, lu_tea_product_preference_id, manufacturer_date, note, image)
     }
 }

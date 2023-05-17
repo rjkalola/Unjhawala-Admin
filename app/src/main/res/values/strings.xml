@@ -185,6 +185,60 @@
     <string name="select_leaf_type">Select Leaf Type</string>
     <string name="select_area">Select Area</string>
     <string name="enter_number_of_days">Enter no of days</string>
+    <string name="date_mandatory">Date <font color='#FF0000'>*</font></string>
+    <string name="vendor_mandatory">Vendor <font color='#FF0000'>*</font></string>
+    <string name="garden_mandatory">Garden <font color='#FF0000'>*</font></string>
+    <string name="invoice_number_mandatory">Invoice Number <font color='#FF0000'>*</font></string>
+    <string name="grade_mandatory">Grade <font color='#FF0000'>*</font></string>
+    <string name="bag_mandatory">Bag <font color='#FF0000'>*</font></string>
+    <string name="weight_in_kg_mandatory">Weight (Kg) <font color='#FF0000'>*</font></string>
+    <string name="rate_in_rs_mandatory">Rate (₹) <font color='#FF0000'>*</font></string>
+    <string name="total_quantity_in_kg_mandatory">Total Quantity (Kg) <font color='#FF0000'>*</font></string>
+    <string name="save_and_add">Save &amp; Add</string>
+    <string name="create_tea_sample">Create Tea Sample</string>
+    <string name="select_vendor">Select Vendor</string>
+    <string name="select_garden">Select Garden</string>
+    <string name="select_grade">Select Grade</string>
+    <string name="select_personal_grade">Select Personal Grade</string>
+    <string name="select_cutting">Select Cutting</string>
+    <string name="select_colour">Select Colour</string>
+    <string name="select_density">Select Density</string>
+    <string name="select_tea_source_level_1">Select Tea Source Level 1</string>
+    <string name="select_tea_source_level_2">Select Tea Source Level 2</string>
+    <string name="select_tea_source_level_3">Select Tea Source Level 3</string>
+    <string name="select_season_and_quality">Select Season &amp; Quality</string>
+    <string name="select_our_quality">Select Our Quality</string>
+    <string name="select_tea_preference">Select Tea Preference</string>
+
+    <string name="personal_grade_mandatory">Personal Grade <font color='#FF0000'>*</font></string>
+    <string name="cutting_mandatory">Cutting <font color='#FF0000'>*</font></string>
+    <string name="colour_mandatory">Colour <font color='#FF0000'>*</font></string>
+    <string name="density_mandatory">Density <font color='#FF0000'>*</font></string>
+    <string name="tea_source_level_1">Tea Source Level 1</string>
+    <string name="tea_source_level_2">Tea Source Level 2</string>
+    <string name="tea_source_level_3">Tea Source Level 3</string>
+    <string name="season_and_quality">Season &amp; Quality</string>
+    <string name="our_quality">Our Quality</string>
+    <string name="tea_preference">Tea Preference</string>
+    <string name="mfg_date">MFG Date</string>
+    <string name="notes">Notes</string>
+    <string name="add">Add</string>
+    <string name="choose_attachment_">Choose\nAttachment</string>
+    <string name="msg_storage_permission">This application needs access to your storage</string>
+
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+
+
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->

@@ -21,4 +21,6 @@ class ModuleInfo(
     var lu_city_id: String = "",
     var pincode: String = "",
     var check: Boolean = false,
+    var first_levels: MutableList<ModuleInfo> = ArrayList(),
+    var second_levels: MutableList<ModuleInfo> = ArrayList(),
 ) : Parcelable

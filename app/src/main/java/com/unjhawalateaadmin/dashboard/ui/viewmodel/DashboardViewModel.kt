@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.imateplus.utilities.utils.StringHelper
 import com.unjhawalateaadmin.common.data.model.BaseResponse
 import com.unjhawalateaadmin.common.utils.AppConstants
 import com.unjhawalateaadmin.common.utils.AppUtils
@@ -13,8 +14,11 @@ import com.unjhawalateaadmin.dashboard.data.repository.DashboardRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import okhttp3.MediaType
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import org.json.JSONException
+import java.io.File
 import java.util.concurrent.CancellationException
 
 class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
@@ -31,6 +35,9 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val teaGardenConfigurationResponse = MutableLiveData<TeaGardenConfigurationResponse>()
     val teaSeasonConfigurationResponse = MutableLiveData<TeaSeasonConfigurationResponse>()
     val mTeaSampleListResponse = MutableLiveData<TeaSampleListResponse>()
+    val teaSampleConfigurationResponse = MutableLiveData<TeaSampleConfigurationResponse>()
+    val storeTeaSampleResponse = MutableLiveData<BaseResponse>()
+    val storeTeaSampleTestingResponse = MutableLiveData<BaseResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -408,9 +415,103 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                var response: TeaSampleListResponse = dashboardRepository.getTeaSampleList(limitBody, offsetBody, searchBody)
+                var response: TeaSampleListResponse =
+                    dashboardRepository.getTeaSampleList(limitBody, offsetBody, searchBody)
                 withContext(Dispatchers.Main) {
                     mTeaSampleListResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getTeaSampleConfigurationResponse() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                val response = dashboardRepository.getTeaSampleConfiguration()
+                withContext(Dispatchers.Main) {
+                    teaSampleConfigurationResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun storeTeaSampleResponse(info: TeaSampleInfo) {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var response: BaseResponse = dashboardRepository.storeTeaSample(info);
+                withContext(Dispatchers.Main) {
+                    storeTeaSampleResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun storeTeaSampleTestingResponse(info: TeaSampleTestingInfo) {
+        val id: RequestBody = AppUtils.getRequestBody(info.id!!)
+        val lu_tea_personal_grade_id: RequestBody =
+            AppUtils.getRequestBody(info.lu_tea_personal_grade_id!!)
+        val lu_tea_cutting_id: RequestBody = AppUtils.getRequestBody(info.lu_tea_cutting_id!!)
+        val lu_tea_colour_id: RequestBody = AppUtils.getRequestBody(info.lu_tea_colour_id!!)
+        val lu_tea_density_id: RequestBody = AppUtils.getRequestBody(info.lu_tea_density_id!!)
+        val lu_tea_source_level_1_id: RequestBody =
+            AppUtils.getRequestBody(info.lu_tea_source_level_1_id!!)
+        val lu_tea_source_level_2_id: RequestBody =
+            AppUtils.getRequestBody(info.lu_tea_source_level_2_id!!)
+        val lu_tea_source_level_3_id: RequestBody =
+            AppUtils.getRequestBody(info.lu_tea_source_level_3_id!!)
+        val lu_tea_season_detail_id: RequestBody =
+            AppUtils.getRequestBody(info.lu_tea_season_detail_id!!)
+        val our_quality_id: RequestBody = AppUtils.getRequestBody(info.our_quality_id!!)
+        val lu_tea_product_preference_id: RequestBody =
+            AppUtils.getRequestBody(info.lu_tea_product_preference_id!!)
+        val manufacturer_date: RequestBody = AppUtils.getRequestBody(info.manufacturer_date!!)
+        val note: RequestBody = AppUtils.getRequestBody(info.note!!)
+
+        var image: MultipartBody.Part? = null
+        if (!StringHelper.isEmpty(info.file) && !info.file!!.startsWith("http")) {
+            val file = File(info.file)
+            val requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+            image = MultipartBody.Part.createFormData("file", file.name, requestBody)
+        }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var response: BaseResponse = dashboardRepository.storeTeaSampleTesting(
+                    id,
+                    lu_tea_personal_grade_id,
+                    lu_tea_cutting_id,
+                    lu_tea_colour_id,
+                    lu_tea_density_id,
+                    lu_tea_source_level_1_id,
+                    lu_tea_source_level_2_id,
+                    lu_tea_source_level_3_id,
+                    lu_tea_season_detail_id,
+                    our_quality_id,
+                    lu_tea_product_preference_id,
+                    manufacturer_date,
+                    note,
+                    image
+                )
+                withContext(Dispatchers.Main) {
+                    storeTeaSampleTestingResponse.value = response
                 }
             } catch (e: JSONException) {
                 traceErrorException(e)

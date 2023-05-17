@@ -157,7 +157,7 @@ class TeaConfigurationActivity : BaseActivity(), View.OnClickListener, SelectIte
     }
 
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
-         if (action == AppConstants.TeaConfiguration.TEA_SOURCE) {
+        if (action == AppConstants.TeaConfiguration.TEA_SOURCE) {
 
         } else {
             val bundle = Bundle()
@@ -169,8 +169,7 @@ class TeaConfigurationActivity : BaseActivity(), View.OnClickListener, SelectIte
             moveActivity(mContext, GardenAreaActivity::class.java, false, false, bundle)
         }
     }
-
-
+    
     var configurationResultActivity =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result != null

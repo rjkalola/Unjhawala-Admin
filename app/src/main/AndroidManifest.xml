@@ -104,17 +104,27 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name="com.unjhawalateaadmin.dashboard.ui.activity.TeaSamplesActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
-        <activity
             android:name="com.unjhawalateaadmin.dashboard.ui.activity.TeaGardenActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 
         <activity
             android:name="com.unjhawalateaadmin.dashboard.ui.activity.GardenAreaActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.unjhawalateaadmin.dashboard.ui.activity.TeaSamplesActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.unjhawalateaadmin.dashboard.ui.activity.AddTeaSampleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name="com.unjhawalateaadmin.dashboard.ui.activity.AddTeaSampleTestingActivity"
             android:exported="false"
             android:screenOrientation="portrait" />
 

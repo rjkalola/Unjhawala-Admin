@@ -2,11 +2,9 @@ package com.unjhawalateaadmin.dashboard.data.repository
 
 import com.unjhawalateaadmin.common.data.model.BaseResponse
 import com.unjhawalateaadmin.dashboard.data.model.*
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.http.Body
-import retrofit2.http.Multipart
-import retrofit2.http.POST
-import retrofit2.http.Part
+import retrofit2.http.*
 
 interface DashboardRepository {
     suspend fun getDashboard(
@@ -284,4 +282,26 @@ interface DashboardRepository {
         offset: RequestBody,
         search: RequestBody
     ): TeaSampleListResponse
+
+    suspend fun getTeaSampleConfiguration(
+    ): TeaSampleConfigurationResponse
+
+    suspend fun storeTeaSample(teaSampleInfo: TeaSampleInfo): BaseResponse
+
+    suspend fun storeTeaSampleTesting(
+        id: RequestBody,
+        lu_tea_personal_grade_id: RequestBody,
+        lu_tea_cutting_id: RequestBody,
+        lu_tea_colour_id: RequestBody,
+        lu_tea_density_id: RequestBody,
+        lu_tea_source_level_1_id: RequestBody,
+        lu_tea_source_level_2_id: RequestBody,
+        lu_tea_source_level_3_id: RequestBody,
+        lu_tea_season_detail_id: RequestBody,
+        our_quality_id: RequestBody,
+        lu_tea_product_preference_id: RequestBody,
+        manufacturer_date: RequestBody,
+        note: RequestBody,
+        image: MultipartBody.Part?,
+    ): BaseResponse
 }

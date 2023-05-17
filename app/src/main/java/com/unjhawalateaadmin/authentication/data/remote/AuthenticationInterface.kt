@@ -3,7 +3,6 @@ package com.unjhawalateaadmin.authentication.data.remote
 import com.unjhawalateaadmin.authentication.data.model.*
 import com.unjhawalateaadmin.common.data.model.BaseResponse
 import com.unjhawalateaadmin.common.data.model.RegisterConfigurationResponse
-import com.unjhawalateaadmin.dashboard.data.model.MemberDetailsResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.http.*

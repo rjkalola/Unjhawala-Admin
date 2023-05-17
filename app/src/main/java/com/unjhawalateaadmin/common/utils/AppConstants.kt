@@ -38,9 +38,12 @@ object AppConstants {
         const val CROP_RATIO_X = "crop_ratio_X"
         const val CROP_RATIO_Y = "crop_ratio_Y"
         const val FILE_EXTENSION = "file_extension"
+        const val TEA_SAMPLE_INFO = "TEA_SAMPLE_INFO"
 
         const val CAMERA_PERMISSION = 1
         const val REQUEST_CROP_IMAGE = 2
+        const val EXTERNAL_STORAGE_PERMISSION = 2
+
     }
 
     object Direction {
@@ -71,9 +74,22 @@ object AppConstants {
         const val DELETE_ITEM = 2
         const val UPDATE_APP = 3
         const val SELECT_LEAF_TYPE = 4
-        const val SELECT_AREA = 5
+        const val SELECT_VENDOR = 5
+        const val SELECT_GARDEN = 6
+        const val SELECT_GRADE = 7
+        const val SELECT_AREA = 8
+        const val SELECT_CUTTING = 9
+        const val SELECT_COLOUR = 10
+        const val SELECT_DENSITY = 11
+        const val SELECT_TEA_SOURCE_LEVEL_1 = 12
+        const val SELECT_TEA_SOURCE_LEVEL_2 = 13
+        const val SELECT_TEA_SOURCE_LEVEL_3 = 14
+        const val SELECT_SEASON_AND_QUALITY = 15
+        const val SELECT_OUR_QUALITY = 16
+        const val SELECT_TEA_PREFERENCE = 17
 
         const val BIRTH_DATE = "BIRTH_DATE"
+        const val SELECT_DATE = "SELECT_DATE"
     }
 
     object LocationMode {
@@ -100,6 +116,13 @@ object AppConstants {
         const val APPROVE_TERMS_CONDITIONS = 2
         const val CONFIGURATION_DETAILS = 3
         const val EDIT_CONFIGURATION_ITEM = 4
+        const val EDIT_TEA_SAMPLE = 5
+        const val ADD_TEA_SAMPLE_TESTING = 6
+        const val SELECT_PDF = 7
+        const val SELECT_GALLERY_IMAGE = 8
+        const val SELECT_CAMERA_IMAGE = 9
+
+
     }
 
     object UserType {

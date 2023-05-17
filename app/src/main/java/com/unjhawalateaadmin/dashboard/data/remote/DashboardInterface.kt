@@ -381,6 +381,7 @@ interface DashboardInterface {
         @Part("data") data: RequestBody,
     ): BaseResponse
 
+    //Tea Sample
     @Multipart
     @POST("tea-samples/lists")
     suspend fun getTeaSampleList(
@@ -388,5 +389,31 @@ interface DashboardInterface {
         @Part("offset") offset: RequestBody,
         @Part("search") search: RequestBody
     ): TeaSampleListResponse
+
+    @GET("tea-samples/configuration")
+    suspend fun getTeaSampleConfiguration(
+    ): TeaSampleConfigurationResponse
+
+    @POST("tea-sample/store")
+    suspend fun storeTeaSample(@Body teaSampleInfo: TeaSampleInfo): BaseResponse
+
+    @Multipart
+    @POST("tea-sample/store-testing")
+    suspend fun storeTeaSampleTesting(
+        @Part("id") id: RequestBody,
+        @Part("lu_tea_personal_grade_id") lu_tea_personal_grade_id: RequestBody,
+        @Part("lu_tea_cutting_id") lu_tea_cutting_id: RequestBody,
+        @Part("lu_tea_colour_id") lu_tea_colour_id: RequestBody,
+        @Part("lu_tea_density_id") lu_tea_density_id: RequestBody,
+        @Part("lu_tea_source_level_1_id") lu_tea_source_level_1_id: RequestBody,
+        @Part("lu_tea_source_level_2_id") lu_tea_source_level_2_id: RequestBody,
+        @Part("lu_tea_source_level_3_id") lu_tea_source_level_3_id: RequestBody,
+        @Part("lu_tea_season_detail_id") lu_tea_season_detail_id: RequestBody,
+        @Part("our_quality_id") our_quality_id: RequestBody,
+        @Part("lu_tea_product_preference_id") lu_tea_product_preference_id: RequestBody,
+        @Part("manufacturer_date") manufacturer_date: RequestBody,
+        @Part("note") note: RequestBody,
+        @Part image: MultipartBody.Part?,
+    ): BaseResponse
 }
 

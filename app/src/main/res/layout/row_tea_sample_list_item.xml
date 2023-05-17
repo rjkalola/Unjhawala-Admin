@@ -58,7 +58,7 @@
                         android:fontFamily="@font/be_vietnam_medium"
                         android:includeFontPadding="false"
                         android:singleLine="true"
-                        android:text="Deohall - Assam- 8089"
+                        android:text="@{info.display_name}"
                         android:textColor="@color/colorPrimaryText2"
                         android:textSize="14sp" />
 

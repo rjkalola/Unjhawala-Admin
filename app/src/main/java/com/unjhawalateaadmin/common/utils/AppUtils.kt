@@ -43,10 +43,7 @@ import com.unjhawalateaadmin.common.data.model.FcmData
 import com.unjhawalateaadmin.common.ui.activity.BaseActivity
 import com.unjhawalateaadmin.common.ui.activity.WebViewActivity
 import com.imateplus.utilities.callback.DialogButtonClickListener
-import com.imateplus.utilities.utils.AlertDialogHelper
-import com.imateplus.utilities.utils.DateFormatsConstants
-import com.imateplus.utilities.utils.DateHelper
-import com.imateplus.utilities.utils.StringHelper
+import com.imateplus.utilities.utils.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import java.io.File
@@ -982,4 +979,29 @@ object AppUtils {
     fun getDeviceUniqueId(mContext: Context): String {
         return Settings.Secure.getString(mContext.contentResolver, Settings.Secure.ANDROID_ID)
     }
+
+    fun Uri?.convertUriToFile(context: Context, path: String): File {
+        val inputStream = context.contentResolver.openInputStream(this!!)
+        val outputStream: OutputStream = FileOutputStream(path)
+        val buffer = ByteArray(1024)
+        var bytesRead: Int
+        while (inputStream!!.read(buffer).also { bytesRead = it } != -1) {
+            outputStream.write(buffer, 0, bytesRead)
+        }
+        inputStream.close()
+        outputStream.close()
+
+        return File(path)
+    }
+
+    fun showMessage(mContext:Context,message:String){
+        if (!StringHelper.isEmpty(message))
+            ToastHelper.normal(
+                mContext,
+                message,
+                Toast.LENGTH_SHORT,
+                false
+            )
+    }
+
 }

@@ -1,10 +1,13 @@
 package com.unjhawalateaadmin.dashboard.ui.activity
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,12 +18,11 @@ import com.unjhawalateaadmin.common.ui.activity.BaseActivity
 import com.unjhawalateaadmin.common.utils.AppConstants
 import com.unjhawalateaadmin.common.utils.AppUtils
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
-import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaConfigurationAdapter
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaSamplesAdapter
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
-import com.unjhawalateaadmin.databinding.ActivityTeaConfigurationListBinding
 import com.unjhawalateaadmin.databinding.ActivityTeaSampleListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.parceler.Parcels
 
 
 class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListener {
@@ -90,7 +92,7 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
             binding.rvUsers.visibility = View.VISIBLE
             binding.txtEmptyPlaceHolder.visibility = View.GONE
             binding.rvUsers.setHasFixedSize(true)
-            adapter = TeaSamplesAdapter(mContext, list,this)
+            adapter = TeaSamplesAdapter(mContext, list, this)
             binding.rvUsers.adapter = adapter
             val linearLayoutManager =
                 LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
@@ -182,9 +184,29 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
                  }
              }
          }*/
-
+        
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
 //        showOrderHistoryItemsDialog(adapter!!.list[position])
+        if (action == AppConstants.Action.EDIT_TEA_SAMPLE) {
+            val intent = Intent(mContext, AddTeaSampleActivity::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable(
+                AppConstants.IntentKey.TEA_SAMPLE_INFO,
+                Parcels.wrap<TeaSampleInfo>(adapter!!.list[position])
+            )
+            intent.putExtras(bundle)
+            addTeaSampleResultActivity.launch(intent)
+        } else if (action == AppConstants.Action.ADD_TEA_SAMPLE_TESTING) {
+            val intent = Intent(mContext, AddTeaSampleTestingActivity::class.java)
+            val bundle = Bundle()
+            bundle.putParcelable(
+                AppConstants.IntentKey.TEA_SAMPLE_INFO,
+                Parcels.wrap<TeaSampleInfo>(adapter!!.list[position])
+            )
+            intent.putExtras(bundle)
+            startActivity(intent)
+//            addTeaSampleResultActivity.launch(intent)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -196,21 +218,21 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_add -> {
-
+                val intent = Intent(mContext, AddTeaSampleActivity::class.java)
+                addTeaSampleResultActivity.launch(intent)
             }
         }
         return super.onOptionsItemSelected(item)
     }
 
-    /* var pendingMemberResultActivity =
-         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-             if (result != null
-                 && result.resultCode == Activity.RESULT_OK
-             ) {
-                 isUpdated = true
-                 loadData(true, true, true, true, true)
-             }
-         }
- */
+    var addTeaSampleResultActivity =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result != null
+                && result.resultCode == Activity.RESULT_OK
+            ) {
+                loadData(true, true, true)
+            }
+        }
+
 
 }

@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
+import com.unjhawalateaadmin.common.utils.AppConstants
 import com.unjhawalateaadmin.dashboard.data.model.ConfigurationItemInfo
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
 import com.unjhawalateaadmin.databinding.RowTeaConfigurationBinding
@@ -36,10 +37,12 @@ class TeaSamplesAdapter(
         val itemViewHolder = holder as ItemViewHolder
         val info = list[position]
         itemViewHolder.getData(info)
-        itemViewHolder.binding.routMainView.setOnClickListener {
-//            listener!!.onSelectItem(position, AppConstants.Action.RETAILER_DETAILS, 0)
+        itemViewHolder.binding.imgEdit.setOnClickListener {
+            listener!!.onSelectItem(position, AppConstants.Action.EDIT_TEA_SAMPLE, 0)
         }
-
+        itemViewHolder.binding.imgFilter.setOnClickListener {
+            listener!!.onSelectItem(position, AppConstants.Action.ADD_TEA_SAMPLE_TESTING, 0)
+        }
     }
 
     override fun getItemCount(): Int {

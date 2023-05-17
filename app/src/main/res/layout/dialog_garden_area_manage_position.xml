@@ -88,7 +88,7 @@
                             style="@style/SmallFont"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/img_login_button_bg"
+                            android:background="@drawable/img_primary_button_bg"
                             android:fontFamily="@font/be_vietnam_bold"
                             android:gravity="center"
                             android:text="@string/save"
