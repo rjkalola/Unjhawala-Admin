@@ -375,6 +375,49 @@ class DashboardRepositoryImp(
         note: RequestBody,
         image: MultipartBody.Part?
     ): BaseResponse {
-        return dashboardInterface.storeTeaSampleTesting(id, lu_tea_personal_grade_id, lu_tea_cutting_id, lu_tea_colour_id, lu_tea_density_id, lu_tea_source_level_1_id, lu_tea_source_level_2_id, lu_tea_source_level_3_id, lu_tea_season_detail_id, our_quality_id, lu_tea_product_preference_id, manufacturer_date, note, image)
+        return dashboardInterface.storeTeaSampleTesting(
+            id,
+            lu_tea_personal_grade_id,
+            lu_tea_cutting_id,
+            lu_tea_colour_id,
+            lu_tea_density_id,
+            lu_tea_source_level_1_id,
+            lu_tea_source_level_2_id,
+            lu_tea_source_level_3_id,
+            lu_tea_season_detail_id,
+            our_quality_id,
+            lu_tea_product_preference_id,
+            manufacturer_date,
+            note,
+            image
+        )
+    }
+
+    override suspend fun availableTeaSampleList(search: RequestBody): AvailableTeaSampleListResponse {
+        return dashboardInterface.availableTeaSampleList(search)
+    }
+
+    override suspend fun getAvailableTeaSampleConfiguration(): AvailableTeaSampleConfigurationResponse {
+        return dashboardInterface.getAvailableTeaSampleConfiguration()
+    }
+
+    override suspend fun storeTeaConfirmation(
+        vendor_id: RequestBody,
+        created_date: RequestBody,
+        records: RequestBody,
+        file: MultipartBody.Part?
+    ): BaseResponse {
+        return dashboardInterface.storeTeaConfirmation(vendor_id, created_date, records, file)
+    }
+
+    override suspend fun getTeaConfirmationList(
+        limit: RequestBody,
+        offset: RequestBody
+    ): AvailableTeaSampleListResponse {
+        return dashboardInterface.getTeaConfirmationList(limit, offset)
+    }
+
+    override suspend fun getTeaConfirmationGradeList(): AvailableTeaSampleListResponse {
+        return dashboardInterface.getTeaConfirmationGradeList()
     }
 }

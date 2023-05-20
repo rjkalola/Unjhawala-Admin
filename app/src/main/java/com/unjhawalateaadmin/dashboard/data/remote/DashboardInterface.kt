@@ -4,7 +4,9 @@ import com.unjhawalateaadmin.common.data.model.BaseResponse
 import com.unjhawalateaadmin.dashboard.data.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Call
 import retrofit2.http.*
+
 
 interface DashboardInterface {
     @GET("dashboard")
@@ -415,5 +417,35 @@ interface DashboardInterface {
         @Part("note") note: RequestBody,
         @Part image: MultipartBody.Part?,
     ): BaseResponse
+
+    @Multipart
+    @POST("tea-confirmation/available-tea-sample")
+    suspend fun availableTeaSampleList(
+        @Part("search") search: RequestBody,
+    ): AvailableTeaSampleListResponse
+
+    @GET("tea-confirmation/configuration")
+    suspend fun getAvailableTeaSampleConfiguration(
+    ): AvailableTeaSampleConfigurationResponse
+
+    @Multipart
+    @POST("tea-confirmation/store")
+    suspend fun storeTeaConfirmation(
+        @Part("vendor_id") vendor_id: RequestBody,
+        @Part("created_date") created_date: RequestBody,
+        @Part("records") records: RequestBody,
+        @Part file: MultipartBody.Part?,
+    ): BaseResponse
+
+    @Multipart
+    @POST("tea-confirmation/lists")
+    suspend fun getTeaConfirmationList(
+        @Part("limit") limit: RequestBody,
+        @Part("offset") offset: RequestBody,
+    ): AvailableTeaSampleListResponse
+
+    @POST("tea-confirmation/grade-list")
+    suspend fun getTeaConfirmationGradeList(
+    ): AvailableTeaSampleListResponse
 }
 

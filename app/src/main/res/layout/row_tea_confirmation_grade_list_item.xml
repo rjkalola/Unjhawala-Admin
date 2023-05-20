@@ -1,0 +1,49 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    <variable
+        name="info"
+        type="com.unjhawalateaadmin.dashboard.data.model.AvailableTeaSampleInfo" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/routMainView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/size_16dp"
+        android:layout_marginTop="@dimen/size_6dp"
+        android:layout_marginEnd="@dimen/size_16dp"
+        android:layout_marginBottom="@dimen/size_6dp"
+        android:background="@drawable/img_tea_confirm_grade_bg1"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/size_14dp"
+        android:paddingTop="@dimen/size_12dp"
+        android:paddingEnd="@dimen/size_14dp"
+        android:paddingBottom="@dimen/size_12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:includeFontPadding="false"
+            android:text="@{info.grade_name}"
+            android:textColor="@color/colorPrimaryText2"
+            android:textSize="14sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/be_vietnam_bold"
+            android:includeFontPadding="false"
+            android:text="@{info.total_quantity}"
+            android:textColor="@color/colorPrimaryText2"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</layout>

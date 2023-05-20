@@ -1,6 +1,5 @@
 package com.unjhawalateaadmin.dashboard.ui.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -38,6 +37,10 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
     val teaSampleConfigurationResponse = MutableLiveData<TeaSampleConfigurationResponse>()
     val storeTeaSampleResponse = MutableLiveData<BaseResponse>()
     val storeTeaSampleTestingResponse = MutableLiveData<BaseResponse>()
+    val mAvailableTeaSampleListResponse = MutableLiveData<AvailableTeaSampleListResponse>()
+    val mAvailableTeaSampleConfigurationResponse =
+        MutableLiveData<AvailableTeaSampleConfigurationResponse>()
+    val storeAvailableTeaSample = MutableLiveData<BaseResponse>()
 
     fun getDashboardResponse() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -523,4 +526,110 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         }
     }
 
+    fun getAvailableTeaSampleList(search: String) {
+        val searchBody: RequestBody = AppUtils.getRequestBody(search)
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var response: AvailableTeaSampleListResponse =
+                    dashboardRepository.availableTeaSampleList(searchBody)
+                withContext(Dispatchers.Main) {
+                    mAvailableTeaSampleListResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getAvailableTeaSampleConfigurationResponse() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var response: AvailableTeaSampleConfigurationResponse =
+                    dashboardRepository.getAvailableTeaSampleConfiguration()
+                withContext(Dispatchers.Main) {
+                    mAvailableTeaSampleConfigurationResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun storeTeaConfirmation(vendorId: String,date: String,imagePath: String,records: String) {
+        val vendorIdBody: RequestBody = AppUtils.getRequestBody(vendorId)
+        val dateBody: RequestBody = AppUtils.getRequestBody(date)
+        val recordsBody: RequestBody = AppUtils.getRequestBody(records)
+        var image: MultipartBody.Part? = null
+        if (!StringHelper.isEmpty(imagePath) && !imagePath.startsWith("http")) {
+            val file = File(imagePath)
+            val requestBody = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+            image = MultipartBody.Part.createFormData("file", file.name, requestBody)
+        }
+
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var response: BaseResponse =
+                    dashboardRepository.storeTeaConfirmation(vendorIdBody,dateBody,recordsBody,image)
+                withContext(Dispatchers.Main) {
+                    storeAvailableTeaSample.value = response
+                }
+            } catch (e: JSONException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                e.printStackTrace()
+                traceErrorException(e)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getTeaConfirmationList(limit: Int,offset:Int) {
+        val limitBody: RequestBody = AppUtils.getRequestBody(limit.toString())
+        val offsetBody: RequestBody = AppUtils.getRequestBody(offset.toString())
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var response: AvailableTeaSampleListResponse =
+                    dashboardRepository.getTeaConfirmationList(limitBody,offsetBody)
+                withContext(Dispatchers.Main) {
+                    mAvailableTeaSampleListResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
+
+    fun getTeaConfirmationGradeList() {
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                var response: AvailableTeaSampleListResponse =
+                    dashboardRepository.getTeaConfirmationGradeList()
+                withContext(Dispatchers.Main) {
+                    mAvailableTeaSampleListResponse.value = response
+                }
+            } catch (e: JSONException) {
+                traceErrorException(e)
+            } catch (e: CancellationException) {
+                traceErrorException(e)
+            } catch (e: Exception) {
+                traceErrorException(e)
+            }
+        }
+    }
 }

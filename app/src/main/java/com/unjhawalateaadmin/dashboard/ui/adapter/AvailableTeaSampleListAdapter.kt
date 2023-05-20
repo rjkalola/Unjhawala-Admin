@@ -9,16 +9,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
 import com.unjhawalateaadmin.common.utils.AppConstants
+import com.unjhawalateaadmin.dashboard.data.model.AvailableTeaSampleInfo
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
-import com.unjhawalateaadmin.databinding.RowTeaSampleListItemBinding
+import com.unjhawalateaadmin.databinding.RowAvailableTeaSampleListItemBinding
 
 
-class TeaSamplesAdapter(
+class AvailableTeaSampleListAdapter(
     var mContext: Context,
-    var list: MutableList<TeaSampleInfo>,
+    var list: MutableList<AvailableTeaSampleInfo>,
     var listener: SelectItemListener?,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private var listAll: MutableList<TeaSampleInfo> = ArrayList()
+    private var listAll: MutableList<AvailableTeaSampleInfo> = ArrayList()
 
     init {
         this.listAll.addAll(list)
@@ -27,7 +28,7 @@ class TeaSamplesAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemView: View =
             LayoutInflater.from(parent.context)
-                .inflate(R.layout.row_tea_sample_list_item, parent, false)
+                .inflate(R.layout.row_available_tea_sample_list_item, parent, false)
         return ItemViewHolder(itemView)
     }
 
@@ -35,11 +36,8 @@ class TeaSamplesAdapter(
         val itemViewHolder = holder as ItemViewHolder
         val info = list[position]
         itemViewHolder.getData(info)
-        itemViewHolder.binding.imgEdit.setOnClickListener {
-            listener!!.onSelectItem(position, AppConstants.Action.EDIT_TEA_SAMPLE, 0)
-        }
-        itemViewHolder.binding.imgFilter.setOnClickListener {
-            listener!!.onSelectItem(position, AppConstants.Action.ADD_TEA_SAMPLE_TESTING, 0)
+        itemViewHolder.binding.routMainView.setOnClickListener {
+            listener!!.onSelectItem(position, AppConstants.Action.ADD_TEA_SAMPLE_Quantity, 0)
         }
     }
 
@@ -57,18 +55,18 @@ class TeaSamplesAdapter(
 
     private inner class ItemViewHolder(itemView: View) :
         RecyclerView.ViewHolder(itemView) {
-        var binding: RowTeaSampleListItemBinding = DataBindingUtil.bind(itemView)!!
-        fun getData(info: TeaSampleInfo?) {
+        var binding: RowAvailableTeaSampleListItemBinding = DataBindingUtil.bind(itemView)!!
+        fun getData(info: AvailableTeaSampleInfo?) {
             binding.info = info
         }
 
     }
 
-    fun addData(list: MutableList<TeaSampleInfo>) {
-        listAll.addAll(list)
-        this.list.clear()
-        this.list.addAll(listAll)
-        notifyDataSetChanged()
+    fun addData(list: MutableList<AvailableTeaSampleInfo>) {
+//        listAll.addAll(list)
+//        this.list.clear()
+//        this.list.addAll(listAll)
+//        notifyDataSetChanged()
     }
 
 }

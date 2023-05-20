@@ -238,6 +238,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/total_quantity_in_kg_mandatory"
                         android:imeOptions="actionDone"
+                        android:focusable="false"
                         android:inputType="number"
                         android:text="@={info.total_quantity}"
                         android:textSize="@dimen/text_size_15sp" />

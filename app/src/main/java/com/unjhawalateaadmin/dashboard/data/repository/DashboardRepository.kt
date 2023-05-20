@@ -304,4 +304,26 @@ interface DashboardRepository {
         note: RequestBody,
         image: MultipartBody.Part?,
     ): BaseResponse
+
+    suspend fun availableTeaSampleList(
+        search: RequestBody,
+    ): AvailableTeaSampleListResponse
+
+    suspend fun getAvailableTeaSampleConfiguration(
+    ): AvailableTeaSampleConfigurationResponse
+
+    suspend fun storeTeaConfirmation(
+        vendor_id: RequestBody,
+        created_date: RequestBody,
+        records: RequestBody,
+        file: MultipartBody.Part?,
+    ): BaseResponse
+
+    suspend fun getTeaConfirmationList(
+        limit: RequestBody,
+        offset: RequestBody,
+    ): AvailableTeaSampleListResponse
+
+    suspend fun getTeaConfirmationGradeList(
+    ): AvailableTeaSampleListResponse
 }

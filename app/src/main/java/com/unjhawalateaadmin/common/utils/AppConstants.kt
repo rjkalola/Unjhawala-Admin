@@ -39,6 +39,7 @@ object AppConstants {
         const val CROP_RATIO_Y = "crop_ratio_Y"
         const val FILE_EXTENSION = "file_extension"
         const val TEA_SAMPLE_INFO = "TEA_SAMPLE_INFO"
+        const val AVAILABLE_TEA_SAMPLE_DATA = "AVAILABLE_TEA_SAMPLE_DATA"
 
         const val CAMERA_PERMISSION = 1
         const val REQUEST_CROP_IMAGE = 2
@@ -121,8 +122,8 @@ object AppConstants {
         const val SELECT_PDF = 7
         const val SELECT_GALLERY_IMAGE = 8
         const val SELECT_CAMERA_IMAGE = 9
-
-
+        const val ADD_TEA_SAMPLE_Quantity = 10
+        const val DELETE_TEA_SAMPLE_Quantity = 11
     }
 
     object UserType {

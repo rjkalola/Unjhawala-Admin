@@ -65,6 +65,7 @@ class HomeFragment : BaseFragment(), View.OnClickListener, EasyPermissions.Permi
 
         binding.routTeaConfiguration.setOnClickListener(this)
         binding.routTeaSample.setOnClickListener(this)
+        binding.routTeaConfirmation.setOnClickListener(this)
 
         return binding.root
     }
@@ -81,6 +82,13 @@ class HomeFragment : BaseFragment(), View.OnClickListener, EasyPermissions.Permi
             R.id.routTeaSample -> moveActivity(
                 mContext,
                 TeaSamplesActivity::class.java,
+                false,
+                false,
+                null
+            )
+            R.id.routTeaConfirmation -> moveActivity(
+                mContext,
+                TeaConfirmationListActivity::class.java,
                 false,
                 false,
                 null

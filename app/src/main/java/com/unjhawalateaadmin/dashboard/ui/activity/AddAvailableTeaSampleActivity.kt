@@ -15,6 +15,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import com.google.gson.Gson
 import com.imateplus.imagepickers.models.FileWithPath
 import com.imateplus.imagepickers.pickiT.PickiTCallbacks
 import com.imateplus.imagepickers.utils.Constant
@@ -26,6 +27,7 @@ import com.imateplus.utilities.utils.DateFormatsConstants
 import com.imateplus.utilities.utils.StringHelper
 import com.imateplus.utilities.utils.ValidationUtil
 import com.unjhawalateaadmin.BuildConfig
+import com.unjhawalateaadmin.MyApplication
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectAttachmentListener
 import com.unjhawalateaadmin.common.callback.SelectItemListener
@@ -36,12 +38,10 @@ import com.unjhawalateaadmin.common.utils.AppConstants
 import com.unjhawalateaadmin.common.utils.AppUtils
 import com.unjhawalateaadmin.common.utils.AppUtils.convertUriToFile
 import com.unjhawalateaadmin.common.utils.ImagePickerUtility
-import com.unjhawalateaadmin.dashboard.data.model.TeaSampleConfigurationResponse
-import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
-import com.unjhawalateaadmin.dashboard.data.model.TeaSampleTestingInfo
+import com.unjhawalateaadmin.dashboard.data.model.*
 import com.unjhawalateaadmin.dashboard.ui.dialog.SelectItemBottomSheetDialog
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
-import com.unjhawalateaadmin.databinding.ActivityAddTeaSampleTestingBinding
+import com.unjhawalateaadmin.databinding.ActivityAddAvailableTeaSampleBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.parceler.Parcels
 import pub.devrel.easypermissions.AppSettingsDialog
@@ -51,22 +51,22 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 
-
-class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, SelectItemListener,
+class AddAvailableTeaSampleTestingActivity : BaseActivity(), View.OnClickListener,
+    SelectItemListener,
     OnDateSetListener, SelectAttachmentListener, EasyPermissions.PermissionCallbacks,
     PickiTCallbacks {
-    private lateinit var binding: ActivityAddTeaSampleTestingBinding
+    private lateinit var binding: ActivityAddAvailableTeaSampleBinding
     private lateinit var mContext: Context
     private val dashboardViewModel: DashboardViewModel by viewModel()
     private lateinit var selectItemBottomSheetDialog: SelectItemBottomSheetDialog
-    private lateinit var teaSampleConfigurationResponse: TeaSampleConfigurationResponse
+    private lateinit var teaSampleConfigurationResponse: AvailableTeaSampleConfigurationResponse
     lateinit var teaSampleInfo: TeaSampleInfo
-    lateinit var addTeaSampleTestingInfo: TeaSampleTestingInfo
-    var levelFirstList: MutableList<ModuleInfo> = ArrayList()
-    var levelSecondList: MutableList<ModuleInfo> = ArrayList()
     private var currentPhotoPath: String = ""
     private var imagePath: String = ""
+    private var selectedImagePath: String = ""
+    private var vendorId: String = ""
     private lateinit var imagePickerUtility: ImagePickerUtility;
+    private lateinit var data: AvailableTeaSampleListResponse
     private var fileAction = 0;
     lateinit var fileUri: Uri
 
@@ -74,25 +74,18 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
         super.onCreate(savedInstanceState)
         setStatusBarColor()
         mContext = this
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_tea_sample_testing)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_available_tea_sample)
         mContext = this
         setStatusBarColor(resources.getColor(R.color.colorAccentLight))
+        setupToolbar(getString(R.string.add_details), true)
         imagePickerUtility = ImagePickerUtility(this, this, this)
+
         getTeaSampleConfigurationResponseObservers()
         storeTeaSampleResponseObservers()
 
-        binding.txtAdd.setOnClickListener(this)
-        binding.edtPersonalGrade.setOnClickListener(this)
-        binding.edtCutting.setOnClickListener(this)
-        binding.edtColour.setOnClickListener(this)
-        binding.edtDensity.setOnClickListener(this)
-        binding.edtSourceLevel1.setOnClickListener(this)
-        binding.edtSourceLevel2.setOnClickListener(this)
-        binding.edtSourceLevel3.setOnClickListener(this)
-        binding.edtSeasonAndQuality.setOnClickListener(this)
-        binding.edtOurQuality.setOnClickListener(this)
-        binding.edtTeaPreference.setOnClickListener(this)
-        binding.edtMFGDate.setOnClickListener(this)
+        binding.txtSave.setOnClickListener(this)
+        binding.edtVendor.setOnClickListener(this)
+        binding.edtDate.setOnClickListener(this)
         binding.routSelectAttachment.setOnClickListener(this)
 
         getIntentData()
@@ -100,100 +93,38 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
     }
 
     private fun getIntentData() {
-        if (intent.extras != null && intent.hasExtra(AppConstants.IntentKey.TEA_SAMPLE_INFO)) {
-            teaSampleInfo = Parcels.unwrap<TeaSampleInfo?>(
-                intent?.getParcelableExtra(AppConstants.IntentKey.TEA_SAMPLE_INFO)
+        if (intent.extras != null && intent.hasExtra(AppConstants.IntentKey.AVAILABLE_TEA_SAMPLE_DATA)) {
+            data = Parcels.unwrap<AvailableTeaSampleListResponse?>(
+                intent?.getParcelableExtra(AppConstants.IntentKey.AVAILABLE_TEA_SAMPLE_DATA)
             )
-            setupToolbar(teaSampleInfo.vendor_name, true)
-            binding.info = teaSampleInfo
+            showCustomProgressDialog(binding.progressBarView.routProgress)
+            dashboardViewModel.getAvailableTeaSampleConfigurationResponse()
         }
-        addTeaSampleTestingInfo = TeaSampleTestingInfo()
-        showCustomProgressDialog(binding.progressBarView.routProgress)
-        dashboardViewModel.getTeaSampleConfigurationResponse()
     }
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.txtAdd ->
+            R.id.txtSave ->
                 if (valid()) {
-                    addTeaSampleTestingInfo.id = teaSampleInfo._id
-                    addTeaSampleTestingInfo.note = binding.edtNotes.text.toString().trim()
+                    val gson: Gson = (mContext.applicationContext as MyApplication).provideGson()
                     showProgressDialog(mContext, "")
-                    dashboardViewModel.storeTeaSampleTestingResponse(addTeaSampleTestingInfo)
+                    dashboardViewModel.storeTeaConfirmation(
+                        vendorId,
+                        binding.edtDate.text.toString().trim(),
+                        selectedImagePath,
+                        gson.toJson(data.Data)
+                    )
                 }
-            R.id.edtPersonalGrade -> if (teaSampleConfigurationResponse.grades.isNotEmpty()) {
+            R.id.edtVendor -> if (teaSampleConfigurationResponse.vendors.isNotEmpty()) {
                 showSelectItemDialog(
-                    teaSampleConfigurationResponse.grades,
-                    getString(R.string.select_personal_grade),
-                    AppConstants.DialogIdentifier.SELECT_GRADE
+                    teaSampleConfigurationResponse.vendors,
+                    getString(R.string.select_vendor),
+                    AppConstants.DialogIdentifier.SELECT_VENDOR
                 )
             }
-            R.id.edtCutting -> if (teaSampleConfigurationResponse.cuttings.isNotEmpty()) {
-                showSelectItemDialog(
-                    teaSampleConfigurationResponse.cuttings,
-                    getString(R.string.select_cutting),
-                    AppConstants.DialogIdentifier.SELECT_CUTTING
-                )
-            }
-            R.id.edtColour -> if (teaSampleConfigurationResponse.colours.isNotEmpty()) {
-                showSelectItemDialog(
-                    teaSampleConfigurationResponse.colours,
-                    getString(R.string.select_colour),
-                    AppConstants.DialogIdentifier.SELECT_COLOUR
-                )
-            }
-            R.id.edtDensity -> if (teaSampleConfigurationResponse.densities.isNotEmpty()) {
-                showSelectItemDialog(
-                    teaSampleConfigurationResponse.densities,
-                    getString(R.string.select_density),
-                    AppConstants.DialogIdentifier.SELECT_DENSITY
-                )
-            }
-            R.id.edtSourceLevel1 -> if (teaSampleConfigurationResponse.sources.isNotEmpty()) {
-                showSelectItemDialog(
-                    teaSampleConfigurationResponse.sources,
-                    getString(R.string.select_tea_source_level_1),
-                    AppConstants.DialogIdentifier.SELECT_TEA_SOURCE_LEVEL_1
-                )
-            }
-            R.id.edtSourceLevel2 -> if (levelFirstList.isNotEmpty()) {
-                showSelectItemDialog(
-                    levelFirstList,
-                    getString(R.string.select_tea_source_level_2),
-                    AppConstants.DialogIdentifier.SELECT_TEA_SOURCE_LEVEL_2
-                )
-            }
-            R.id.edtSourceLevel3 -> if (levelSecondList.isNotEmpty()) {
-                showSelectItemDialog(
-                    levelSecondList,
-                    getString(R.string.select_tea_source_level_3),
-                    AppConstants.DialogIdentifier.SELECT_TEA_SOURCE_LEVEL_3
-                )
-            }
-            R.id.edtSeasonAndQuality -> if (teaSampleConfigurationResponse.seasons.isNotEmpty()) {
-                showSelectItemDialog(
-                    teaSampleConfigurationResponse.seasons,
-                    getString(R.string.select_season_and_quality),
-                    AppConstants.DialogIdentifier.SELECT_SEASON_AND_QUALITY
-                )
-            }
-            R.id.edtOurQuality -> if (teaSampleConfigurationResponse.qualities.isNotEmpty()) {
-                showSelectItemDialog(
-                    teaSampleConfigurationResponse.qualities,
-                    getString(R.string.select_our_quality),
-                    AppConstants.DialogIdentifier.SELECT_OUR_QUALITY
-                )
-            }
-            R.id.edtTeaPreference -> if (teaSampleConfigurationResponse.preferences.isNotEmpty()) {
-                showSelectItemDialog(
-                    teaSampleConfigurationResponse.preferences,
-                    getString(R.string.select_tea_preference),
-                    AppConstants.DialogIdentifier.SELECT_TEA_PREFERENCE
-                )
-            }
-            R.id.edtMFGDate -> {
-                if (!StringHelper.isEmpty(binding.edtMFGDate.text.toString())) {
-                    val date = binding.edtMFGDate.text.toString()
+            R.id.edtDate -> {
+                if (!StringHelper.isEmpty(binding.edtDate.text.toString())) {
+                    val date = binding.edtDate.text.toString()
                     showDatePicker(
                         0,
                         0,
@@ -218,45 +149,23 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
     private fun valid(): Boolean {
         var valid = true
 
-        if (!ValidationUtil.isEmptyEditText(binding.edtPersonalGrade.text.toString().trim())) {
-            binding.layoutPersonalGrade.isErrorEnabled = false
-            binding.edtPersonalGrade.error = null
+        if (!ValidationUtil.isEmptyEditText(binding.edtVendor.text.toString().trim())) {
+            binding.layoutVendor.isErrorEnabled = false
+            binding.edtVendor.error = null
         } else {
             ValidationUtil.setErrorIntoInputTextLayout(
-                binding.edtPersonalGrade, binding.layoutPersonalGrade,
+                binding.edtVendor, binding.layoutVendor,
                 getString(R.string.empty_edittext_error)
             )
             valid = false
         }
 
-        if (!ValidationUtil.isEmptyEditText(binding.edtCutting.text.toString().trim())) {
-            binding.layoutCutting.isErrorEnabled = false
-            binding.edtCutting.error = null
+        if (!ValidationUtil.isEmptyEditText(binding.edtDate.text.toString().trim())) {
+            binding.layoutDate.isErrorEnabled = false
+            binding.edtDate.error = null
         } else {
             ValidationUtil.setErrorIntoInputTextLayout(
-                binding.edtCutting, binding.layoutCutting,
-                getString(R.string.empty_edittext_error)
-            )
-            valid = false
-        }
-
-        if (!ValidationUtil.isEmptyEditText(binding.edtColour.text.toString().trim())) {
-            binding.layoutColour.isErrorEnabled = false
-            binding.edtColour.error = null
-        } else {
-            ValidationUtil.setErrorIntoInputTextLayout(
-                binding.edtColour, binding.layoutColour,
-                getString(R.string.empty_edittext_error)
-            )
-            valid = false
-        }
-
-        if (!ValidationUtil.isEmptyEditText(binding.edtDensity.text.toString().trim())) {
-            binding.layoutDensity.isErrorEnabled = false
-            binding.edtDensity.error = null
-        } else {
-            ValidationUtil.setErrorIntoInputTextLayout(
-                binding.edtDensity, binding.layoutDensity,
+                binding.edtDate, binding.layoutDate,
                 getString(R.string.empty_edittext_error)
             )
             valid = false
@@ -266,7 +175,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
     }
 
     private fun getTeaSampleConfigurationResponseObservers() {
-        dashboardViewModel.teaSampleConfigurationResponse.observe(this) { response ->
+        dashboardViewModel.mAvailableTeaSampleConfigurationResponse.observe(this) { response ->
             hideCustomProgressDialog(binding.progressBarView.routProgress)
             hideProgressDialog()
             try {
@@ -296,7 +205,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
     }
 
     private fun storeTeaSampleResponseObservers() {
-        dashboardViewModel.storeTeaSampleTestingResponse.observe(this) { response ->
+        dashboardViewModel.storeAvailableTeaSample.observe(this) { response ->
             hideCustomProgressDialog(binding.progressBarView.routProgress)
             hideProgressDialog()
             try {
@@ -314,8 +223,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                 } else {
                     if (response.IsSuccess) {
                         AppUtils.showMessage(mContext, response.Message!!)
-                        setResult(Activity.RESULT_OK)
-                        finish()
+                        moveActivity(mContext, DashBoardActivity::class.java, true, true, null)
                     } else {
                         AppUtils.handleUnauthorized(mContext, response)
                     }
@@ -337,92 +245,10 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
     }
 
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
-        if (action == AppConstants.DialogIdentifier.SELECT_GRADE) {
+        if (action == AppConstants.DialogIdentifier.SELECT_VENDOR) {
             selectItemBottomSheetDialog.dismiss()
-            binding.edtPersonalGrade.setText(teaSampleConfigurationResponse.grades[position].name)
-            addTeaSampleTestingInfo.lu_tea_personal_grade_id =
-                teaSampleConfigurationResponse.grades[position]._id
-
-            Log.e(
-                "test",
-                "teaSampleConfigurationResponse.grades[position]._id:" + teaSampleConfigurationResponse.grades[position]._id
-            )
-            Log.e(
-                "test",
-                "addTeaSampleTestingInfo.lu_tea_personal_grade_id:" + addTeaSampleTestingInfo.lu_tea_personal_grade_id
-            )
-        } else if (action == AppConstants.DialogIdentifier.SELECT_CUTTING) {
-            selectItemBottomSheetDialog.dismiss()
-            binding.edtCutting.setText(teaSampleConfigurationResponse.cuttings[position].name)
-            addTeaSampleTestingInfo.lu_tea_cutting_id =
-                teaSampleConfigurationResponse.cuttings[position]._id
-        } else if (action == AppConstants.DialogIdentifier.SELECT_COLOUR) {
-            selectItemBottomSheetDialog.dismiss()
-            binding.edtColour.setText(teaSampleConfigurationResponse.colours[position].name)
-            addTeaSampleTestingInfo.lu_tea_colour_id =
-                teaSampleConfigurationResponse.colours[position]._id
-        } else if (action == AppConstants.DialogIdentifier.SELECT_DENSITY) {
-            selectItemBottomSheetDialog.dismiss()
-            binding.edtDensity.setText(teaSampleConfigurationResponse.densities[position].name)
-            addTeaSampleTestingInfo.lu_tea_density_id =
-                teaSampleConfigurationResponse.densities[position]._id
-        } else if (action == AppConstants.DialogIdentifier.SELECT_TEA_SOURCE_LEVEL_1) {
-            selectItemBottomSheetDialog.dismiss()
-            binding.edtSourceLevel1.setText(teaSampleConfigurationResponse.sources[position].name)
-            addTeaSampleTestingInfo.lu_tea_source_level_1_id =
-                teaSampleConfigurationResponse.sources[position]._id
-
-            levelFirstList.clear()
-            levelSecondList.clear()
-
-            addTeaSampleTestingInfo.lu_tea_source_level_2_id = ""
-            addTeaSampleTestingInfo.lu_tea_source_level_3_id = ""
-
-            binding.edtSourceLevel2.setText("")
-            binding.edtSourceLevel3.setText("")
-
-            binding.layoutSourceLevel2.visibility = View.GONE
-            binding.layoutSourceLevel3.visibility = View.GONE
-
-            if (teaSampleConfigurationResponse.sources[position].first_levels.isNotEmpty()) {
-                binding.layoutSourceLevel2.visibility = View.VISIBLE
-                levelFirstList.addAll(teaSampleConfigurationResponse.sources[position].first_levels)
-            }
-
-        } else if (action == AppConstants.DialogIdentifier.SELECT_TEA_SOURCE_LEVEL_2) {
-            selectItemBottomSheetDialog.dismiss()
-            binding.edtSourceLevel2.setText(levelFirstList[position].name)
-            addTeaSampleTestingInfo.lu_tea_source_level_2_id = levelFirstList[position]._id
-
-            levelSecondList.clear()
-            addTeaSampleTestingInfo.lu_tea_source_level_3_id = ""
-            binding.edtSourceLevel3.setText("")
-
-            binding.layoutSourceLevel3.visibility = View.GONE
-
-            if (levelFirstList[position].second_levels.isNotEmpty()) {
-                binding.layoutSourceLevel3.visibility = View.VISIBLE
-                levelSecondList.addAll(levelFirstList[position].second_levels)
-            }
-        } else if (action == AppConstants.DialogIdentifier.SELECT_TEA_SOURCE_LEVEL_3) {
-            selectItemBottomSheetDialog.dismiss()
-            binding.edtSourceLevel3.setText(levelSecondList[position].name)
-            addTeaSampleTestingInfo.lu_tea_source_level_3_id = levelSecondList[position]._id
-        } else if (action == AppConstants.DialogIdentifier.SELECT_SEASON_AND_QUALITY) {
-            selectItemBottomSheetDialog.dismiss()
-            binding.edtSeasonAndQuality.setText(teaSampleConfigurationResponse.seasons[position].name)
-            addTeaSampleTestingInfo.lu_tea_season_detail_id =
-                teaSampleConfigurationResponse.seasons[position]._id
-        } else if (action == AppConstants.DialogIdentifier.SELECT_OUR_QUALITY) {
-            selectItemBottomSheetDialog.dismiss()
-            binding.edtOurQuality.setText(teaSampleConfigurationResponse.qualities[position].name)
-            addTeaSampleTestingInfo.our_quality_id =
-                teaSampleConfigurationResponse.qualities[position]._id
-        } else if (action == AppConstants.DialogIdentifier.SELECT_TEA_PREFERENCE) {
-            selectItemBottomSheetDialog.dismiss()
-            binding.edtTeaPreference.setText(teaSampleConfigurationResponse.preferences[position].name)
-            addTeaSampleTestingInfo.lu_tea_product_preference_id =
-                teaSampleConfigurationResponse.preferences[position]._id
+            binding.edtVendor.setText(teaSampleConfigurationResponse.vendors[position].name)
+            vendorId = teaSampleConfigurationResponse.vendors[position]._id
         }
     }
 
@@ -442,8 +268,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
             val date = Calendar.getInstance()
             date[year, month] = day
             val dateFormat = SimpleDateFormat(DateFormatsConstants.YYYY_MM_DD_DASH, Locale.US)
-            binding.edtMFGDate.setText(dateFormat.format(date.time))
-            addTeaSampleTestingInfo.manufacturer_date = dateFormat.format(date.time)
+            binding.edtDate.setText(dateFormat.format(date.time))
         }
     }
 
@@ -597,6 +422,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
         }
 
     private fun setUserImageFromFile(file: File) {
+        selectedImagePath = file.absolutePath
         binding.txtChooseAttachment.visibility = View.GONE
         if (file.absolutePath.endsWith(".pdf")) {
             binding.imgPdf.visibility = View.VISIBLE
@@ -663,5 +489,6 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
     ) {
 
     }
+
 
 }
