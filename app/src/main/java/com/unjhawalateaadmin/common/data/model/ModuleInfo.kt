@@ -7,9 +7,11 @@ import kotlinx.android.parcel.Parcelize
 class ModuleInfo(
     var id: Int = 0,
     var _id: String = "",
+    var key: String = "",
     var position: Int = 0,
     var name: String = "",
     var icon: Int = 0,
+    var label: String = "",
     var value: String = "",
     var count: Int = 0,
     var quantity: Int = 0,
@@ -23,4 +25,7 @@ class ModuleInfo(
     var check: Boolean = false,
     var first_levels: MutableList<ModuleInfo> = ArrayList(),
     var second_levels: MutableList<ModuleInfo> = ArrayList(),
+    var is_selected: Boolean = false,
+
+
 ) : Parcelable

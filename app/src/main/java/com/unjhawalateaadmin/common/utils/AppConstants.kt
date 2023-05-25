@@ -40,6 +40,8 @@ object AppConstants {
         const val FILE_EXTENSION = "file_extension"
         const val TEA_SAMPLE_INFO = "TEA_SAMPLE_INFO"
         const val AVAILABLE_TEA_SAMPLE_DATA = "AVAILABLE_TEA_SAMPLE_DATA"
+        const val TEA_SOURCE_LEVEL = "TEA_SOURCE_LEVEL"
+        const val ID = "ID"
 
         const val CAMERA_PERMISSION = 1
         const val REQUEST_CROP_IMAGE = 2
@@ -88,6 +90,11 @@ object AppConstants {
         const val SELECT_SEASON_AND_QUALITY = 15
         const val SELECT_OUR_QUALITY = 16
         const val SELECT_TEA_PREFERENCE = 17
+        const val SELECT_FIRST_LEVEL = 18
+        const val SELECT_SECOND_LEVEL = 19
+        const val CLEAR_FILTER = 20
+        const val TEA_SAMPLE_RATING = 21
+        const val SELECT_PERSONAL_GRADE = 22
 
         const val BIRTH_DATE = "BIRTH_DATE"
         const val SELECT_DATE = "SELECT_DATE"
@@ -124,6 +131,9 @@ object AppConstants {
         const val SELECT_CAMERA_IMAGE = 9
         const val ADD_TEA_SAMPLE_Quantity = 10
         const val DELETE_TEA_SAMPLE_Quantity = 11
+        const val EDIT_TEA_SOURCE = 12
+        const val DELETE_TEA_SOURCE = 13
+        const val VIEW_TEA_SAMPLE = 14
     }
 
     object UserType {
@@ -173,6 +183,10 @@ object AppConstants {
         const val RATE_PRINT_DEALER = 1
         const val RATE_PRINT_AGENCY = 2
         const val RATE_PRINT_RETAILER = 3
+
+        const val TEA_SOURCE_LEVEL_1 = 1
+        const val TEA_SOURCE_LEVEL_2 = 2
+        const val TEA_SOURCE_LEVEL_3 = 3
 
     }
 

@@ -280,7 +280,10 @@ interface DashboardRepository {
     suspend fun getTeaSampleList(
         limit: RequestBody,
         offset: RequestBody,
-        search: RequestBody
+        search: RequestBody,
+        filters: RequestBody,
+        start_date: RequestBody,
+        end_date: RequestBody,
     ): TeaSampleListResponse
 
     suspend fun getTeaSampleConfiguration(
@@ -302,6 +305,7 @@ interface DashboardRepository {
         lu_tea_product_preference_id: RequestBody,
         manufacturer_date: RequestBody,
         note: RequestBody,
+        rating: RequestBody,
         image: MultipartBody.Part?,
     ): BaseResponse
 
@@ -322,8 +326,52 @@ interface DashboardRepository {
     suspend fun getTeaConfirmationList(
         limit: RequestBody,
         offset: RequestBody,
+        search: RequestBody,
     ): AvailableTeaSampleListResponse
 
     suspend fun getTeaConfirmationGradeList(
     ): AvailableTeaSampleListResponse
+
+    suspend fun getTeaSourcesConfiguration(
+    ): TeaSourceLevelListResponse
+
+    suspend fun storeTeaSource(teaSourceLevelInfo: TeaSourceLevelInfo): BaseResponse
+
+    suspend fun deleteTeaSource(
+        limit: RequestBody,
+    ): BaseResponse
+
+    suspend fun getTeaTestedDataList(
+        limit: RequestBody,
+        offset: RequestBody,
+        search: RequestBody,
+    ): TeaTestedSampleListResponse
+
+    suspend fun teaTestingDataDetails(
+        id: RequestBody,
+    ): TeaTestedSampleDetailsResponse
+
+    suspend fun storeTeaTestedSample(
+        id: RequestBody,
+        lu_tea_personal_grade_id: RequestBody,
+        lu_tea_cutting_id: RequestBody,
+        lu_tea_colour_id: RequestBody,
+        lu_tea_density_id: RequestBody,
+        lu_tea_source_level_1_id: RequestBody,
+        lu_tea_source_level_2_id: RequestBody,
+        lu_tea_source_level_3_id: RequestBody,
+        lu_tea_season_detail_id: RequestBody,
+        our_quality_id: RequestBody,
+        lu_tea_product_preference_id: RequestBody,
+        manufacturer_date: RequestBody,
+        note: RequestBody,
+        rating: RequestBody,
+        image: MultipartBody.Part?,
+        vendor_id: RequestBody,
+        lu_garden_id: RequestBody,
+        lu_tea_grade_id: RequestBody,
+        bag: RequestBody,
+        weight: RequestBody,
+        rate: RequestBody,
+    ): BaseResponse
 }

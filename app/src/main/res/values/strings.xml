@@ -161,8 +161,9 @@
     <string name="cancel">Cancel</string>
     <string name="garden_area">Garden Area</string>
     <string name="add_garden_area">Add Garden Area</string>
-    <string name="area_compulsory">Area*</string>
-    <string name="name_compulsory">Name*</string>
+    <string name="add_tea_source">Add Tea Source</string>
+    <string name="area_compulsory">Area <font color='#FF0000'>*</font></string>
+    <string name="name_compulsory">Name <font color='#FF0000'>*</font></string>
     <string name="Status">Status</string>
     <string name="quality">Quality</string>
     <string name="disabled">Disabled</string>
@@ -198,6 +199,7 @@
     <string name="qty">Qty</string>
     <string name="save_and_add">Save &amp; Add</string>
     <string name="create_tea_sample">Create Tea Sample</string>
+    <string name="update_tea_sample">Update Tea Sample</string>
     <string name="select_vendor">Select Vendor</string>
     <string name="select_garden">Select Garden</string>
     <string name="select_grade">Select Grade</string>
@@ -211,7 +213,7 @@
     <string name="select_season_and_quality">Select Season &amp; Quality</string>
     <string name="select_our_quality">Select Our Quality</string>
     <string name="select_tea_preference">Select Tea Preference</string>
-
+    <string name="rate">Rate</string>
     <string name="personal_grade_mandatory">Personal Grade <font color='#FF0000'>*</font></string>
     <string name="cutting_mandatory">Cutting <font color='#FF0000'>*</font></string>
     <string name="colour_mandatory">Colour <font color='#FF0000'>*</font></string>
@@ -235,6 +237,25 @@
     <string name="grade">Grade</string>
     <string name="quantity">Quantity</string>
     <string name="tea_confirmed_grade_wise">Tea Confirmed Grade Wise</string>
+    <string name="name">Name</string>
+    <string name="action">Action</string>
+    <string name="tea_sources">Tea Sources</string>
+    <string name="level_1">Level 1</string>
+    <string name="level_2">Level 2</string>
+    <string name="level_3">Level 3</string>
+    <string name="first_level">First Level <font color='#FF0000'>*</font></string>
+    <string name="second_level">Second Level <font color='#FF0000'>*</font></string>
+    <string name="select_first_level">Select First Level</string>
+    <string name="select_second_level">Select Second Level</string>
+    <string name="tested_sample">Tested Samples</string>
+    <string name="type">Type</string>
+    <string name="filters">Filters</string>
+    <string name="reset">Reset</string>
+    <string name="apply">Apply</string>
+    <string name="msg_clear_filter">Are you sure you want to clear filter?</string>
+
+    <!--    <string name=""></string>-->
+    <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->

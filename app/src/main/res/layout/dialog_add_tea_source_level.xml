@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.unjhawalateaadmin.dashboard.data.model.TeaSourceLevelInfo" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/transfer_kg_dialog_bg">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="@dimen/size_16dp"
+                    android:paddingEnd="@dimen/size_9dp">
+
+                    <TextView
+                        android:id="@+id/txtTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="@dimen/size_15dp"
+                        android:layout_marginBottom="@dimen/size_15dp"
+                        android:fontFamily="@font/be_vietnam_medium"
+                        android:text="@string/add_tea_source"
+                        android:textColor="@color/colorPrimaryText"
+                        android:textSize="@dimen/text_size_18sp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgClose"
+                        android:layout_width="@dimen/size_36dp"
+                        android:layout_height="@dimen/size_36dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        app:srcCompat="@drawable/ic_close" />
+
+                </RelativeLayout>
+
+                <View
+                    style="@style/Divider"
+                    android:layout_height="0.2dp"
+                    android:layout_marginStart="@dimen/size_16dp"
+                    android:layout_marginEnd="@dimen/size_16dp"
+                    android:layout_marginBottom="@dimen/size_20dp"
+                    android:background="#BDBDBD" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutLevel1"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    android:visibility="gone"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtLevel1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/first_level"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:text="@{info.level_1_name}"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutLevel2"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    android:visibility="gone"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtLevel2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/second_level"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:text="@{info.level_2_name}"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/name_compulsory"
+                        android:imeOptions="actionDone"
+                        android:inputType="textCapWords"
+                        android:text="@{info.name}"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/btnSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/save_button_height_50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/size_14dp"
+                    android:layout_marginTop="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_14dp"
+                    android:layout_marginBottom="@dimen/size_20dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    app:mrl_rippleColor="@color/colorRippleColor"
+                    app:mrl_rippleDelayClick="true"
+                    app:mrl_rippleDuration="@string/ripple_duration"
+                    app:mrl_rippleHover="true"
+                    app:mrl_rippleOverlay="true">
+
+                    <TextView
+                        android:id="@+id/txtSave"
+                        style="@style/SmallFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/img_primary_button_bg"
+                        android:fontFamily="@font/be_vietnam_bold"
+                        android:gravity="center"
+                        android:text="@string/save"
+                        android:textColor="@color/colorPrimaryText" />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+    </RelativeLayout>
+
+
+</layout>

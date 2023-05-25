@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
@@ -58,6 +60,8 @@ class AvailableTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectI
         loadData(true, false, false)
 
         binding.txtViewAll.setOnClickListener {
+            adapter?.filter("")
+            binding.edtSearch.setText("")
             val intent = Intent(mContext, AvailableTeaSampleCartActivity::class.java)
             val data = AvailableTeaSampleListResponse()
             data.Data = adapter!!.list
@@ -70,6 +74,20 @@ class AvailableTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectI
             intent.putExtras(bundle)
             cartResultActivity.launch(intent)
         }
+
+        binding.edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                adapter?.filter(s.toString())
+            }
+        })
     }
 
     override fun onClick(v: View) {

@@ -41,6 +41,16 @@ class GardenAreaListAdapter(
         itemViewHolder.binding.routMainView.setOnClickListener {
 //            listener!!.onSelectItem(position, AppConstants.Action.RETAILER_DETAILS, 0)
         }
+
+        if (info.status == 1) {
+            itemViewHolder.binding.routMainView.setBackgroundResource(R.drawable.retailer_item_bg)
+            itemViewHolder.binding.txtTitle.alpha = 1f
+        } else {
+            itemViewHolder.binding.routMainView.setBackgroundResource(R.drawable.retailer_item_transparent_bg)
+            itemViewHolder.binding.txtTitle.alpha = 0.4f
+
+        }
+
         itemViewHolder.binding.txtEdit.setOnClickListener {
             listener!!.onSelectItem(position, AppConstants.Action.EDIT_CONFIGURATION_ITEM, 0)
         }

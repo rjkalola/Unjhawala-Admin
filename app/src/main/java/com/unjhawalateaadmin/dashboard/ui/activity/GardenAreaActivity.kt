@@ -89,9 +89,7 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
             }
 
             override fun afterTextChanged(s: Editable?) {
-                Log.e("test", "afterTextChanged")
                 if (!binding.swipeRefreshLayout.isRefreshing) {
-                    Log.e("test", "afterTextChanged222")
                     binding.progressSearchUser.visibility = View.VISIBLE
                     search = binding.edtSearch.text.toString().trim()
                     loadData(false, true, false)
@@ -148,7 +146,6 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         )
     }
 
-
     private fun setAdapter(list: MutableList<ConfigurationItemInfo>) {
         if (list.isNotEmpty()) {
             binding.recyclerView.visibility = View.VISIBLE
@@ -168,7 +165,7 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     }
 
     private fun enableSwipeToDeleteAndUndo() {
-        val swipeHandler = object : SwipeToDeleteCallback(this) {
+        val swipeHandler = object : SwipeToDeleteCallback(this,adapter?.list!!) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
                 selectedPosition = viewHolder.adapterPosition
                 adapter?.notifyItemChanged(viewHolder.adapterPosition)

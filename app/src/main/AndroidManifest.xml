@@ -154,6 +154,26 @@
             android:exported="false"
             android:screenOrientation="portrait" />
 
+        <activity
+            android:name="com.unjhawalateaadminadmin.dashboard.ui.activity.TeaSourceLevelActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".dashboard.ui.activity.TeaTestedSampleListActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".dashboard.ui.activity.TeaTestedSampleDetailsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".dashboard.ui.activity.AddTeaTestedSampleActivity"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"

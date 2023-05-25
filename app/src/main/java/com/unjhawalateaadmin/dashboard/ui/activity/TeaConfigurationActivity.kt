@@ -23,6 +23,7 @@ import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaConfigurationAdapter
 import com.unjhawalateaadmin.dashboard.ui.dialog.GardenAreaManagePositionDialog
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
 import com.unjhawalateaadmin.databinding.ActivityTeaConfigurationListBinding
+import com.unjhawalateaadminadmin.dashboard.ui.activity.TeaSourceLevelActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -158,7 +159,8 @@ class TeaConfigurationActivity : BaseActivity(), View.OnClickListener, SelectIte
 
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
         if (action == AppConstants.TeaConfiguration.TEA_SOURCE) {
-
+            val bundle = Bundle()
+            moveActivity(mContext, TeaSourceLevelActivity::class.java, false, false, null)
         } else {
             val bundle = Bundle()
             bundle.putInt(AppConstants.IntentKey.CONFIGURATION_TYPE, action)

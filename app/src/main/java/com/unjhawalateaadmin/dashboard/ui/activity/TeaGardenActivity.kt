@@ -115,10 +115,8 @@ class TeaGardenActivity : BaseActivity(), View.OnClickListener, SelectItemListen
     }
 
     private fun enableSwipeToDeleteAndUndo() {
-        val swipeHandler = object : SwipeToDeleteCallback(this) {
+     /*   val swipeHandler = object : SwipeToDeleteCallback(this) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-//                val adapter = binding.recyclerView.adapter as SimpleAdapter
-//                adapter.removeAt(viewHolder.adapterPosition)
                 adapter?.notifyItemChanged(viewHolder.adapterPosition)
                 AlertDialogHelper.showDialog(
                     mContext,
@@ -133,7 +131,7 @@ class TeaGardenActivity : BaseActivity(), View.OnClickListener, SelectItemListen
             }
         }
         val itemTouchHelper = ItemTouchHelper(swipeHandler)
-        itemTouchHelper.attachToRecyclerView(binding.recyclerView)
+        itemTouchHelper.attachToRecyclerView(binding.recyclerView)*/
     }
 
     override fun onPositiveButtonClicked(dialogIdentifier: Int) {

@@ -70,37 +70,77 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:id="@+id/routFilter"
-            android:layout_width="wrap_content"
+            android:id="@+id/routFiltersOption"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/routSearchView"
-            android:layout_marginStart="@dimen/size_16dp"
-            android:layout_marginTop="@dimen/size_12dp"
-            android:background="@drawable/img_working_area_title_bg"
-            android:gravity="center_vertical"
-            android:paddingStart="@dimen/size_16dp"
-            android:paddingTop="@dimen/size_4dp"
-            android:paddingEnd="@dimen/size_9dp"
-            android:paddingBottom="@dimen/size_4dp"
-            android:visibility="gone">
+            android:layout_marginStart="@dimen/size_16dp">
 
-            <TextView
-                android:id="@+id/txtFilter"
+            <LinearLayout
+                android:id="@+id/routFilter"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/size_12dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_9dp"
+                android:background="@drawable/img_working_area_title_bg"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/size_16dp"
+                android:paddingTop="@dimen/size_4dp"
+                android:paddingEnd="@dimen/size_9dp"
+                android:paddingBottom="@dimen/size_4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txtFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@string/clear_filter"
+                    android:textColor="@color/colorPrimaryText2"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgRemoveFilter"
+                    android:layout_width="@dimen/size_24dp"
+                    android:layout_height="@dimen/size_24dp"
+                    android:layout_marginStart="@dimen/size_3dp"
+                    android:padding="@dimen/size_6dp"
+                    app:srcCompat="@drawable/ic_close2"
+                    app:tint="@color/colorPrimaryText2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/routDateFilter"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:includeFontPadding="false"
-                android:text="@string/clear_filter"
-                android:textColor="@color/colorPrimaryText2"
-                android:textSize="@dimen/text_size_16sp" />
+                android:layout_marginTop="@dimen/size_12dp"
+                android:background="@drawable/img_working_area_title_bg"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/size_16dp"
+                android:paddingTop="@dimen/size_4dp"
+                android:paddingEnd="@dimen/size_9dp"
+                android:paddingBottom="@dimen/size_4dp"
+                android:visibility="gone">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgRemoveFilter"
-                android:layout_width="@dimen/size_24dp"
-                android:layout_height="@dimen/size_24dp"
-                android:layout_marginStart="@dimen/size_3dp"
-                android:padding="@dimen/size_6dp"
-                app:srcCompat="@drawable/ic_close2"
-                app:tint="@color/colorPrimaryText2" />
+                <TextView
+                    android:id="@+id/txtDateFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/colorPrimaryText2"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgRemoveDateFilter"
+                    android:layout_width="@dimen/size_24dp"
+                    android:layout_height="@dimen/size_24dp"
+                    android:layout_marginStart="@dimen/size_3dp"
+                    android:padding="@dimen/size_6dp"
+                    app:srcCompat="@drawable/ic_close2"
+                    app:tint="@color/colorPrimaryText2" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -109,7 +149,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/routPendingView"
-            android:layout_below="@id/routFilter"
+            android:layout_below="@id/routFiltersOption"
             android:layout_marginTop="@dimen/size_10dp"
             android:layout_marginBottom="@dimen/size_10dp">
 
@@ -199,6 +239,21 @@
                 android:textSize="@dimen/text_size_18sp" />
 
         </RelativeLayout>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/routAddItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="end|bottom"
+            android:layout_marginEnd="@dimen/size_16dp"
+            android:layout_marginBottom="@dimen/size_16dp"
+            android:backgroundTint="#1C1818"
+            android:textColor="@android:color/white"
+            app:icon="@drawable/ic_add"
+            app:iconTint="@android:color/white"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlayExtended" />
 
         <include
             android:id="@+id/progressBarView"

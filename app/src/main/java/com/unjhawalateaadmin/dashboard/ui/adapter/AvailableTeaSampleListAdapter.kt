@@ -1,6 +1,7 @@
 package com.unjhawalateaadmin.dashboard.data.ui.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import com.unjhawalateaadmin.common.utils.AppConstants
 import com.unjhawalateaadmin.dashboard.data.model.AvailableTeaSampleInfo
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
 import com.unjhawalateaadmin.databinding.RowAvailableTeaSampleListItemBinding
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class AvailableTeaSampleListAdapter(
@@ -67,6 +70,29 @@ class AvailableTeaSampleListAdapter(
 //        this.list.clear()
 //        this.list.addAll(listAll)
 //        notifyDataSetChanged()
+    }
+
+    fun filter(charText: String) {
+        var charText = charText
+        charText = charText.toLowerCase(Locale.getDefault())
+        list.clear()
+        if (charText.isEmpty()) {
+            list.addAll(listAll)
+        } else {
+            for (wp in listAll) {
+                try {
+                    val vendor = wp.vendor_name
+                    if (vendor!!.lowercase(Locale.getDefault())
+                            .contains(charText)
+                    ) {
+                        list.add(wp)
+                    }
+                } catch (e: Exception) {
+                    Log.e(javaClass.name, "Exception in Filter :" + e.message)
+                }
+            }
+        }
+        notifyDataSetChanged()
     }
 
 }

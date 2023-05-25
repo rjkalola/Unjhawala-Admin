@@ -13,6 +13,7 @@ import android.os.Environment
 import android.provider.Settings
 import android.provider.Settings.Secure
 import android.text.SpannableString
+import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.view.MenuItem
@@ -32,6 +33,8 @@ import com.imateplus.imagepickers.models.FileWithPath
 import com.imateplus.imagepickers.utils.Constant
 import com.imateplus.imagepickers.utils.GlideUtil
 import com.imateplus.imagepickers.utils.ImageUtils
+import com.imateplus.utilities.callback.DialogButtonClickListener
+import com.imateplus.utilities.utils.*
 import com.unjhawalateaadmin.MyApplication
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.authentication.data.model.User
@@ -40,12 +43,12 @@ import com.unjhawalateaadmin.authentication.ui.activity.LoginActivity
 import com.unjhawalateaadmin.common.callback.SelectDateRangeListener
 import com.unjhawalateaadmin.common.data.model.BaseResponse
 import com.unjhawalateaadmin.common.data.model.FcmData
+import com.unjhawalateaadmin.common.data.model.ModuleInfo
 import com.unjhawalateaadmin.common.ui.activity.BaseActivity
 import com.unjhawalateaadmin.common.ui.activity.WebViewActivity
-import com.imateplus.utilities.callback.DialogButtonClickListener
-import com.imateplus.utilities.utils.*
 import okhttp3.MediaType
 import okhttp3.RequestBody
+import org.json.JSONObject
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -1002,6 +1005,28 @@ object AppUtils {
                 Toast.LENGTH_SHORT,
                 false
             )
+    }
+
+    fun getFilterString(data: MutableList<ModuleInfo>): String {
+        var filters = ""
+        if (data.isNotEmpty()) {
+            try {
+                val jsonMain = JSONObject()
+                for (i in 0 until data.size) {
+                    val listIds: MutableList<String> = ArrayList()
+                    for (j in 0 until data[i].data.size) {
+                        if (data[i].data[j].is_selected) listIds.add(
+                            data[i].data[j]._id
+                        )
+                    }
+                    jsonMain.put(data[i].key, TextUtils.join(",", listIds))
+                }
+                filters = jsonMain.toString()
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        return filters
     }
 
 }

@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="info"
+            type="com.unjhawalateaadmin.dashboard.data.model.TeaSampleTestingInfo" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginTop="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:background="@drawable/img_tea_sample_testing_header_bg"
+                    android:orientation="vertical"
+                    android:paddingStart="@dimen/size_12dp"
+                    android:paddingTop="@dimen/size_6dp"
+                    android:paddingEnd="@dimen/size_12dp"
+                    android:paddingBottom="@dimen/size_6dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:fontFamily="@font/be_vietnam_regular"
+                            android:text="@{info.garden_name}"
+                            android:textColor="@color/colorPrimaryText2"
+                            android:textSize="@dimen/text_size_14sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/size_6dp"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:includeFontPadding="false"
+                                android:text="@{info.bag}"
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:includeFontPadding="false"
+                                android:text=" Bag*"
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:includeFontPadding="false"
+                                android:text="@{info.weight}"
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:includeFontPadding="false"
+                                android:text=" Kg = "
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:includeFontPadding="false"
+                                android:text="@{info.total_quantity}"
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:includeFontPadding="false"
+                                android:text=" Kg"
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="12sp" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_2dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text="@{info.invoice_number}"
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text=" - "
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text="@{info.grade_name}"
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text="Rate : "
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="@dimen/text_size_14sp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/be_vietnam_regular"
+                                android:text="@{info.rate}"
+                                android:textColor="@color/colorPrimaryText2"
+                                android:textSize="@dimen/text_size_14sp" />
+
+
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutDate"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    android:visibility="gone"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:hint="@string/date_mandatory"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:text="@{info.created_date}"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutVendor"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtVendor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{info.vendor_name}"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/vendor_mandatory"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutGrades"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtGrades"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/grade_mandatory"
+                        android:text="@{info.grade_name}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutBag"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtBag"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/bag_mandatory"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:text="@={info.bag}"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutWeight"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtWeight"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/weight_in_kg_mandatory"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:text="@={info.weight}"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutRate"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtRate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/rate_in_rs_mandatory"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:text="@={info.rate}"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutTotalQuantity"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtTotalQuantity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/total_quantity_in_kg_mandatory"
+                        android:imeOptions="actionDone"
+                        android:focusable="false"
+                        android:inputType="number"
+                        android:text="@={info.total_quantity}"
+                        android:textSize="@dimen/text_size_15sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutGarden"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtGarden"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/garden_mandatory"
+                        android:text="@{info.garden_name}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutPersonalGrade"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtPersonalGrade"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/personal_grade_mandatory"
+                        android:text="@{info.p_grade_name}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutCutting"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtCutting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:text="@{info.type_name}"
+                        android:hint="@string/cutting_mandatory"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutColour"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtColour"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/colour_mandatory"
+                        android:text="@{info.colour_name}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutDensity"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtDensity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/density_mandatory"
+                        android:text="@{info.density_name}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutSourceLevel1"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSourceLevel1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/tea_source_level_1"
+                        android:text="@{info.source_level1_name}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutSourceLevel2"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    android:visibility="gone"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSourceLevel2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/tea_source_level_2"
+                        android:text="@{info.source_level2_name}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutSourceLevel3"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    android:visibility="gone"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSourceLevel3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:text="@{info.source_level3_name}"
+                        android:hint="@string/tea_source_level_3"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutSeasonAndQuality"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSeasonAndQuality"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/season_and_quality"
+                        android:text="@{info.season_quality_detail_name}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutOurQuality"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtOurQuality"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/our_quality"
+                        android:imeOptions="actionNext"
+                        android:text="@{info.our_quality_name}"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutTeaPreference"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtTeaPreference"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableEnd="@drawable/ic_arrow_down"
+                        android:focusable="false"
+                        android:hint="@string/tea_preference"
+                        android:imeOptions="actionNext"
+                        android:text="@{info.preference_name}"
+                        android:inputType="textCapWords"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutMFGDate"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtMFGDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/ic_calendar_month"
+                        android:drawablePadding="@dimen/size_8dp"
+                        android:focusable="false"
+                        android:hint="@string/mfg_date"
+                        android:text="@{info.manufacturer_date}"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLength="10"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutNotes"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtNotes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{info.note}"
+                        android:hint="@string/notes"
+                        android:textSize="@dimen/text_size_15sp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <RelativeLayout
+                    android:id="@+id/routSelectAttachment"
+                    android:layout_width="@dimen/size_90dp"
+                    android:layout_height="@dimen/size_90dp"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginTop="@dimen/size_9dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:background="@drawable/img_pdf_gray_bg">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgPdf"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="@dimen/size_24dp"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/ic_picture_as_pdf" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgJpg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/size_4dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/txtChooseAttachment"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:text="@string/choose_attachment_"
+                        android:textColor="@color/colorPrimaryText2"
+                        android:textSize="10sp"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginTop="@dimen/size_14dp"
+                    android:fontFamily="@font/be_vietnam_regular"
+                    android:includeFontPadding="false"
+                    android:text="Tea Rating"
+                    android:textColor="@color/colorPrimaryText2"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRatings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_14dp"
+                    android:layout_marginTop="@dimen/size_6dp"
+                    android:layout_marginEnd="@dimen/size_14dp" />
+
+                <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/btnAdd"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/save_button_height_50dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginTop="@dimen/size_22dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_20dp"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:visibility="visible"
+                    app:mrl_rippleColor="@color/colorRippleColor"
+                    app:mrl_rippleDelayClick="true"
+                    app:mrl_rippleDuration="@string/ripple_duration"
+                    app:mrl_rippleHover="true"
+                    app:mrl_rippleOverlay="true">
+
+                    <TextView
+                        android:id="@+id/txtAdd"
+                        style="@style/SmallFont"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/img_primary_button_bg"
+                        android:fontFamily="@font/be_vietnam_bold"
+                        android:gravity="center"
+                        android:text="@string/add"
+                        android:textColor="@color/colorPrimaryText" />
+                </com.balysv.materialripple.MaterialRippleLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar" />
+    </RelativeLayout>
+
+
+</layout>
+

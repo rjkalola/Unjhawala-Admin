@@ -4,6 +4,9 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -56,12 +59,31 @@ class TeaConfirmationListActivity : BaseActivity(), View.OnClickListener, Select
         binding.routNewOrder.shrink()
 
         binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.edtSearch.setText("")
             loadData(false, true, true)
         }
 
         binding.routNewOrder.setOnClickListener {
             moveActivity(mContext, AvailableTeaSampleActivity::class.java, false, false, null)
         }
+
+        binding.edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (!binding.swipeRefreshLayout.isRefreshing) {
+                    binding.progressSearchUser.visibility = View.VISIBLE
+                    search = binding.edtSearch.text.toString().trim()
+                    loadData(false, true, false)
+                }
+            }
+        })
 
         loadData(true, false, false)
     }
@@ -91,6 +113,7 @@ class TeaConfirmationListActivity : BaseActivity(), View.OnClickListener, Select
         dashboardViewModel.getTeaConfirmationList(
             AppConstants.DataLimit.USERS_LIMIT,
             offset,
+            search
         )
     }
 
@@ -138,6 +161,7 @@ class TeaConfirmationListActivity : BaseActivity(), View.OnClickListener, Select
             hideCustomProgressDialog(binding.progressBarView.routProgress)
             binding.swipeRefreshLayout.isRefreshing = false
             binding.loadMore.visibility = View.GONE
+            binding.progressSearchUser.visibility = View.GONE
             try {
                 if (response == null) {
                     AlertDialogHelper.showDialog(
@@ -189,7 +213,7 @@ class TeaConfirmationListActivity : BaseActivity(), View.OnClickListener, Select
                  }
              }
          }*/
-        
+
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
 //        showOrderHistoryItemsDialog(adapter!!.list[position])
         if (action == AppConstants.Action.EDIT_TEA_SAMPLE) {
@@ -223,7 +247,13 @@ class TeaConfirmationListActivity : BaseActivity(), View.OnClickListener, Select
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action -> {
-                moveActivity(mContext, TeaConfirmationGradeListActivity::class.java, true, false, null)
+                moveActivity(
+                    mContext,
+                    TeaConfirmationGradeListActivity::class.java,
+                    true,
+                    false,
+                    null
+                )
             }
         }
         return super.onOptionsItemSelected(item)

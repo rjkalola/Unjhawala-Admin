@@ -46,10 +46,10 @@ class AvailableTeaSampleCartActivity : BaseActivity(), View.OnClickListener, Sel
         binding =
             DataBindingUtil.setContentView(this, R.layout.activity_available_tea_sample_cart_list)
         mContext = this
-        setupToolbar(getString(R.string.available_tea_sample), true)
+        setupToolbar("Create Bill Tea", true)
 
         getIntentData()
-        
+
         binding.txtConfirm.setOnClickListener {
             val intent = Intent(mContext, AddAvailableTeaSampleTestingActivity::class.java)
             val data = AvailableTeaSampleListResponse()
@@ -63,6 +63,8 @@ class AvailableTeaSampleCartActivity : BaseActivity(), View.OnClickListener, Sel
             intent.putExtras(bundle)
             addDetailsResultActivity.launch(intent)
         }
+
+        binding.txtBack.setOnClickListener { onBackPressed() }
     }
 
     private fun getIntentData() {

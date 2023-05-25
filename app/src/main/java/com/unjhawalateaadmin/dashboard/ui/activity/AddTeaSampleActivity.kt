@@ -48,7 +48,6 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
         mContext = this
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_tea_sample)
         mContext = this
-        setupToolbar(getString(R.string.create_tea_sample), true)
         setStatusBarColor(resources.getColor(R.color.colorAccentLight))
 
         getTeaSampleConfigurationResponseObservers()
@@ -69,11 +68,15 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
 
     private fun getIntentData() {
         if (intent.extras != null && intent.hasExtra(AppConstants.IntentKey.TEA_SAMPLE_INFO)) {
+            setupToolbar(getString(R.string.update_tea_sample), true)
+            binding.btnSaveAndAdd.visibility = View.GONE
             addTeaSampleInfo = Parcels.unwrap<TeaSampleInfo?>(
                 intent?.getParcelableExtra(AppConstants.IntentKey.TEA_SAMPLE_INFO)
             )
             binding.info = addTeaSampleInfo
         } else {
+            setupToolbar(getString(R.string.create_tea_sample), true)
+            binding.btnSaveAndAdd.visibility = View.VISIBLE
             addTeaSampleInfo = TeaSampleInfo()
             val date = Calendar.getInstance()
             val dateFormat = SimpleDateFormat(DateFormatsConstants.YYYY_MM_DD_DASH, Locale.US)
@@ -171,16 +174,16 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
             valid = false
         }
 
-        if (!ValidationUtil.isEmptyEditText(binding.edtRate.text.toString().trim())) {
-            binding.layoutRate.isErrorEnabled = false
-            binding.edtRate.error = null
-        } else {
-            ValidationUtil.setErrorIntoInputTextLayout(
-                binding.edtRate, binding.layoutRate,
-                getString(R.string.empty_edittext_error)
-            )
-            valid = false
-        }
+//        if (!ValidationUtil.isEmptyEditText(binding.edtRate.text.toString().trim())) {
+//            binding.layoutRate.isErrorEnabled = false
+//            binding.edtRate.error = null
+//        } else {
+//            ValidationUtil.setErrorIntoInputTextLayout(
+//                binding.edtRate, binding.layoutRate,
+//                getString(R.string.empty_edittext_error)
+//            )
+//            valid = false
+//        }
 
         if (!ValidationUtil.isEmptyEditText(binding.edtWeight.text.toString().trim())) {
             binding.layoutWeight.isErrorEnabled = false

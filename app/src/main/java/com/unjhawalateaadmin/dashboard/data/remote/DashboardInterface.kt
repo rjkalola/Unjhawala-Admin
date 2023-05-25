@@ -4,7 +4,6 @@ import com.unjhawalateaadmin.common.data.model.BaseResponse
 import com.unjhawalateaadmin.dashboard.data.model.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
-import retrofit2.Call
 import retrofit2.http.*
 
 
@@ -389,7 +388,10 @@ interface DashboardInterface {
     suspend fun getTeaSampleList(
         @Part("limit") limit: RequestBody,
         @Part("offset") offset: RequestBody,
-        @Part("search") search: RequestBody
+        @Part("search") search: RequestBody,
+        @Part("filters") filters: RequestBody,
+        @Part("start_date") start_date: RequestBody,
+        @Part("end_date") end_date: RequestBody,
     ): TeaSampleListResponse
 
     @GET("tea-samples/configuration")
@@ -415,6 +417,7 @@ interface DashboardInterface {
         @Part("lu_tea_product_preference_id") lu_tea_product_preference_id: RequestBody,
         @Part("manufacturer_date") manufacturer_date: RequestBody,
         @Part("note") note: RequestBody,
+        @Part("rating") rating: RequestBody,
         @Part image: MultipartBody.Part?,
     ): BaseResponse
 
@@ -442,10 +445,64 @@ interface DashboardInterface {
     suspend fun getTeaConfirmationList(
         @Part("limit") limit: RequestBody,
         @Part("offset") offset: RequestBody,
+        @Part("search") search: RequestBody
     ): AvailableTeaSampleListResponse
 
     @POST("tea-confirmation/grade-list")
     suspend fun getTeaConfirmationGradeList(
     ): AvailableTeaSampleListResponse
+
+    @GET("tea-sources/configuration")
+    suspend fun getTeaSourcesConfiguration(
+    ): TeaSourceLevelListResponse
+
+    @POST("tea-source/store")
+    suspend fun storeTeaSource(@Body teaSourceLevelInfo: TeaSourceLevelInfo): BaseResponse
+
+    @Multipart
+    @POST("tea-source/delete")
+    suspend fun deleteTeaSource(
+        @Part("id") limit: RequestBody,
+    ): BaseResponse
+
+    @Multipart
+    @POST("tea-testing-data/lists")
+    suspend fun getTeaTestedDataList(
+        @Part("limit") limit: RequestBody,
+        @Part("offset") offset: RequestBody,
+        @Part("search") search: RequestBody
+    ): TeaTestedSampleListResponse
+
+    @Multipart
+    @POST("tea-testing-data/details")
+    suspend fun teaTestingDataDetails(
+        @Part("id") id: RequestBody,
+    ): TeaTestedSampleDetailsResponse
+
+    @Multipart
+    @POST("tea-testing-data/store-testing")
+    suspend fun storeTeaTestedSample(
+        @Part("id") id: RequestBody,
+        @Part("lu_tea_personal_grade_id") lu_tea_personal_grade_id: RequestBody,
+        @Part("lu_tea_cutting_id") lu_tea_cutting_id: RequestBody,
+        @Part("lu_tea_colour_id") lu_tea_colour_id: RequestBody,
+        @Part("lu_tea_density_id") lu_tea_density_id: RequestBody,
+        @Part("lu_tea_source_level_1_id") lu_tea_source_level_1_id: RequestBody,
+        @Part("lu_tea_source_level_2_id") lu_tea_source_level_2_id: RequestBody,
+        @Part("lu_tea_source_level_3_id") lu_tea_source_level_3_id: RequestBody,
+        @Part("lu_tea_season_detail_id") lu_tea_season_detail_id: RequestBody,
+        @Part("our_quality_id") our_quality_id: RequestBody,
+        @Part("lu_tea_product_preference_id") lu_tea_product_preference_id: RequestBody,
+        @Part("manufacturer_date") manufacturer_date: RequestBody,
+        @Part("note") note: RequestBody,
+        @Part("rating") rating: RequestBody,
+        @Part image: MultipartBody.Part?,
+        @Part("vendor_id") vendor_id: RequestBody,
+        @Part("lu_garden_id") lu_garden_id: RequestBody,
+        @Part("lu_tea_grade_id") lu_tea_grade_id: RequestBody,
+        @Part("bag") bag: RequestBody,
+        @Part("weight") weight: RequestBody,
+        @Part("rate") rate: RequestBody,
+    ): BaseResponse
 }
 

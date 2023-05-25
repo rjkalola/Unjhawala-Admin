@@ -346,9 +346,19 @@ class DashboardRepositoryImp(
     override suspend fun getTeaSampleList(
         limit: RequestBody,
         offset: RequestBody,
-        search: RequestBody
+        search: RequestBody,
+        filters: RequestBody,
+        start_date: RequestBody,
+        end_date: RequestBody,
     ): TeaSampleListResponse {
-        return dashboardInterface.getTeaSampleList(limit, offset, search)
+        return dashboardInterface.getTeaSampleList(
+            limit,
+            offset,
+            search,
+            filters,
+            start_date,
+            end_date
+        )
     }
 
     override suspend fun getTeaSampleConfiguration(): TeaSampleConfigurationResponse {
@@ -373,6 +383,7 @@ class DashboardRepositoryImp(
         lu_tea_product_preference_id: RequestBody,
         manufacturer_date: RequestBody,
         note: RequestBody,
+        rating: RequestBody,
         image: MultipartBody.Part?
     ): BaseResponse {
         return dashboardInterface.storeTeaSampleTesting(
@@ -389,6 +400,7 @@ class DashboardRepositoryImp(
             lu_tea_product_preference_id,
             manufacturer_date,
             note,
+            rating,
             image
         )
     }
@@ -412,12 +424,85 @@ class DashboardRepositoryImp(
 
     override suspend fun getTeaConfirmationList(
         limit: RequestBody,
-        offset: RequestBody
+        offset: RequestBody,
+        search: RequestBody
     ): AvailableTeaSampleListResponse {
-        return dashboardInterface.getTeaConfirmationList(limit, offset)
+        return dashboardInterface.getTeaConfirmationList(limit, offset, search)
     }
 
     override suspend fun getTeaConfirmationGradeList(): AvailableTeaSampleListResponse {
         return dashboardInterface.getTeaConfirmationGradeList()
+    }
+
+    override suspend fun getTeaSourcesConfiguration(): TeaSourceLevelListResponse {
+        return dashboardInterface.getTeaSourcesConfiguration()
+    }
+
+    override suspend fun storeTeaSource(teaSourceLevelInfo: TeaSourceLevelInfo): BaseResponse {
+        return dashboardInterface.storeTeaSource(teaSourceLevelInfo)
+    }
+
+    override suspend fun deleteTeaSource(limit: RequestBody): BaseResponse {
+        return dashboardInterface.deleteTeaSource(limit)
+    }
+
+    override suspend fun getTeaTestedDataList(
+        limit: RequestBody,
+        offset: RequestBody,
+        search: RequestBody
+    ): TeaTestedSampleListResponse {
+        return dashboardInterface.getTeaTestedDataList(limit, offset, search)
+    }
+
+    override suspend fun teaTestingDataDetails(id: RequestBody): TeaTestedSampleDetailsResponse {
+        return dashboardInterface.teaTestingDataDetails(id)
+    }
+
+    override suspend fun storeTeaTestedSample(
+        id: RequestBody,
+        lu_tea_personal_grade_id: RequestBody,
+        lu_tea_cutting_id: RequestBody,
+        lu_tea_colour_id: RequestBody,
+        lu_tea_density_id: RequestBody,
+        lu_tea_source_level_1_id: RequestBody,
+        lu_tea_source_level_2_id: RequestBody,
+        lu_tea_source_level_3_id: RequestBody,
+        lu_tea_season_detail_id: RequestBody,
+        our_quality_id: RequestBody,
+        lu_tea_product_preference_id: RequestBody,
+        manufacturer_date: RequestBody,
+        note: RequestBody,
+        rating: RequestBody,
+        image: MultipartBody.Part?,
+        vendor_id: RequestBody,
+        lu_garden_id: RequestBody,
+        lu_tea_grade_id: RequestBody,
+        bag: RequestBody,
+        weight: RequestBody,
+        rate: RequestBody
+    ): BaseResponse {
+        return dashboardInterface.storeTeaTestedSample(
+            id,
+            lu_tea_personal_grade_id,
+            lu_tea_cutting_id,
+            lu_tea_colour_id,
+            lu_tea_density_id,
+            lu_tea_source_level_1_id,
+            lu_tea_source_level_2_id,
+            lu_tea_source_level_3_id,
+            lu_tea_season_detail_id,
+            our_quality_id,
+            lu_tea_product_preference_id,
+            manufacturer_date,
+            note,
+            rating,
+            image,
+            vendor_id,
+            lu_garden_id,
+            lu_tea_grade_id,
+            bag,
+            weight,
+            rate
+        )
     }
 }

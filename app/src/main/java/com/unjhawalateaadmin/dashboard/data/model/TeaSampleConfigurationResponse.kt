@@ -15,4 +15,5 @@ class TeaSampleConfigurationResponse : BaseResponse() {
     lateinit var leafTypes: MutableList<ModuleInfo>
     lateinit var qualities: MutableList<ModuleInfo>
     lateinit var sources: MutableList<ModuleInfo>
+    lateinit var filters: MutableList<ModuleInfo>
 }

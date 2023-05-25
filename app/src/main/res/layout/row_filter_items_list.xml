@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="info"
+            type="com.unjhawalateaadmin.common.data.model.ModuleInfo" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/routMainView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_20dp">
+
+        <TextView
+            android:id="@+id/txtFilterName"
+            style="@style/SmallFontTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/imgCheck"
+            android:layout_marginStart="@dimen/size_21dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:fontFamily="@font/be_vietnam_regular"
+            android:textSize="@dimen/text_size_14sp"
+            android:text="@{info.name}"
+            android:textColor="@color/colorPrimaryText" />
+
+       <androidx.appcompat.widget.AppCompatImageView
+           android:id="@+id/imgCheck"
+           android:layout_width="@dimen/size_21dp"
+           android:layout_height="@dimen/size_21dp"
+           app:srcCompat="@drawable/ic_done"
+           android:layout_marginEnd="@dimen/size_20dp"
+           android:tint="@color/colorUnCheck"
+           android:layout_alignParentEnd="true" />
+
+        <View
+            android:layout_below="@+id/txtFilterName"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:layout_marginStart="@dimen/size_11dp"
+            android:layout_marginEnd="@dimen/size_11dp"
+            style="@style/Divider" />
+
+    </RelativeLayout>
+
+</layout>

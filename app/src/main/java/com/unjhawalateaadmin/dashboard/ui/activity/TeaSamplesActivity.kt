@@ -3,7 +3,11 @@ package com.unjhawalateaadmin.dashboard.ui.activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -12,20 +16,27 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.imateplus.utilities.utils.AlertDialogHelper
+import com.imateplus.utilities.utils.DateFormatsConstants
 import com.unjhawalateaadmin.R
+import com.unjhawalateaadmin.common.callback.SelectDateRangeListener
 import com.unjhawalateaadmin.common.callback.SelectItemListener
+import com.unjhawalateaadmin.common.data.model.ModuleInfo
 import com.unjhawalateaadmin.common.ui.activity.BaseActivity
 import com.unjhawalateaadmin.common.utils.AppConstants
 import com.unjhawalateaadmin.common.utils.AppUtils
+import com.unjhawalateaadmin.dashboard.callback.OnApplyFilterListener
+import com.unjhawalateaadmin.dashboard.data.model.TeaSampleConfigurationResponse
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaSamplesAdapter
+import com.unjhawalateaadmin.dashboard.ui.dialog.TeaSampleFilterDialog
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
 import com.unjhawalateaadmin.databinding.ActivityTeaSampleListBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.parceler.Parcels
 
 
-class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListener {
+class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListener,
+    OnApplyFilterListener, SelectDateRangeListener {
     private lateinit var binding: ActivityTeaSampleListBinding
     private lateinit var mContext: Context
     private val dashboardViewModel: DashboardViewModel by viewModel()
@@ -38,9 +49,13 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     var search = ""
     var filters = ""
     var filtersData = ""
+    var startDate = ""
+    var endDate = ""
     var loading = true
     var mIsLastPage = false
     private var isUpdated = false
+    private var teaSampleConfigurationResponse: TeaSampleConfigurationResponse? = null
+    private var listFilters: MutableList<ModuleInfo> = ArrayList()
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,12 +65,54 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
         mContext = this
         setupToolbar(getString(R.string.tea_samples), true)
         teaSampleListResponseObservers()
+        getTeaSampleConfigurationResponseObservers()
 
         binding.swipeRefreshLayout.setOnRefreshListener {
+            binding.edtSearch.setText("")
             loadData(false, true, true)
         }
 
+        binding.imgFilter.setOnClickListener {
+            showFilterDialog()
+        }
+
+        binding.routAddItem.setOnClickListener {
+            val intent = Intent(mContext, AddTeaSampleActivity::class.java)
+            addTeaSampleResultActivity.launch(intent)
+        }
+
+        binding.routFilter.setOnClickListener {
+            loadData(true, true, true)
+        }
+
+        binding.routDateFilter.setOnClickListener {
+            startDate = ""
+            endDate = ""
+            binding.routDateFilter.visibility = View.GONE
+            loadData(true, true, false)
+        }
+
+        binding.edtSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (!binding.swipeRefreshLayout.isRefreshing) {
+                    Log.e("test","afterTextChanged")
+                    binding.progressSearchUser.visibility = View.VISIBLE
+                    search = binding.edtSearch.text.toString().trim()
+                    loadData(false, true, false)
+                }
+            }
+        })
+
         loadData(true, false, false)
+        dashboardViewModel.getTeaSampleConfigurationResponse()
     }
 
     override fun onClick(v: View) {
@@ -78,12 +135,13 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
             offset = 0
 
         if (isClearFilter)
-            filters = ""
+            clearFilter()
 
         dashboardViewModel.getTeaSampleList(
             AppConstants.DataLimit.USERS_LIMIT,
             offset,
             search,
+            filters, startDate, endDate
         )
     }
 
@@ -141,7 +199,6 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
                     )
                 } else {
                     if (response.IsSuccess) {
-                        binding.edtSearch.setText("")
                         if (offset == 0) {
                             setAdapter(response.Data)
                         } else if (response.Data.isNotEmpty()) {
@@ -155,7 +212,37 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
                         offset = response.offset
 
                         mIsLastPage = offset == 0
+                    } else {
+                        AppUtils.handleUnauthorized(mContext, response)
+                    }
+                }
+            } catch (e: Exception) {
 
+            }
+        }
+    }
+
+    private fun getTeaSampleConfigurationResponseObservers() {
+        dashboardViewModel.teaSampleConfigurationResponse.observe(this) { response ->
+            hideCustomProgressDialog(binding.progressBarView.routProgress)
+            hideProgressDialog()
+            try {
+                if (response == null) {
+                    AlertDialogHelper.showDialog(
+                        mContext,
+                        null,
+                        mContext.getString(R.string.error_unknown),
+                        mContext.getString(R.string.ok),
+                        null,
+                        false,
+                        null,
+                        0
+                    )
+                } else {
+                    if (response.IsSuccess) {
+                        teaSampleConfigurationResponse = response
+                        listFilters.clear()
+                        listFilters.addAll(teaSampleConfigurationResponse?.filters!!)
                     } else {
                         AppUtils.handleUnauthorized(mContext, response)
                     }
@@ -184,7 +271,7 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
                  }
              }
          }*/
-        
+
     override fun onSelectItem(position: Int, action: Int, productType: Int) {
 //        showOrderHistoryItemsDialog(adapter!!.list[position])
         if (action == AppConstants.Action.EDIT_TEA_SAMPLE) {
@@ -212,17 +299,86 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
         inflater.inflate(R.menu.add_menu, menu)
+        menu!!.findItem(R.id.action_add).setIcon(R.drawable.ic_calendar_month)
+        val drawable = menu.findItem(R.id.action_add).icon
+        if (drawable != null) {
+            drawable.mutate()
+            drawable.setColorFilter(
+                resources.getColor(R.color.colorPrimaryText),
+                PorterDuff.Mode.SRC_ATOP
+            )
+        }
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_add -> {
-                val intent = Intent(mContext, AddTeaSampleActivity::class.java)
-                addTeaSampleResultActivity.launch(intent)
+                AppUtils.showDateRangeDialog(
+                    this@TeaSamplesActivity,
+                    startDate,
+                    endDate,
+                    DateFormatsConstants.DD_MMM_YYYY_SPACE,
+                    supportFragmentManager,
+                    this
+                )
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    fun showFilterDialog() {
+        if (listFilters.isNotEmpty()) {
+            val teaSampleFilterDialog =
+                TeaSampleFilterDialog.newInstance(
+                    mContext,
+                    listFilters,
+                    this
+                )
+            teaSampleFilterDialog.setCancelable(false)
+//            teaSampleFilterDialog.setCanceledOnTouchOutside(true)
+            teaSampleFilterDialog.show()
+        }
+    }
+
+    override fun onSelectDate(startDate: String, endDate: String) {
+        this.startDate = startDate
+        this.endDate = endDate
+        binding.routDateFilter.visibility = View.VISIBLE
+        binding.txtDateFilter.text = "$startDate to $endDate"
+        loadData(true, true, false)
+    }
+
+    override fun onApplyFilter(filterData: MutableList<ModuleInfo>) {
+        filters = AppUtils.getFilterString(filterData);
+        Log.e("test", "Filters:" + filters)
+        checkFilterVisibility()
+        loadData(true, true, false)
+    }
+
+    private fun checkFilterVisibility() {
+        var isSelected = false
+        for (i in 0 until listFilters.size) {
+            for (j in 0 until listFilters[i].data.size) {
+                if (listFilters[i].data[j].is_selected)
+                    isSelected = true
+            }
+        }
+        if (isSelected)
+            binding.routFilter.visibility = View.VISIBLE
+        else
+            binding.routFilter.visibility = View.GONE
+    }
+
+    private fun clearFilter() {
+        filters = ""
+        for (i in 0 until listFilters.size) {
+            listFilters[i].count = 0
+            for (j in 0 until listFilters[i].data.size) {
+                listFilters[i].data[j].is_selected = false
+            }
+        }
+        binding.routFilter.visibility = View.GONE
     }
 
     var addTeaSampleResultActivity =

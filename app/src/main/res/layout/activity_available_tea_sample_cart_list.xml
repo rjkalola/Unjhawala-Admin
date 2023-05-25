@@ -20,7 +20,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@id/btnConfirm"
+            android:layout_above="@id/routBottomView"
             android:layout_below="@id/toolbarDivider"
             android:layout_marginTop="@dimen/size_10dp">
 
@@ -69,34 +69,68 @@
 
         </RelativeLayout>
 
-        <com.balysv.materialripple.MaterialRippleLayout
-            android:id="@+id/btnConfirm"
+        <LinearLayout
+            android:id="@+id/routBottomView"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/save_button_height_50dp"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_gravity="center_horizontal"
             android:layout_marginStart="@dimen/size_14dp"
             android:layout_marginTop="@dimen/size_20dp"
             android:layout_marginEnd="@dimen/size_14dp"
-            android:layout_marginBottom="@dimen/size_20dp"
-            android:backgroundTint="@color/colorPrimary"
-            app:mrl_rippleColor="@color/colorRippleColor"
-            app:mrl_rippleDelayClick="true"
-            app:mrl_rippleDuration="@string/ripple_duration"
-            app:mrl_rippleHover="true"
-            app:mrl_rippleOverlay="true">
+            android:layout_marginBottom="@dimen/size_20dp">
 
-            <TextView
-                android:id="@+id/txtConfirm"
-                style="@style/SmallFont"
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/btnBack"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/img_primary_button_bg"
-                android:fontFamily="@font/be_vietnam_bold"
-                android:gravity="center"
-                android:text="@string/confirm"
-                android:textColor="@color/colorPrimaryText" />
-        </com.balysv.materialripple.MaterialRippleLayout>
+                android:layout_height="@dimen/save_button_height_50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="@dimen/size_8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                app:mrl_rippleColor="@color/colorRippleColor"
+                app:mrl_rippleDelayClick="true"
+                app:mrl_rippleDuration="@string/ripple_duration"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <TextView
+                    android:id="@+id/txtBack"
+                    style="@style/SmallFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/img_secondary_button_bg"
+                    android:fontFamily="@font/be_vietnam_bold"
+                    android:gravity="center"
+                    android:text="Back to list"
+                    android:textColor="@color/colorPrimaryText" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+
+            <com.balysv.materialripple.MaterialRippleLayout
+                android:id="@+id/btnConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/save_button_height_50dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/size_8dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                app:mrl_rippleColor="@color/colorRippleColor"
+                app:mrl_rippleDelayClick="true"
+                app:mrl_rippleDuration="@string/ripple_duration"
+                app:mrl_rippleHover="true"
+                app:mrl_rippleOverlay="true">
+
+                <TextView
+                    android:id="@+id/txtConfirm"
+                    style="@style/SmallFont"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/img_primary_button_bg"
+                    android:fontFamily="@font/be_vietnam_bold"
+                    android:gravity="center"
+                    android:text="@string/confirm"
+                    android:textColor="@color/colorPrimaryText" />
+            </com.balysv.materialripple.MaterialRippleLayout>
+        </LinearLayout>
 
         <include
             android:id="@+id/progressBarView"

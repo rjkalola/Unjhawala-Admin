@@ -536,13 +536,32 @@
 
                 </RelativeLayout>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginTop="@dimen/size_14dp"
+                    android:fontFamily="@font/be_vietnam_regular"
+                    android:includeFontPadding="false"
+                    android:text="Tea Rating"
+                    android:textColor="@color/colorPrimaryText2"
+                    android:textSize="16sp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRatings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_14dp"
+                    android:layout_marginTop="@dimen/size_6dp"
+                    android:layout_marginEnd="@dimen/size_14dp" />
+
                 <com.balysv.materialripple.MaterialRippleLayout
                     android:id="@+id/btnAdd"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/save_button_height_50dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginStart="@dimen/size_20dp"
-                    android:layout_marginTop="@dimen/size_14dp"
+                    android:layout_marginTop="@dimen/size_22dp"
                     android:layout_marginEnd="@dimen/size_20dp"
                     android:layout_marginBottom="@dimen/size_20dp"
                     android:backgroundTint="@color/colorPrimary"

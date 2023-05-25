@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/toolbar"
+            layout="@layout/toolbar_main" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            android:layout_marginStart="@dimen/size_16dp"
+            android:layout_marginTop="@dimen/size_9dp"
+            android:layout_marginEnd="@dimen/size_16dp"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/colorAccentText"
+            app:tabIndicatorHeight="@dimen/size_1dp"
+            app:tabMode="fixed"
+            app:tabPaddingBottom="@dimen/size_10dp"
+            app:tabPaddingTop="@dimen/size_10dp"
+            app:tabSelectedTextColor="@color/colorAccentText"
+            app:tabTextAppearance="@style/MyCustomTextAppearanceMedium"
+            app:tabTextColor="@color/colorPrimaryText2" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tabs" />
+
+        <include
+            android:id="@+id/progressBarView"
+            layout="@layout/layout_progressbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toolbar" />
+    </RelativeLayout>
+
+
+</layout>

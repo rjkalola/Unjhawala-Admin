@@ -15,6 +15,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.imateplus.imagepickers.models.FileWithPath
 import com.imateplus.imagepickers.pickiT.PickiTCallbacks
 import com.imateplus.imagepickers.utils.Constant
@@ -39,6 +41,8 @@ import com.unjhawalateaadmin.common.utils.ImagePickerUtility
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleConfigurationResponse
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleTestingInfo
+import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaSampleRatingAdapter
+import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaSamplesAdapter
 import com.unjhawalateaadmin.dashboard.ui.dialog.SelectItemBottomSheetDialog
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
 import com.unjhawalateaadmin.databinding.ActivityAddTeaSampleTestingBinding
@@ -49,7 +53,6 @@ import pub.devrel.easypermissions.EasyPermissions
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
-
 
 
 class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, SelectItemListener,
@@ -96,7 +99,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
         binding.routSelectAttachment.setOnClickListener(this)
 
         getIntentData()
-
+        setRatingAdapter()
     }
 
     private fun getIntentData() {
@@ -108,8 +111,21 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
             binding.info = teaSampleInfo
         }
         addTeaSampleTestingInfo = TeaSampleTestingInfo()
+        addTeaSampleTestingInfo.lu_tea_personal_grade_id = teaSampleInfo.lu_tea_personal_grade_id
+        binding.edtPersonalGrade.setText(teaSampleInfo.tea_personal_grade_name)
         showCustomProgressDialog(binding.progressBarView.routProgress)
+        addTeaSampleTestingInfo.rating =
+            "6"
         dashboardViewModel.getTeaSampleConfigurationResponse()
+    }
+
+    private fun setRatingAdapter() {
+        binding.rvRatings.setHasFixedSize(true)
+        val adapter = TeaSampleRatingAdapter(mContext, this)
+        binding.rvRatings.adapter = adapter
+        val layoutManager =
+            GridLayoutManager(mContext, 5)
+        binding.rvRatings.layoutManager = layoutManager
     }
 
     override fun onClick(v: View) {
@@ -423,7 +439,12 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
             binding.edtTeaPreference.setText(teaSampleConfigurationResponse.preferences[position].name)
             addTeaSampleTestingInfo.lu_tea_product_preference_id =
                 teaSampleConfigurationResponse.preferences[position]._id
+        } else if (action == AppConstants.DialogIdentifier.TEA_SAMPLE_RATING) {
+            addTeaSampleTestingInfo.rating =
+                (position + 1).toString()
+            Log.e("test","addTeaSampleTestingInfo.rating:"+addTeaSampleTestingInfo.rating)
         }
+
     }
 
     private fun showDatePicker(minDate: Long, maxDate: Long, tag: String, selDate: String?) {
@@ -597,6 +618,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
         }
 
     private fun setUserImageFromFile(file: File) {
+        addTeaSampleTestingInfo.file = file.absolutePath
         binding.txtChooseAttachment.visibility = View.GONE
         if (file.absolutePath.endsWith(".pdf")) {
             binding.imgPdf.visibility = View.VISIBLE

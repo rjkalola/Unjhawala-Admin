@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="android.view.View" />
+
+        <variable
+            name="info"
+            type="com.unjhawalateaadmin.common.data.model.ModuleInfo" />
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/routMainView"
+        android:layout_width="match_parent"
+        android:background="@color/colorTitleBg"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_20dp">
+
+        <TextView
+            android:id="@+id/txtFilterName"
+            style="@style/SmallFontTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_21dp"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/txtFilterCount"
+            android:ellipsize="end"
+            android:fontFamily="@font/be_vietnam_medium"
+            android:textSize="@dimen/text_size_15sp"
+            android:singleLine="true"
+            android:textColor="@color/colorPrimaryText" />
+
+        <TextView
+            android:id="@+id/txtFilterCount"
+            style="@style/SmallFontTextView"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/size_21dp"
+            android:textSize="@dimen/text_size_15sp"
+            android:layout_centerVertical="true"
+            android:text="@{Integer.toString(info.count)}"
+            android:textColor="@color/colorAccent" />
+
+        <View
+            android:layout_below="@+id/txtFilterName"
+            android:layout_marginTop="@dimen/size_20dp"
+            style="@style/Divider" />
+
+    </RelativeLayout>
+
+</layout>
