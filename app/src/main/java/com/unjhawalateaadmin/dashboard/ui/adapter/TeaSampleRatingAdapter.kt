@@ -22,7 +22,7 @@ class TeaSampleRatingAdapter(
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     val colorList1: Array<String> = mContext.resources.getStringArray(R.array.ratingColorList1)
     val colorList2: Array<String> = mContext.resources.getStringArray(R.array.ratingColorList2)
-    var selectedPosition = 5
+    var selectedPosition = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemView: View =
@@ -72,6 +72,10 @@ class TeaSampleRatingAdapter(
             else
                 rating.toInt() - 1
         }
+    }
+
+    public fun getRating(): Int {
+        return (selectedPosition + 1)
     }
 
     private inner class ItemViewHolder(itemView: View) :

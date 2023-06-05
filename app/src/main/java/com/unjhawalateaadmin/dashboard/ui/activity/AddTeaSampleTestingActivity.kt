@@ -72,6 +72,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
     private lateinit var imagePickerUtility: ImagePickerUtility;
     private var fileAction = 0;
     lateinit var fileUri: Uri
+    var adapterRating: TeaSampleRatingAdapter? = null
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,6 +98,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
         binding.edtTeaPreference.setOnClickListener(this)
         binding.edtMFGDate.setOnClickListener(this)
         binding.routSelectAttachment.setOnClickListener(this)
+        binding.imgClearMFGDate.setOnClickListener(this)
 
         getIntentData()
         setRatingAdapter()
@@ -121,8 +123,8 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
 
     private fun setRatingAdapter() {
         binding.rvRatings.setHasFixedSize(true)
-        val adapter = TeaSampleRatingAdapter(mContext, this)
-        binding.rvRatings.adapter = adapter
+        adapterRating = TeaSampleRatingAdapter(mContext, this)
+        binding.rvRatings.adapter = adapterRating
         val layoutManager =
             GridLayoutManager(mContext, 5)
         binding.rvRatings.layoutManager = layoutManager
@@ -137,6 +139,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     showProgressDialog(mContext, "")
                     dashboardViewModel.storeTeaSampleTestingResponse(addTeaSampleTestingInfo)
                 }
+
             R.id.edtPersonalGrade -> if (teaSampleConfigurationResponse.grades.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.grades,
@@ -144,6 +147,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_GRADE
                 )
             }
+
             R.id.edtCutting -> if (teaSampleConfigurationResponse.cuttings.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.cuttings,
@@ -151,6 +155,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_CUTTING
                 )
             }
+
             R.id.edtColour -> if (teaSampleConfigurationResponse.colours.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.colours,
@@ -158,6 +163,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_COLOUR
                 )
             }
+
             R.id.edtDensity -> if (teaSampleConfigurationResponse.densities.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.densities,
@@ -165,6 +171,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_DENSITY
                 )
             }
+
             R.id.edtSourceLevel1 -> if (teaSampleConfigurationResponse.sources.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.sources,
@@ -172,6 +179,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_TEA_SOURCE_LEVEL_1
                 )
             }
+
             R.id.edtSourceLevel2 -> if (levelFirstList.isNotEmpty()) {
                 showSelectItemDialog(
                     levelFirstList,
@@ -179,6 +187,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_TEA_SOURCE_LEVEL_2
                 )
             }
+
             R.id.edtSourceLevel3 -> if (levelSecondList.isNotEmpty()) {
                 showSelectItemDialog(
                     levelSecondList,
@@ -186,6 +195,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_TEA_SOURCE_LEVEL_3
                 )
             }
+
             R.id.edtSeasonAndQuality -> if (teaSampleConfigurationResponse.seasons.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.seasons,
@@ -193,6 +203,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_SEASON_AND_QUALITY
                 )
             }
+
             R.id.edtOurQuality -> if (teaSampleConfigurationResponse.qualities.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.qualities,
@@ -200,6 +211,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_OUR_QUALITY
                 )
             }
+
             R.id.edtTeaPreference -> if (teaSampleConfigurationResponse.preferences.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.preferences,
@@ -207,6 +219,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     AppConstants.DialogIdentifier.SELECT_TEA_PREFERENCE
                 )
             }
+
             R.id.edtMFGDate -> {
                 if (!StringHelper.isEmpty(binding.edtMFGDate.text.toString())) {
                     val date = binding.edtMFGDate.text.toString()
@@ -225,8 +238,14 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                     )
                 }
             }
+
             R.id.routSelectAttachment -> {
                 checkPermission()
+            }
+
+            R.id.imgClearMFGDate -> {
+                binding.edtMFGDate.setText("")
+                addTeaSampleTestingInfo.manufacturer_date = ""
             }
         }
     }
@@ -275,6 +294,14 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                 binding.edtDensity, binding.layoutDensity,
                 getString(R.string.empty_edittext_error)
             )
+            valid = false
+        }
+
+
+        if (adapterRating?.getRating()!! > 0) {
+            binding.imgRatingError.visibility = View.GONE
+        }else{
+            binding.imgRatingError.visibility = View.VISIBLE
             valid = false
         }
 
@@ -427,12 +454,12 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
         } else if (action == AppConstants.DialogIdentifier.SELECT_SEASON_AND_QUALITY) {
             selectItemBottomSheetDialog.dismiss()
             binding.edtSeasonAndQuality.setText(teaSampleConfigurationResponse.seasons[position].name)
-            addTeaSampleTestingInfo.lu_tea_season_detail_id =
+            addTeaSampleTestingInfo.lu_tea_season_id =
                 teaSampleConfigurationResponse.seasons[position]._id
         } else if (action == AppConstants.DialogIdentifier.SELECT_OUR_QUALITY) {
             selectItemBottomSheetDialog.dismiss()
             binding.edtOurQuality.setText(teaSampleConfigurationResponse.qualities[position].name)
-            addTeaSampleTestingInfo.our_quality_id =
+            addTeaSampleTestingInfo.quality_id =
                 teaSampleConfigurationResponse.qualities[position]._id
         } else if (action == AppConstants.DialogIdentifier.SELECT_TEA_PREFERENCE) {
             selectItemBottomSheetDialog.dismiss()
@@ -442,7 +469,7 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
         } else if (action == AppConstants.DialogIdentifier.TEA_SAMPLE_RATING) {
             addTeaSampleTestingInfo.rating =
                 (position + 1).toString()
-            Log.e("test","addTeaSampleTestingInfo.rating:"+addTeaSampleTestingInfo.rating)
+            Log.e("test", "addTeaSampleTestingInfo.rating:" + addTeaSampleTestingInfo.rating)
         }
 
     }
@@ -523,10 +550,12 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
                 fileAction = AppConstants.Action.SELECT_GALLERY_IMAGE
                 onSelectFromGallery()
             }
+
             AppConstants.Type.SELECT_FROM_CAMERA -> {
                 fileAction = AppConstants.Action.SELECT_CAMERA_IMAGE
                 onSelectFromCamera()
             }
+
             AppConstants.Type.SELECT_PDF -> {
                 fileAction = AppConstants.Action.SELECT_PDF
                 onSelectPdf()

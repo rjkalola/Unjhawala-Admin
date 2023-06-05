@@ -311,6 +311,8 @@ interface DashboardRepository {
 
     suspend fun availableTeaSampleList(
         search: RequestBody,
+        start_date: RequestBody,
+        end_date: RequestBody,
     ): AvailableTeaSampleListResponse
 
     suspend fun getAvailableTeaSampleConfiguration(

@@ -560,26 +560,31 @@ class GardenAreaActivity : BaseActivity(), View.OnClickListener, SelectItemListe
             Log.e("test", "selectedPosition:$selectedPosition")
             adapter?.updateItem(selectedPosition, info)
         }
-        if (itemType == AppConstants.TeaConfiguration.TEA_GARDEN) {
-            dashboardViewModel.storeTeaGardenItem(
-                info.id,
-                info.name,
-                info.status,
-                info.lu_leaf_type_id,
-                info.lu_garden_area_id,
-                configurationType
-            )
-        } else if (itemType == AppConstants.TeaConfiguration.TEA_SEASON) {
-            dashboardViewModel.storeTeaSeasonItem(info)
-        } else if (itemType == AppConstants.TeaConfiguration.TEA_SOURCE) {
+        when (itemType) {
+            AppConstants.TeaConfiguration.TEA_GARDEN -> {
+                dashboardViewModel.storeTeaGardenItem(
+                    info.id,
+                    info.name,
+                    info.status,
+                    info.lu_leaf_type_id,
+                    info.lu_garden_area_id,
+                    configurationType
+                )
+            }
+            AppConstants.TeaConfiguration.TEA_SEASON -> {
+                dashboardViewModel.storeTeaSeasonItem(info)
+            }
+            AppConstants.TeaConfiguration.TEA_SOURCE -> {
 
-        } else {
-            dashboardViewModel.storeConfigurationItem(
-                info.id,
-                info.name,
-                info.status,
-                configurationType
-            )
+            }
+            else -> {
+                dashboardViewModel.storeConfigurationItem(
+                    info.id,
+                    info.name,
+                    info.status,
+                    configurationType
+                )
+            }
         }
     }
 

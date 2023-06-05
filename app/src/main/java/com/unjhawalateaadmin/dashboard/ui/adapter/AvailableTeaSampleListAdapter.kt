@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.imateplus.utilities.utils.StringHelper
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
 import com.unjhawalateaadmin.common.utils.AppConstants
@@ -39,6 +40,17 @@ class AvailableTeaSampleListAdapter(
         val itemViewHolder = holder as ItemViewHolder
         val info = list[position]
         itemViewHolder.getData(info)
+
+        if (!StringHelper.isEmpty(info.rate) && info.rate!!.toDouble() > 0) {
+            itemViewHolder.binding.imgRate.visibility = View.VISIBLE
+            itemViewHolder.binding.txtRate.visibility = View.VISIBLE
+            itemViewHolder.binding.dividerRate.visibility = View.VISIBLE
+        } else {
+            itemViewHolder.binding.imgRate.visibility = View.GONE
+            itemViewHolder.binding.txtRate.visibility = View.GONE
+            itemViewHolder.binding.dividerRate.visibility = View.GONE
+        }
+
         itemViewHolder.binding.routMainView.setOnClickListener {
             listener!!.onSelectItem(position, AppConstants.Action.ADD_TEA_SAMPLE_Quantity, 0)
         }

@@ -339,6 +339,7 @@
                     android:layout_marginEnd="@dimen/size_20dp"
                     android:layout_marginBottom="@dimen/size_12dp"
                     android:textColorHint="@color/colorHint"
+                    android:visibility="gone"
                     app:errorIconDrawable="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -363,6 +364,7 @@
                     android:layout_marginEnd="@dimen/size_20dp"
                     android:layout_marginBottom="@dimen/size_12dp"
                     android:textColorHint="@color/colorHint"
+                    android:visibility="gone"
                     app:errorIconDrawable="@null">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -450,31 +452,48 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layoutMFGDate"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/size_20dp"
                     android:layout_marginEnd="@dimen/size_20dp"
-                    android:layout_marginBottom="@dimen/size_12dp"
-                    android:textColorHint="@color/colorHint"
-                    app:errorIconDrawable="@null">
+                    android:layout_marginBottom="@dimen/size_12dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtMFGDate"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutMFGDate"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_calendar_month"
-                        android:drawablePadding="@dimen/size_8dp"
-                        android:focusable="false"
-                        android:hint="@string/mfg_date"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:maxLength="10"
-                        android:textSize="@dimen/text_size_15sp" />
+                        android:textColorHint="@color/colorHint"
+                        app:errorIconDrawable="@null">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtMFGDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_calendar_month"
+                            android:drawablePadding="@dimen/size_8dp"
+                            android:focusable="false"
+                            android:hint="@string/mfg_date"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLength="10"
+                            android:textSize="@dimen/text_size_15sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgClearMFGDate"
+                        android:layout_width="@dimen/size_28dp"
+                        android:layout_height="@dimen/size_28dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_12dp"
+                        android:padding="@dimen/size_4dp"
+                        app:srcCompat="@drawable/ic_cancel"
+                        app:tint="@color/colorPrimary" />
+
+                </RelativeLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layoutNotes"
@@ -536,16 +555,33 @@
 
                 </RelativeLayout>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/size_20dp"
                     android:layout_marginTop="@dimen/size_14dp"
-                    android:fontFamily="@font/be_vietnam_regular"
-                    android:includeFontPadding="false"
-                    android:text="Tea Rating"
-                    android:textColor="@color/colorPrimaryText2"
-                    android:textSize="16sp" />
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/be_vietnam_regular"
+                        android:includeFontPadding="false"
+                        android:text="Tea Rating"
+                        android:textColor="@color/colorPrimaryText2"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgRatingError"
+                        android:layout_width="@dimen/size_20dp"
+                        android:layout_height="@dimen/size_20dp"
+                        android:layout_marginStart="@dimen/size_8dp"
+                        android:visibility="gone"
+                        app:srcCompat="@drawable/ic_error_outline_white_48dp"
+                        app:tint="@color/red" />
+
+                </LinearLayout>
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvRatings"

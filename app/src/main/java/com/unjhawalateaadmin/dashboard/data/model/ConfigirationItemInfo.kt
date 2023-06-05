@@ -11,5 +11,9 @@ class ConfigurationItemInfo {
     var lu_garden_area_id: String = ""
     var leaf_type_name: String = ""
     var area_name: String = ""
+    var season_days: String = ""
+    var expired_days: String = ""
+
+
     var tea_season_quality: MutableList<TeaSeasonQualityInfo> = ArrayList()
 }

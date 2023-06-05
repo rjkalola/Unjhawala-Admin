@@ -8,7 +8,22 @@ import com.unjhawalateaadmin.common.data.model.BaseResponse
 import com.unjhawalateaadmin.common.utils.AppConstants
 import com.unjhawalateaadmin.common.utils.AppUtils
 import com.unjhawalateaadmin.common.utils.traceErrorException
-import com.unjhawalateaadmin.dashboard.data.model.*
+import com.unjhawalateaadmin.dashboard.data.model.AvailableTeaSampleConfigurationResponse
+import com.unjhawalateaadmin.dashboard.data.model.AvailableTeaSampleListResponse
+import com.unjhawalateaadmin.dashboard.data.model.ConfigurationItemInfo
+import com.unjhawalateaadmin.dashboard.data.model.ConfigurationItemListResponse
+import com.unjhawalateaadmin.dashboard.data.model.DashboardResponse
+import com.unjhawalateaadmin.dashboard.data.model.PrivacyPolicyResponse
+import com.unjhawalateaadmin.dashboard.data.model.TeaGardenConfigurationResponse
+import com.unjhawalateaadmin.dashboard.data.model.TeaSampleConfigurationResponse
+import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
+import com.unjhawalateaadmin.dashboard.data.model.TeaSampleListResponse
+import com.unjhawalateaadmin.dashboard.data.model.TeaSampleTestingInfo
+import com.unjhawalateaadmin.dashboard.data.model.TeaSeasonConfigurationResponse
+import com.unjhawalateaadmin.dashboard.data.model.TeaSourceLevelInfo
+import com.unjhawalateaadmin.dashboard.data.model.TeaSourceLevelListResponse
+import com.unjhawalateaadmin.dashboard.data.model.TeaTestedSampleDetailsResponse
+import com.unjhawalateaadmin.dashboard.data.model.TeaTestedSampleListResponse
 import com.unjhawalateaadmin.dashboard.data.repository.DashboardRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -110,36 +125,46 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                 when (type) {
                     AppConstants.TeaConfiguration.TEA_GARDEN_AREA -> response =
                         dashboardRepository.getGardenAreaList(limitBody, offsetBody, searchBody)
+
                     AppConstants.TeaConfiguration.LEAF_TYPE -> response =
                         dashboardRepository.getLeafTypeList(limitBody, offsetBody, searchBody)
+
                     AppConstants.TeaConfiguration.TEA_GRADE -> response =
                         dashboardRepository.getTeaGradeList(limitBody, offsetBody, searchBody)
+
                     AppConstants.TeaConfiguration.TEA_QUALITY -> response =
                         dashboardRepository.getTeaQualityList(limitBody, offsetBody, searchBody)
+
                     AppConstants.TeaConfiguration.TEA_TYPE -> response =
                         dashboardRepository.getTeaCuttingList(limitBody, offsetBody, searchBody)
+
                     AppConstants.TeaConfiguration.TEA_COLOR -> response =
                         dashboardRepository.getTeaColourList(limitBody, offsetBody, searchBody)
+
                     AppConstants.TeaConfiguration.TEA_DENSITY -> response =
                         dashboardRepository.getTeaDensityList(limitBody, offsetBody, searchBody)
+
                     AppConstants.TeaConfiguration.TEA_PRODUCT_PREFERENCE -> response =
                         dashboardRepository.getProductPreferenceList(
                             limitBody,
                             offsetBody,
                             searchBody
                         )
+
                     AppConstants.TeaConfiguration.TEA_INWARD_BAG_TYPE -> response =
                         dashboardRepository.getTeaInwardBagTypeList(
                             limitBody,
                             offsetBody,
                             searchBody
                         )
+
                     AppConstants.TeaConfiguration.TEA_GARDEN -> response =
                         dashboardRepository.getTeaGardenList(
                             limitBody,
                             offsetBody,
                             searchBody
                         )
+
                     AppConstants.TeaConfiguration.TEA_SEASON -> response =
                         dashboardRepository.getTeaSeasonList(
                             limitBody,
@@ -167,24 +192,34 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                 when (type) {
                     AppConstants.TeaConfiguration.TEA_GARDEN_AREA -> response =
                         dashboardRepository.getGardenAreaListAll()
+
                     AppConstants.TeaConfiguration.LEAF_TYPE -> response =
                         dashboardRepository.getLeafTypeListAll()
+
                     AppConstants.TeaConfiguration.TEA_GRADE -> response =
                         dashboardRepository.getTeaGradeListAll()
+
                     AppConstants.TeaConfiguration.TEA_QUALITY -> response =
                         dashboardRepository.getTeaQualityListAll()
+
                     AppConstants.TeaConfiguration.TEA_TYPE -> response =
                         dashboardRepository.getTeaCuttingListAll()
+
                     AppConstants.TeaConfiguration.TEA_COLOR -> response =
                         dashboardRepository.getTeaColourListAll()
+
                     AppConstants.TeaConfiguration.TEA_DENSITY -> response =
                         dashboardRepository.getTeaDensityListAll()
+
                     AppConstants.TeaConfiguration.TEA_PRODUCT_PREFERENCE -> response =
                         dashboardRepository.getProductPreferenceListAll()
+
                     AppConstants.TeaConfiguration.TEA_INWARD_BAG_TYPE -> response =
                         dashboardRepository.getTeaInwardBagTypeListAll()
+
                     AppConstants.TeaConfiguration.TEA_GARDEN -> response =
                         dashboardRepository.getTeaGardenListAll()
+
                     AppConstants.TeaConfiguration.TEA_SEASON -> response =
                         dashboardRepository.getTeaSeasonListAll()
                 }
@@ -213,20 +248,28 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                 when (type) {
                     AppConstants.TeaConfiguration.TEA_GARDEN_AREA -> response =
                         dashboardRepository.storeGardenAreaItem(idBody, nameBody, statusBody)
+
                     AppConstants.TeaConfiguration.LEAF_TYPE -> response =
                         dashboardRepository.storeLeafTypeItem(idBody, nameBody, statusBody)
+
                     AppConstants.TeaConfiguration.TEA_GRADE -> response =
                         dashboardRepository.storeTeaGradeItem(idBody, nameBody, statusBody)
+
                     AppConstants.TeaConfiguration.TEA_QUALITY -> response =
                         dashboardRepository.storeTeaQualityItem(idBody, nameBody, statusBody)
+
                     AppConstants.TeaConfiguration.TEA_TYPE -> response =
                         dashboardRepository.storeTeaCuttingItem(idBody, nameBody, statusBody)
+
                     AppConstants.TeaConfiguration.TEA_COLOR -> response =
                         dashboardRepository.storeTeaColourItem(idBody, nameBody, statusBody)
+
                     AppConstants.TeaConfiguration.TEA_DENSITY -> response =
                         dashboardRepository.storeTeaDensityItem(idBody, nameBody, statusBody)
+
                     AppConstants.TeaConfiguration.TEA_PRODUCT_PREFERENCE -> response =
                         dashboardRepository.storeProductPreferenceItem(idBody, nameBody, statusBody)
+
                     AppConstants.TeaConfiguration.TEA_INWARD_BAG_TYPE -> response =
                         dashboardRepository.storeTeaInwardBagTypeItem(idBody, nameBody, statusBody)
                 }
@@ -252,24 +295,34 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                 when (type) {
                     AppConstants.TeaConfiguration.TEA_GARDEN_AREA -> response =
                         dashboardRepository.deleteGardenAreaItem(idBody)
+
                     AppConstants.TeaConfiguration.LEAF_TYPE -> response =
                         dashboardRepository.deleteLeafTypeItem(idBody)
+
                     AppConstants.TeaConfiguration.TEA_GRADE -> response =
                         dashboardRepository.deleteTeaGradeItem(idBody)
+
                     AppConstants.TeaConfiguration.TEA_QUALITY -> response =
                         dashboardRepository.deleteTeaQualityItem(idBody)
+
                     AppConstants.TeaConfiguration.TEA_TYPE -> response =
                         dashboardRepository.deleteTeaCuttingItem(idBody)
+
                     AppConstants.TeaConfiguration.TEA_COLOR -> response =
                         dashboardRepository.deleteTeaColourItem(idBody)
+
                     AppConstants.TeaConfiguration.TEA_DENSITY -> response =
                         dashboardRepository.deleteTeaDensityItem(idBody)
+
                     AppConstants.TeaConfiguration.TEA_PRODUCT_PREFERENCE -> response =
                         dashboardRepository.deleteProductPreferenceItem(idBody)
+
                     AppConstants.TeaConfiguration.TEA_INWARD_BAG_TYPE -> response =
                         dashboardRepository.deleteTeaInwardBagTypeItem(idBody)
+
                     AppConstants.TeaConfiguration.TEA_GARDEN -> response =
                         dashboardRepository.deleteTeaGarden(idBody)
+
                     AppConstants.TeaConfiguration.TEA_SEASON -> response =
                         dashboardRepository.deleteTeaSeason(idBody)
                 }
@@ -294,24 +347,34 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
                 when (type) {
                     AppConstants.TeaConfiguration.TEA_GARDEN_AREA -> response =
                         dashboardRepository.storeGardenAreaPosition(dataBody)
+
                     AppConstants.TeaConfiguration.LEAF_TYPE -> response =
                         dashboardRepository.storeLeafTypePosition(dataBody)
+
                     AppConstants.TeaConfiguration.TEA_GRADE -> response =
                         dashboardRepository.storeTeaGradePosition(dataBody)
+
                     AppConstants.TeaConfiguration.TEA_QUALITY -> response =
                         dashboardRepository.storeTeaQualityPosition(dataBody)
+
                     AppConstants.TeaConfiguration.TEA_TYPE -> response =
                         dashboardRepository.storeTeaCuttingPosition(dataBody)
+
                     AppConstants.TeaConfiguration.TEA_COLOR -> response =
                         dashboardRepository.storeTeaColourPosition(dataBody)
+
                     AppConstants.TeaConfiguration.TEA_DENSITY -> response =
                         dashboardRepository.storeTeaDensityPosition(dataBody)
+
                     AppConstants.TeaConfiguration.TEA_PRODUCT_PREFERENCE -> response =
                         dashboardRepository.storeProductPreferencePosition(dataBody)
+
                     AppConstants.TeaConfiguration.TEA_INWARD_BAG_TYPE -> response =
                         dashboardRepository.storeTeaInwardBagTypePosition(dataBody)
+
                     AppConstants.TeaConfiguration.TEA_GARDEN -> response =
                         dashboardRepository.storeTeaGardensPosition(dataBody)
+
                     AppConstants.TeaConfiguration.TEA_SEASON -> response =
                         dashboardRepository.storeTeaSeasonsPosition(dataBody)
                 }
@@ -502,8 +565,8 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         val lu_tea_source_level_3_id: RequestBody =
             AppUtils.getRequestBody(info.lu_tea_source_level_3_id!!)
         val lu_tea_season_detail_id: RequestBody =
-            AppUtils.getRequestBody(info.lu_tea_season_detail_id!!)
-        val our_quality_id: RequestBody = AppUtils.getRequestBody(info.our_quality_id!!)
+            AppUtils.getRequestBody(info.lu_tea_season_id!!)
+        val our_quality_id: RequestBody = AppUtils.getRequestBody(info.quality_id!!)
         val lu_tea_product_preference_id: RequestBody =
             AppUtils.getRequestBody(info.lu_tea_product_preference_id!!)
         val manufacturer_date: RequestBody = AppUtils.getRequestBody(info.manufacturer_date!!)
@@ -549,13 +612,15 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         }
     }
 
-    fun getAvailableTeaSampleList(search: String) {
+    fun getAvailableTeaSampleList(search: String, startDate: String, endDate: String) {
         val searchBody: RequestBody = AppUtils.getRequestBody(search)
+        val startDateBody: RequestBody = AppUtils.getRequestBody(startDate)
+        val endDateBody: RequestBody = AppUtils.getRequestBody(endDate)
 
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 var response: AvailableTeaSampleListResponse =
-                    dashboardRepository.availableTeaSampleList(searchBody)
+                    dashboardRepository.availableTeaSampleList(searchBody,startDateBody,endDateBody)
                 withContext(Dispatchers.Main) {
                     mAvailableTeaSampleListResponse.value = response
                 }
@@ -723,7 +788,7 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 var response: TeaTestedSampleListResponse =
-                    dashboardRepository.getTeaTestedDataList(limitBody, offsetBody,searchBody)
+                    dashboardRepository.getTeaTestedDataList(limitBody, offsetBody, searchBody)
                 withContext(Dispatchers.Main) {
                     mTeaTestedSampleListResponse.value = response
                 }
@@ -770,8 +835,8 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         val lu_tea_source_level_3_id: RequestBody =
             AppUtils.getRequestBody(info.lu_tea_source_level_3_id!!)
         val lu_tea_season_detail_id: RequestBody =
-            AppUtils.getRequestBody(info.lu_tea_season_detail_id!!)
-        val our_quality_id: RequestBody = AppUtils.getRequestBody(info.our_quality_id!!)
+            AppUtils.getRequestBody(info.lu_tea_season_id!!)
+        val our_quality_id: RequestBody = AppUtils.getRequestBody(info.quality_id!!)
         val lu_tea_product_preference_id: RequestBody =
             AppUtils.getRequestBody(info.lu_tea_product_preference_id!!)
         val manufacturer_date: RequestBody = AppUtils.getRequestBody(info.manufacturer_date!!)
@@ -784,7 +849,6 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         val bag: RequestBody = AppUtils.getRequestBody(info.bag!!)
         val weight: RequestBody = AppUtils.getRequestBody(info.weight!!)
         val rate: RequestBody = AppUtils.getRequestBody(info.rate!!)
-
 
         var image: MultipartBody.Part? = null
         if (!StringHelper.isEmpty(info.file) && !info.file!!.startsWith("http")) {

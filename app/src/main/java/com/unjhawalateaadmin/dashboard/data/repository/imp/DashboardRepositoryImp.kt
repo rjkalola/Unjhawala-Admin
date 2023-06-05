@@ -405,8 +405,8 @@ class DashboardRepositoryImp(
         )
     }
 
-    override suspend fun availableTeaSampleList(search: RequestBody): AvailableTeaSampleListResponse {
-        return dashboardInterface.availableTeaSampleList(search)
+    override suspend fun availableTeaSampleList(search: RequestBody,start_date: RequestBody,end_date: RequestBody): AvailableTeaSampleListResponse {
+        return dashboardInterface.availableTeaSampleList(search,start_date,end_date)
     }
 
     override suspend fun getAvailableTeaSampleConfiguration(): AvailableTeaSampleConfigurationResponse {

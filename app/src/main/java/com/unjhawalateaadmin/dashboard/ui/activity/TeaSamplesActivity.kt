@@ -56,7 +56,6 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
     private var isUpdated = false
     private var teaSampleConfigurationResponse: TeaSampleConfigurationResponse? = null
     private var listFilters: MutableList<ModuleInfo> = ArrayList()
-
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStatusBarColor(resources.getColor(R.color.colorAccentLight))

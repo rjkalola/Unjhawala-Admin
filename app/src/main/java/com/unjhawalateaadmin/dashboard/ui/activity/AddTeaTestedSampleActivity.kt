@@ -602,12 +602,12 @@ class AddTeaTestedSampleActivity : BaseActivity(), View.OnClickListener, SelectI
         } else if (action == AppConstants.DialogIdentifier.SELECT_SEASON_AND_QUALITY) {
             selectItemBottomSheetDialog.dismiss()
             binding.edtSeasonAndQuality.setText(teaSampleConfigurationResponse.seasons[position].name)
-            addTeaSampleTestingInfo.lu_tea_season_detail_id =
+            addTeaSampleTestingInfo.lu_tea_season_id =
                 teaSampleConfigurationResponse.seasons[position]._id
         } else if (action == AppConstants.DialogIdentifier.SELECT_OUR_QUALITY) {
             selectItemBottomSheetDialog.dismiss()
             binding.edtOurQuality.setText(teaSampleConfigurationResponse.qualities[position].name)
-            addTeaSampleTestingInfo.our_quality_id =
+            addTeaSampleTestingInfo.quality_id =
                 teaSampleConfigurationResponse.qualities[position]._id
         } else if (action == AppConstants.DialogIdentifier.SELECT_TEA_PREFERENCE) {
             selectItemBottomSheetDialog.dismiss()

@@ -2,7 +2,6 @@ package com.unjhawalateaadmin.dashboard.ui.dialog
 
 import android.content.Context
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
@@ -13,10 +12,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.imateplus.utilities.utils.StringHelper
 import com.imateplus.utilities.utils.ValidationUtil
 import com.unjhawalateaadmin.R
-import com.unjhawalateaadmin.common.data.model.ModuleInfo
 import com.unjhawalateaadmin.dashboard.callback.AddConfigurationItemListener
 import com.unjhawalateaadmin.dashboard.data.model.ConfigurationItemInfo
-import com.unjhawalateaadmin.dashboard.data.model.TeaGardenConfigurationResponse
 import com.unjhawalateaadmin.dashboard.data.model.TeaSeasonConfigurationResponse
 import com.unjhawalateaadmin.dashboard.data.model.TeaSeasonQualityInfo
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaSeasonQualityListAdapter
@@ -25,8 +22,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.util.*
-import kotlin.collections.ArrayList
+import java.util.Timer
 import kotlin.concurrent.schedule
 
 class AddTeaSeasonDialog(mContext: Context?) :
@@ -60,7 +56,7 @@ class AddTeaSeasonDialog(mContext: Context?) :
             if (info != null) {
                 this.mConfigurationItemInfo = info
 
-                val list: MutableList<TeaSeasonQualityInfo> = ArrayList()
+              /*  val list: MutableList<TeaSeasonQualityInfo> = ArrayList()
                 for (i in teaSeasonConfigurationResponse?.Data!!.indices) {
                     var position = -1
                     for (j in info.tea_season_quality.indices) {
@@ -83,18 +79,18 @@ class AddTeaSeasonDialog(mContext: Context?) :
                         list.add(data)
                     }
                 }
-                this.mConfigurationItemInfo!!.tea_season_quality = list
+                this.mConfigurationItemInfo!!.tea_season_quality = list*/
 
             } else {
                 this.mConfigurationItemInfo = ConfigurationItemInfo()
-                val list: MutableList<TeaSeasonQualityInfo> = ArrayList()
+              /*  val list: MutableList<TeaSeasonQualityInfo> = ArrayList()
                 for (i in teaSeasonConfigurationResponse?.Data!!) {
                     val data = TeaSeasonQualityInfo()
                     data.lu_tea_quality_id = i._id
                     data.name = i.name
                     list.add(data)
                 }
-                this.mConfigurationItemInfo!!.tea_season_quality = list
+                this.mConfigurationItemInfo!!.tea_season_quality = list*/
             }
             return AddTeaSeasonDialog(context)
         }
@@ -113,22 +109,26 @@ class AddTeaSeasonDialog(mContext: Context?) :
             binding.txtTitle.text = "Add $itemName"
 
         binding.txtSave.setOnClickListener {
-            adapter?.checkValidation()
-            Timer().schedule(500) {
-                MainScope().launch {
-                    withContext(Dispatchers.Default) {
-
-                    }
-                    Log.e("test", "valid>>>>>:" + valid())
-                    if (valid()) {
-                        mListener?.onAddConfigurationItem(itemType, mConfigurationItemInfo!!)
-                        dismiss()
-                    }
-                }
+            if (valid()) {
+                mListener?.onAddConfigurationItem(itemType, mConfigurationItemInfo!!)
+                dismiss()
             }
+            /* adapter?.checkValidation()
+             Timer().schedule(500) {
+                 MainScope().launch {
+                     withContext(Dispatchers.Default) {
+
+                     }
+                     Log.e("test", "valid>>>>>:" + valid())
+                     if (valid()) {
+                         mListener?.onAddConfigurationItem(itemType, mConfigurationItemInfo!!)
+                         dismiss()
+                     }
+                 }
+             }*/
         }
 
-        setAdapter(mConfigurationItemInfo!!.tea_season_quality)
+//        setAdapter(mConfigurationItemInfo!!.tea_season_quality)
 
         binding.imgClose.setOnClickListener { dismiss() }
 
@@ -137,10 +137,32 @@ class AddTeaSeasonDialog(mContext: Context?) :
     private fun valid(): Boolean {
         var valid = true
 
-        if (adapter?.validate!!) {
-            valid = true
-            mConfigurationItemInfo!!.tea_season_quality = adapter?.list!!
+        /*  if (adapter?.validate!!) {
+              valid = true
+              mConfigurationItemInfo!!.tea_season_quality = adapter?.list!!
+          } else {
+              valid = false
+          }*/
+
+        if (!ValidationUtil.isEmptyEditText(binding.edtExpiredDays.text.toString().trim())) {
+            binding.layoutExpiredDays.error = null
+            binding.layoutExpiredDays.isErrorEnabled = false
         } else {
+            ValidationUtil.setErrorIntoInputTextLayout(
+                binding.edtExpiredDays, binding.layoutExpiredDays,
+                mContext.getString(R.string.empty_edittext_error)
+            )
+            valid = false
+        }
+
+        if (!ValidationUtil.isEmptyEditText(binding.edtSeasonDays.text.toString().trim())) {
+            binding.layoutSeasonDays.error = null
+            binding.layoutSeasonDays.isErrorEnabled = false
+        } else {
+            ValidationUtil.setErrorIntoInputTextLayout(
+                binding.edtSeasonDays, binding.layoutSeasonDays,
+                mContext.getString(R.string.empty_edittext_error)
+            )
             valid = false
         }
 

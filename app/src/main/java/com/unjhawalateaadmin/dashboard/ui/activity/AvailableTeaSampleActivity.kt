@@ -3,17 +3,22 @@ package com.unjhawalateaadmin.dashboard.ui.activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.imateplus.utilities.utils.AlertDialogHelper
+import com.imateplus.utilities.utils.DateFormatsConstants
 import com.unjhawalateaadmin.R
+import com.unjhawalateaadmin.common.callback.SelectDateRangeListener
 import com.unjhawalateaadmin.common.callback.SelectItemListener
 import com.unjhawalateaadmin.common.ui.activity.BaseActivity
 import com.unjhawalateaadmin.common.utils.AppConstants
@@ -31,7 +36,7 @@ import org.parceler.Parcels
 
 
 class AvailableTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemListener,
-    AddAvailableTeaSampleListener {
+    AddAvailableTeaSampleListener, SelectDateRangeListener {
     private lateinit var binding: ActivityAvailableTeaSampleListBinding
     private lateinit var mContext: Context
     private val dashboardViewModel: DashboardViewModel by viewModel()
@@ -48,6 +53,8 @@ class AvailableTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectI
     var loading = true
     var mIsLastPage = false
     private var isUpdated = false
+    var startDate = ""
+    var endDate = ""
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,6 +80,13 @@ class AvailableTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectI
             )
             intent.putExtras(bundle)
             cartResultActivity.launch(intent)
+        }
+
+        binding.routDateFilter.setOnClickListener {
+            startDate = ""
+            endDate = ""
+            binding.routDateFilter.visibility = View.GONE
+            loadData(true, true, false)
         }
 
         binding.edtSearch.addTextChangedListener(object : TextWatcher {
@@ -114,6 +128,7 @@ class AvailableTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectI
 
         dashboardViewModel.getAvailableTeaSampleList(
             search,
+            startDate, endDate
         )
     }
 
@@ -185,7 +200,7 @@ class AvailableTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectI
                           offset = response.offset
 
                           mIsLastPage = offset == 0*/
-
+                        checkCartQuantity()
                     } else {
                         AppUtils.handleUnauthorized(mContext, response)
                     }
@@ -236,6 +251,45 @@ class AvailableTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectI
             binding.routViewCart.visibility = View.VISIBLE
         else
             binding.routViewCart.visibility = View.GONE
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.add_menu, menu)
+        menu!!.findItem(R.id.action_add).setIcon(R.drawable.ic_calendar_month)
+        val drawable = menu.findItem(R.id.action_add).icon
+        if (drawable != null) {
+            drawable.mutate()
+            drawable.setColorFilter(
+                resources.getColor(R.color.colorPrimaryText),
+                PorterDuff.Mode.SRC_ATOP
+            )
+        }
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.action_add -> {
+                AppUtils.showDateRangeDialog(
+                    this@AvailableTeaSampleActivity,
+                    startDate,
+                    endDate,
+                    DateFormatsConstants.DD_MMM_YYYY_SPACE,
+                    supportFragmentManager,
+                    this
+                )
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onSelectDate(startDate: String, endDate: String) {
+        this.startDate = startDate
+        this.endDate = endDate
+        binding.routDateFilter.visibility = View.VISIBLE
+        binding.txtDateFilter.text = "$startDate to $endDate"
+        loadData(true, true, false)
     }
 
     var cartResultActivity =

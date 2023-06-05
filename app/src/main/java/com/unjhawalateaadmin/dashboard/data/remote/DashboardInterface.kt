@@ -412,8 +412,8 @@ interface DashboardInterface {
         @Part("lu_tea_source_level_1_id") lu_tea_source_level_1_id: RequestBody,
         @Part("lu_tea_source_level_2_id") lu_tea_source_level_2_id: RequestBody,
         @Part("lu_tea_source_level_3_id") lu_tea_source_level_3_id: RequestBody,
-        @Part("lu_tea_season_detail_id") lu_tea_season_detail_id: RequestBody,
-        @Part("our_quality_id") our_quality_id: RequestBody,
+        @Part("lu_tea_season_id") lu_tea_season_id: RequestBody,
+        @Part("quality_id") quality_id: RequestBody,
         @Part("lu_tea_product_preference_id") lu_tea_product_preference_id: RequestBody,
         @Part("manufacturer_date") manufacturer_date: RequestBody,
         @Part("note") note: RequestBody,
@@ -425,6 +425,8 @@ interface DashboardInterface {
     @POST("tea-confirmation/available-tea-sample")
     suspend fun availableTeaSampleList(
         @Part("search") search: RequestBody,
+        @Part("start_date") start_date: RequestBody,
+        @Part("end_date") end_date: RequestBody,
     ): AvailableTeaSampleListResponse
 
     @GET("tea-confirmation/configuration")
@@ -490,8 +492,8 @@ interface DashboardInterface {
         @Part("lu_tea_source_level_1_id") lu_tea_source_level_1_id: RequestBody,
         @Part("lu_tea_source_level_2_id") lu_tea_source_level_2_id: RequestBody,
         @Part("lu_tea_source_level_3_id") lu_tea_source_level_3_id: RequestBody,
-        @Part("lu_tea_season_detail_id") lu_tea_season_detail_id: RequestBody,
-        @Part("our_quality_id") our_quality_id: RequestBody,
+        @Part("lu_tea_season_id") lu_tea_season_id: RequestBody,
+        @Part("quality_id") quality_id: RequestBody,
         @Part("lu_tea_product_preference_id") lu_tea_product_preference_id: RequestBody,
         @Part("manufacturer_date") manufacturer_date: RequestBody,
         @Part("note") note: RequestBody,

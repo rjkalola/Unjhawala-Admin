@@ -210,8 +210,8 @@
     <string name="select_tea_source_level_1">Select Tea Source Level 1</string>
     <string name="select_tea_source_level_2">Select Tea Source Level 2</string>
     <string name="select_tea_source_level_3">Select Tea Source Level 3</string>
-    <string name="select_season_and_quality">Select Season &amp; Quality</string>
-    <string name="select_our_quality">Select Our Quality</string>
+    <string name="select_season_and_quality">Select Season</string>
+    <string name="select_our_quality">Select Quality</string>
     <string name="select_tea_preference">Select Tea Preference</string>
     <string name="rate">Rate</string>
     <string name="personal_grade_mandatory">Personal Grade <font color='#FF0000'>*</font></string>
@@ -221,8 +221,8 @@
     <string name="tea_source_level_1">Tea Source Level 1</string>
     <string name="tea_source_level_2">Tea Source Level 2</string>
     <string name="tea_source_level_3">Tea Source Level 3</string>
-    <string name="season_and_quality">Season &amp; Quality</string>
-    <string name="our_quality">Our Quality</string>
+    <string name="season_and_quality">Season</string>
+    <string name="our_quality">Quality</string>
     <string name="tea_preference">Tea Preference</string>
     <string name="mfg_date">MFG Date</string>
     <string name="notes">Notes</string>
@@ -254,8 +254,9 @@
     <string name="apply">Apply</string>
     <string name="msg_clear_filter">Are you sure you want to clear filter?</string>
 
-    <!--    <string name=""></string>-->
-    <!--    <string name=""></string>-->
+    <string name="season_days_">Season Days <font color='#FF0000'>*</font></string>
+    <string name="expired_days_">Expired Days <font color='#FF0000'>*</font></string>
+
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->
     <!--    <string name=""></string>-->

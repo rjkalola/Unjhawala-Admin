@@ -57,11 +57,52 @@
 
         </RelativeLayout>
 
+        <LinearLayout
+            android:id="@+id/routFiltersOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/routSearchView"
+            android:layout_marginStart="@dimen/size_16dp">
+
+            <LinearLayout
+                android:id="@+id/routDateFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_12dp"
+                android:background="@drawable/img_working_area_title_bg"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/size_16dp"
+                android:paddingTop="@dimen/size_4dp"
+                android:paddingEnd="@dimen/size_9dp"
+                android:paddingBottom="@dimen/size_4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txtDateFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/colorPrimaryText2"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgRemoveDateFilter"
+                    android:layout_width="@dimen/size_24dp"
+                    android:layout_height="@dimen/size_24dp"
+                    android:layout_marginStart="@dimen/size_3dp"
+                    android:padding="@dimen/size_6dp"
+                    app:srcCompat="@drawable/ic_close2"
+                    app:tint="@color/colorPrimaryText2" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@id/routViewCart"
-            android:layout_below="@id/routSearchView"
+            android:layout_below="@id/routFiltersOption"
             android:layout_marginTop="@dimen/size_10dp"
             android:layout_marginBottom="@dimen/size_10dp">
 
