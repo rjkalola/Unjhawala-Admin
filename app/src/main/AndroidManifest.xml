@@ -216,7 +216,6 @@
             android:name="google_analytics_adid_collection_enabled"
             android:value="false" />
 
-
     </application>
 
 </manifest>
