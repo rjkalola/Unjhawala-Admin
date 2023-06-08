@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import android.widget.DatePicker
+import android.widget.ScrollView
+import android.widget.TextView.OnEditorActionListener
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import com.imateplus.utilities.callback.OnDateSetListener
@@ -31,6 +34,7 @@ import org.parceler.Parcels
 import java.text.SimpleDateFormat
 import java.util.*
 
+
 class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemListener,
     OnDateSetListener, TextWatcher {
     private lateinit var binding: ActivityAddTeaSampleBinding
@@ -41,7 +45,6 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
     lateinit var addTeaSampleInfo: TeaSampleInfo
     var isSaveAndAdd: Boolean = false
     var isUpdate: Boolean = false
-
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setStatusBarColor()
@@ -61,6 +64,15 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
 
         binding.edtBag.addTextChangedListener(this)
         binding.edtWeight.addTextChangedListener(this)
+
+      /*  binding.edtRate.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                binding.scrollView.post(Runnable { binding.scrollView.fullScroll(ScrollView.FOCUS_DOWN) })
+                true
+            }
+            else
+                false
+        })*/
 
         getIntentData()
 

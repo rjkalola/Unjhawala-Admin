@@ -290,8 +290,8 @@ class TeaSamplesActivity : BaseActivity(), View.OnClickListener, SelectItemListe
                 Parcels.wrap<TeaSampleInfo>(adapter!!.list[position])
             )
             intent.putExtras(bundle)
-            startActivity(intent)
-//            addTeaSampleResultActivity.launch(intent)
+//            startActivity(intent)
+            addTeaSampleResultActivity.launch(intent)
         }
     }
 

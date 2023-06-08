@@ -32,6 +32,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_40dp"
                 android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/size_10dp"
+                android:layout_toStartOf="@id/imgFilter"
                 android:autofillHints=""
                 android:background="@drawable/search_edittext_bg"
                 android:drawableStart="@drawable/ic_search"
@@ -55,13 +57,98 @@
                 android:layout_marginEnd="@dimen/size_12dp"
                 android:visibility="gone" />
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgFilter"
+                android:layout_width="@dimen/size_40dp"
+                android:layout_height="@dimen/size_40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/pin_rectangle_bg"
+                android:padding="@dimen/size_8dp"
+                app:srcCompat="@drawable/ic_filter_alt" />
+
         </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/routFiltersOption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/routSearchView"
+            android:layout_marginStart="@dimen/size_16dp">
+
+            <LinearLayout
+                android:id="@+id/routFilter"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/size_12dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_9dp"
+                android:background="@drawable/img_working_area_title_bg"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/size_16dp"
+                android:paddingTop="@dimen/size_4dp"
+                android:paddingEnd="@dimen/size_9dp"
+                android:paddingBottom="@dimen/size_4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txtFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="@string/clear_filter"
+                    android:textColor="@color/colorPrimaryText2"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgRemoveFilter"
+                    android:layout_width="@dimen/size_24dp"
+                    android:layout_height="@dimen/size_24dp"
+                    android:layout_marginStart="@dimen/size_3dp"
+                    android:padding="@dimen/size_6dp"
+                    app:srcCompat="@drawable/ic_close2"
+                    app:tint="@color/colorPrimaryText2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/routDateFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_12dp"
+                android:background="@drawable/img_working_area_title_bg"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/size_16dp"
+                android:paddingTop="@dimen/size_4dp"
+                android:paddingEnd="@dimen/size_9dp"
+                android:paddingBottom="@dimen/size_4dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/txtDateFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/colorPrimaryText2"
+                    android:textSize="@dimen/text_size_16sp" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgRemoveDateFilter"
+                    android:layout_width="@dimen/size_24dp"
+                    android:layout_height="@dimen/size_24dp"
+                    android:layout_marginStart="@dimen/size_3dp"
+                    android:padding="@dimen/size_6dp"
+                    app:srcCompat="@drawable/ic_close2"
+                    app:tint="@color/colorPrimaryText2" />
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/swipeRefreshLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/routSearchView"
+            android:layout_below="@id/routFiltersOption"
             android:layout_marginTop="@dimen/size_10dp"
             android:layout_marginBottom="@dimen/size_10dp">
 

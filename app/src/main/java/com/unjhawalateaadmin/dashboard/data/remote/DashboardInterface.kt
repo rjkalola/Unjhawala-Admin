@@ -472,7 +472,10 @@ interface DashboardInterface {
     suspend fun getTeaTestedDataList(
         @Part("limit") limit: RequestBody,
         @Part("offset") offset: RequestBody,
-        @Part("search") search: RequestBody
+        @Part("search") search: RequestBody,
+        @Part("filters") filters: RequestBody,
+        @Part("start_date") start_date: RequestBody,
+        @Part("end_date") end_date: RequestBody,
     ): TeaTestedSampleListResponse
 
     @Multipart

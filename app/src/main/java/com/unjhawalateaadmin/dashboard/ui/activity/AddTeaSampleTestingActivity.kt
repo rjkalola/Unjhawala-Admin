@@ -16,7 +16,6 @@ import androidx.core.content.FileProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.imateplus.imagepickers.models.FileWithPath
 import com.imateplus.imagepickers.pickiT.PickiTCallbacks
 import com.imateplus.imagepickers.utils.Constant
@@ -42,7 +41,6 @@ import com.unjhawalateaadmin.dashboard.data.model.TeaSampleConfigurationResponse
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleInfo
 import com.unjhawalateaadmin.dashboard.data.model.TeaSampleTestingInfo
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaSampleRatingAdapter
-import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaSamplesAdapter
 import com.unjhawalateaadmin.dashboard.ui.dialog.SelectItemBottomSheetDialog
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
 import com.unjhawalateaadmin.databinding.ActivityAddTeaSampleTestingBinding
@@ -221,18 +219,19 @@ class AddTeaSampleTestingActivity : BaseActivity(), View.OnClickListener, Select
             }
 
             R.id.edtMFGDate -> {
+                val c = Calendar.getInstance()
                 if (!StringHelper.isEmpty(binding.edtMFGDate.text.toString())) {
                     val date = binding.edtMFGDate.text.toString()
                     showDatePicker(
                         0,
-                        0,
+                        c.time.time,
                         AppConstants.DialogIdentifier.SELECT_DATE,
                         date
                     )
                 } else {
                     showDatePicker(
                         0,
-                        0,
+                        c.time.time,
                         AppConstants.DialogIdentifier.SELECT_DATE,
                         null
                     )

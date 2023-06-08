@@ -620,7 +620,11 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 var response: AvailableTeaSampleListResponse =
-                    dashboardRepository.availableTeaSampleList(searchBody,startDateBody,endDateBody)
+                    dashboardRepository.availableTeaSampleList(
+                        searchBody,
+                        startDateBody,
+                        endDateBody
+                    )
                 withContext(Dispatchers.Main) {
                     mAvailableTeaSampleListResponse.value = response
                 }
@@ -781,14 +785,29 @@ class DashboardViewModel(private val dashboardRepository: DashboardRepository) :
         }
     }
 
-    fun getTeaTestedDataList(limit: Int, offset: Int, search: String) {
+    fun getTeaTestedDataList(
+        limit: Int, offset: Int, search: String, filters: String,
+        startDate: String,
+        endDate: String
+    ) {
         val limitBody: RequestBody = AppUtils.getRequestBody(limit.toString())
         val offsetBody: RequestBody = AppUtils.getRequestBody(offset.toString())
         val searchBody: RequestBody = AppUtils.getRequestBody(search)
+        val filtersBody: RequestBody = AppUtils.getRequestBody(filters)
+        val startDateBody: RequestBody = AppUtils.getRequestBody(startDate)
+        val endDateBody: RequestBody = AppUtils.getRequestBody(endDate)
+
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 var response: TeaTestedSampleListResponse =
-                    dashboardRepository.getTeaTestedDataList(limitBody, offsetBody, searchBody)
+                    dashboardRepository.getTeaTestedDataList(
+                        limitBody,
+                        offsetBody,
+                        searchBody,
+                        filtersBody,
+                        startDateBody,
+                        endDateBody
+                    )
                 withContext(Dispatchers.Main) {
                     mTeaTestedSampleListResponse.value = response
                 }

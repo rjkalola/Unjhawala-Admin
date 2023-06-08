@@ -449,9 +449,12 @@ class DashboardRepositoryImp(
     override suspend fun getTeaTestedDataList(
         limit: RequestBody,
         offset: RequestBody,
-        search: RequestBody
+        search: RequestBody,
+        filters: RequestBody,
+        start_date: RequestBody,
+        end_date: RequestBody,
     ): TeaTestedSampleListResponse {
-        return dashboardInterface.getTeaTestedDataList(limit, offset, search)
+        return dashboardInterface.getTeaTestedDataList(limit, offset, search,filters, start_date, end_date)
     }
 
     override suspend fun teaTestingDataDetails(id: RequestBody): TeaTestedSampleDetailsResponse {

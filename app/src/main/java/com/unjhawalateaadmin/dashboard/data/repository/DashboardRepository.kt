@@ -347,6 +347,9 @@ interface DashboardRepository {
         limit: RequestBody,
         offset: RequestBody,
         search: RequestBody,
+        filters: RequestBody,
+        start_date: RequestBody,
+        end_date: RequestBody,
     ): TeaTestedSampleListResponse
 
     suspend fun teaTestingDataDetails(
