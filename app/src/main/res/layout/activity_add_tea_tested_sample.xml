@@ -629,32 +629,49 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layoutMFGDate"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/size_20dp"
                     android:layout_marginEnd="@dimen/size_20dp"
-                    android:layout_marginBottom="@dimen/size_12dp"
-                    android:textColorHint="@color/colorHint"
-                    app:errorIconDrawable="@null">
+                    android:layout_marginBottom="@dimen/size_12dp">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtMFGDate"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/layoutMFGDate"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableStart="@drawable/ic_calendar_month"
-                        android:drawablePadding="@dimen/size_8dp"
-                        android:focusable="false"
-                        android:hint="@string/mfg_date"
-                        android:text="@{info.manufacturer_date}"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
-                        android:maxLength="10"
-                        android:textSize="@dimen/text_size_15sp" />
+                        android:textColorHint="@color/colorHint"
+                        app:errorIconDrawable="@null">
 
-                </com.google.android.material.textfield.TextInputLayout>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtMFGDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_calendar_month"
+                            android:drawablePadding="@dimen/size_8dp"
+                            android:text="@{info.manufacturer_date}"
+                            android:focusable="false"
+                            android:hint="@string/mfg_date"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:maxLength="10"
+                            android:textSize="@dimen/text_size_15sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgClearMFGDate"
+                        android:layout_width="@dimen/size_28dp"
+                        android:layout_height="@dimen/size_28dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/size_12dp"
+                        android:padding="@dimen/size_4dp"
+                        app:srcCompat="@drawable/ic_cancel"
+                        app:tint="@color/colorPrimary" />
+
+                </RelativeLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/layoutNotes"

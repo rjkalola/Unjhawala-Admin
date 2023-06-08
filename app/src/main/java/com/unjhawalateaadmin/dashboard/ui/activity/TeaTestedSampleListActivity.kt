@@ -294,6 +294,12 @@ class TeaTestedSampleListActivity : BaseActivity(), View.OnClickListener, Select
             intent.putExtras(bundle)
             startActivity(intent)
 //            addTeaSampleResultActivity.launch(intent)
+        } else if (action == AppConstants.Action.SHARE_CONTENT) {
+            val message =
+                adapter!!.list[position].garden_name + " - " + adapter!!.list[position].invoice_number +
+                        "\n\n" + adapter!!.list[position].grade_name +
+                        "\n\n" + adapter!!.list[position].bag + "*" + adapter!!.list[position].weight + " Kg"
+            AppUtils.shareContentToWhatsAppText(this@TeaTestedSampleListActivity, message)
         }
     }
 

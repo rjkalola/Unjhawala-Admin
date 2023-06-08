@@ -134,6 +134,7 @@ object AppConstants {
         const val EDIT_TEA_SOURCE = 12
         const val DELETE_TEA_SOURCE = 13
         const val VIEW_TEA_SAMPLE = 14
+        const val SHARE_CONTENT = 15
     }
 
     object UserType {

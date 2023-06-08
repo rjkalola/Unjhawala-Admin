@@ -55,6 +55,9 @@ class TestedSamplesAdapter(
         itemViewHolder.binding.imgFilter.setOnClickListener {
             listener!!.onSelectItem(position, AppConstants.Action.ADD_TEA_SAMPLE_TESTING, 0)
         }
+        itemViewHolder.binding.imgShare.setOnClickListener {
+            listener!!.onSelectItem(position, AppConstants.Action.SHARE_CONTENT, 0)
+        }
     }
 
     override fun getItemCount(): Int {

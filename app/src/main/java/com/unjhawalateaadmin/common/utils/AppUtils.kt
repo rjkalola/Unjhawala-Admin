@@ -635,11 +635,12 @@ object AppUtils {
         return intent
     }
 
-    fun shareCaseCalculatorText(activity: Activity, shareText: String) {
+    fun shareContentToWhatsAppText(activity: Activity, shareText: String) {
         if (!StringHelper.isEmpty(shareText)) {
             val intent = Intent()
             intent.action = Intent.ACTION_SEND
             intent.putExtra(Intent.EXTRA_TEXT, shareText)
+            intent.setPackage("com.whatsapp");
             intent.type = "text/plain"
             activity.startActivity(intent)
         }

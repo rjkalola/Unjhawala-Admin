@@ -99,6 +99,7 @@ class AddTeaTestedSampleActivity : BaseActivity(), View.OnClickListener, SelectI
         binding.edtOurQuality.setOnClickListener(this)
         binding.edtTeaPreference.setOnClickListener(this)
         binding.edtMFGDate.setOnClickListener(this)
+        binding.imgClearMFGDate.setOnClickListener(this)
         binding.routSelectAttachment.setOnClickListener(this)
         binding.edtVendor.setOnClickListener(this)
         binding.edtGarden.setOnClickListener(this)
@@ -232,18 +233,19 @@ class AddTeaTestedSampleActivity : BaseActivity(), View.OnClickListener, SelectI
                 )
             }
             R.id.edtMFGDate -> {
+                val c = Calendar.getInstance()
                 if (!StringHelper.isEmpty(binding.edtMFGDate.text.toString())) {
                     val date = binding.edtMFGDate.text.toString()
                     showDatePicker(
                         0,
-                        0,
+                        c.time.time,
                         AppConstants.DialogIdentifier.SELECT_DATE,
                         date
                     )
                 } else {
                     showDatePicker(
                         0,
-                        0,
+                        c.time.time,
                         AppConstants.DialogIdentifier.SELECT_DATE,
                         null
                     )
@@ -251,6 +253,10 @@ class AddTeaTestedSampleActivity : BaseActivity(), View.OnClickListener, SelectI
             }
             R.id.routSelectAttachment -> {
                 checkPermission()
+            }
+            R.id.imgClearMFGDate -> {
+                binding.edtMFGDate.setText("")
+                addTeaSampleTestingInfo.manufacturer_date = ""
             }
         }
     }
