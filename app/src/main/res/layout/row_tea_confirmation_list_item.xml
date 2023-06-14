@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
+        <import type="android.text.Html" />
         <variable
             name="info"
             type="com.unjhawalateaadmin.dashboard.data.model.AvailableTeaSampleInfo" />
@@ -54,11 +54,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/size_6dp"
-                        android:ellipsize="end"
                         android:fontFamily="@font/be_vietnam_medium"
                         android:includeFontPadding="false"
-                        android:singleLine="true"
-                        android:text="@{info.display_name}"
+                        android:text="@{Html.fromHtml(info.display_name)}"
                         android:textColor="@color/colorPrimaryText2"
                         android:textSize="14sp" />
 

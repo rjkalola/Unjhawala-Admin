@@ -3,9 +3,12 @@
 
     <data>
 
-    <variable
-        name="info"
-        type="com.unjhawalateaadmin.dashboard.data.model.TeaSampleTestingInfo" />
+        <import type="android.text.Html" />
+
+        <variable
+            name="info"
+            type="com.unjhawalateaadmin.dashboard.data.model.TeaSampleTestingInfo" />
+
     </data>
 
     <androidx.cardview.widget.CardView
@@ -54,11 +57,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/size_6dp"
-                        android:ellipsize="end"
                         android:fontFamily="@font/be_vietnam_medium"
                         android:includeFontPadding="false"
-                        android:singleLine="true"
-                        android:text="@{info.display_name}"
+                        android:text="@{Html.fromHtml(info.display_name)}"
                         android:textColor="@color/colorPrimaryText2"
                         android:textSize="14sp" />
 
@@ -66,10 +67,10 @@
                         android:layout_width="0.4dp"
                         android:layout_height="@dimen/size_14dp"
                         android:layout_marginStart="@dimen/size_9dp"
-                        android:visibility="gone"
                         android:layout_marginTop="@dimen/size_4dp"
                         android:layout_marginBottom="@dimen/size_4dp"
-                        android:background="#828282" />
+                        android:background="#828282"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/txtPF"
@@ -77,13 +78,13 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/size_9dp"
                         android:ellipsize="end"
-                        android:visibility="gone"
                         android:fontFamily="@font/be_vietnam_medium"
                         android:includeFontPadding="false"
                         android:singleLine="true"
                         android:text="@{info.tea_grade_name}"
                         android:textColor="@color/colorPrimaryText2"
-                        android:textSize="14sp" />
+                        android:textSize="14sp"
+                        android:visibility="gone" />
 
                 </LinearLayout>
 
@@ -219,8 +220,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgView"
                     android:layout_width="@dimen/size_30dp"
-                    android:layout_marginStart="@dimen/size_10dp"
                     android:layout_height="@dimen/size_30dp"
+                    android:layout_marginStart="@dimen/size_10dp"
                     android:background="@drawable/img_button_rectangle_bg"
                     android:padding="@dimen/size_6dp"
                     app:srcCompat="@drawable/ic_eye"
@@ -229,8 +230,8 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgShare"
                     android:layout_width="@dimen/size_30dp"
-                    android:layout_marginStart="@dimen/size_10dp"
                     android:layout_height="@dimen/size_30dp"
+                    android:layout_marginStart="@dimen/size_10dp"
                     android:background="@drawable/img_button_rectangle_bg"
                     android:padding="@dimen/size_8dp"
                     app:srcCompat="@drawable/ic_whatsapp"

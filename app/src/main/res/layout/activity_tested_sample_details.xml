@@ -70,7 +70,7 @@
                                 android:fontFamily="@font/be_vietnam_medium"
                                 android:includeFontPadding="false"
                                 android:singleLine="true"
-                                android:text="@{info.vendor_name}"
+                                android:text="@{info.garden_name}"
                                 android:textColor="@color/colorAccentText"
                                 android:textSize="18sp" />
 
@@ -82,7 +82,7 @@
                                 android:fontFamily="@font/be_vietnam_regular"
                                 android:includeFontPadding="false"
                                 android:singleLine="true"
-                                android:text="@{info.garden_name}"
+                                android:text="@{info.vendor_name}"
                                 android:textColor="@color/colorPrimaryText2"
                                 android:textSize="16sp" />
 

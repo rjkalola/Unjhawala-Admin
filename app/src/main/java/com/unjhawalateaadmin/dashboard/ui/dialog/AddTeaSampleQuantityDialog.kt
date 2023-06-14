@@ -1,8 +1,10 @@
 package com.unjhawalateaadmin.dashboard.ui.dialog
 
 import android.content.Context
+import android.os.Build
 import android.os.Bundle
 import android.text.Editable
+import android.text.Html
 import android.text.TextWatcher
 import android.view.View
 import android.view.WindowManager
@@ -49,7 +51,9 @@ class AddTeaSampleQuantityDialog(mContext: Context?) :
         binding.info = mAvailableTeaSampleInfo
 
         if (mAvailableTeaSampleInfo != null && !StringHelper.isEmpty(mAvailableTeaSampleInfo?.display_name))
-            binding.txtTitle.text = mAvailableTeaSampleInfo?.display_name
+            binding.txtTitle.text =
+                Html.fromHtml(mAvailableTeaSampleInfo?.display_name, Html.FROM_HTML_MODE_COMPACT)
+//            binding.txtTitle.text = mAvailableTeaSampleInfo?.display_name
 
         binding.txtAdd.setOnClickListener {
             if (valid()) {

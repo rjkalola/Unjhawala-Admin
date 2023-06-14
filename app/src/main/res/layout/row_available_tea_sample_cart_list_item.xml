@@ -3,6 +3,8 @@
 
     <data>
 
+        <import type="android.text.Html" />
+
         <variable
             name="info"
             type="com.unjhawalateaadmin.dashboard.data.model.AvailableTeaSampleInfo" />
@@ -40,15 +42,22 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imgLocation"
+                        android:layout_width="@dimen/size_14dp"
+                        android:layout_height="@dimen/size_14dp"
+                        app:srcCompat="@drawable/ic_location"
+                        app:tint="@color/colorPrimaryText2" />
+
+
                     <TextView
                         android:id="@+id/txtLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:ellipsize="end"
+                        android:layout_marginStart="@dimen/size_6dp"
                         android:fontFamily="@font/be_vietnam_regular"
                         android:includeFontPadding="false"
-                        android:singleLine="true"
-                        android:text="@{info.display_name}"
+                        android:text="@{Html.fromHtml(info.display_name)}"
                         android:textColor="@color/colorPrimaryText2"
                         android:textSize="16sp" />
 
