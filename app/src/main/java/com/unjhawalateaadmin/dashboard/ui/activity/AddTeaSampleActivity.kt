@@ -64,15 +64,40 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
 
         binding.edtBag.addTextChangedListener(this)
         binding.edtWeight.addTextChangedListener(this)
+        binding.edtTotalQuantity.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
-      /*  binding.edtRate.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                binding.scrollView.post(Runnable { binding.scrollView.fullScroll(ScrollView.FOCUS_DOWN) })
-                true
             }
-            else
-                false
-        })*/
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if(binding.edtTotalQuantity.isFocused){
+                    var totalWeight = 0f
+                    if (!StringHelper.isEmpty(binding.edtBag.text.toString().trim())
+                        && !StringHelper.isEmpty(binding.edtTotalQuantity.text.toString().trim())
+                    ) {
+                        val bag = binding.edtBag.text.toString().trim().toInt()
+                        val totalQuantity = binding.edtTotalQuantity.text.toString().trim().toInt()
+                        totalWeight = totalQuantity.toFloat() / bag.toFloat()
+                        binding.edtWeight.setText(totalWeight.toString())
+                    } else {
+                        binding.edtWeight.setText("")
+                    }
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+
+            }
+        })
+
+        /*  binding.edtRate.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+              if (actionId == EditorInfo.IME_ACTION_DONE) {
+                  binding.scrollView.post(Runnable { binding.scrollView.fullScroll(ScrollView.FOCUS_DOWN) })
+                  true
+              }
+              else
+                  false
+          })*/
 
         getIntentData()
 
@@ -108,6 +133,7 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
                     showProgressDialog(mContext, "")
                     dashboardViewModel.storeTeaSampleResponse(addTeaSampleInfo)
                 }
+
             R.id.edtVendor -> if (teaSampleConfigurationResponse.vendors.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.vendors,
@@ -115,6 +141,7 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
                     AppConstants.DialogIdentifier.SELECT_VENDOR
                 )
             }
+
             R.id.edtGarden -> if (teaSampleConfigurationResponse.gardens.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.gardens,
@@ -122,6 +149,7 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
                     AppConstants.DialogIdentifier.SELECT_GARDEN
                 )
             }
+
             R.id.edtGrades -> if (teaSampleConfigurationResponse.grades.isNotEmpty()) {
                 showSelectItemDialog(
                     teaSampleConfigurationResponse.grades,
@@ -129,6 +157,7 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
                     AppConstants.DialogIdentifier.SELECT_GRADE
                 )
             }
+
             R.id.edtDate -> {
                 if (!StringHelper.isEmpty(binding.edtDate.text.toString())) {
                     val date = binding.edtDate.text.toString()
@@ -155,16 +184,18 @@ class AddTeaSampleActivity : BaseActivity(), View.OnClickListener, SelectItemLis
     }
 
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        var totalAmount = 0
-        if (!StringHelper.isEmpty(binding.edtBag.text.toString().trim())
-            && !StringHelper.isEmpty(binding.edtWeight.text.toString().trim())
-        ) {
-            val bag = binding.edtBag.text.toString().trim().toInt()
-            val weight = binding.edtWeight.text.toString().trim().toInt()
-            totalAmount = bag * weight
-            binding.edtTotalQuantity.setText(totalAmount.toString())
-        } else {
-            binding.edtTotalQuantity.setText("")
+        if(binding.edtBag.isFocused || binding.edtWeight.isFocused){
+            var totalAmount = 0f
+            if (!StringHelper.isEmpty(binding.edtBag.text.toString().trim())
+                && !StringHelper.isEmpty(binding.edtWeight.text.toString().trim())
+            ) {
+                val bag = binding.edtBag.text.toString().trim().toInt()
+                val weight = binding.edtWeight.text.toString().trim().toFloat()
+                totalAmount = bag * weight
+                binding.edtTotalQuantity.setText(totalAmount.toInt().toString())
+            } else {
+                binding.edtTotalQuantity.setText("")
+            }
         }
     }
 

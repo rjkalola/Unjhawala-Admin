@@ -7,17 +7,14 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.MotionEventCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.unjhawalateaadmin.R
-import com.unjhawalateaadmin.common.data.model.SwipeItemInfo
 import com.unjhawalateaadmin.common.utils.SwipeAndDragHelper
 import com.unjhawalateaadmin.dashboard.data.model.ConfigurationItemInfo
 import com.unjhawalateaadmin.databinding.RowGardenAreaManagingPositionListItemBinding
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class GardenAreaManagePositionListAdapter(

@@ -26,7 +26,6 @@ class TestedSamplesAdapter(
     init {
         this.listAll.addAll(list)
     }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val itemView: View =
             LayoutInflater.from(parent.context)

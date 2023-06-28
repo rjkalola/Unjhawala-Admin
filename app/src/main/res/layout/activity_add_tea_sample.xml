@@ -47,10 +47,10 @@
                         android:layout_height="wrap_content"
                         android:focusable="false"
                         android:hint="@string/date_mandatory"
-                        android:text="@{info.created_date}"
                         android:imeOptions="actionNext"
                         android:inputType="text"
                         android:maxLength="10"
+                        android:text="@{info.created_date}"
                         android:textSize="@dimen/text_size_15sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -70,12 +70,12 @@
                         android:id="@+id/edtVendor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@{info.vendor_name}"
                         android:drawableEnd="@drawable/ic_arrow_down"
                         android:focusable="false"
                         android:hint="@string/vendor_mandatory"
                         android:imeOptions="actionNext"
                         android:inputType="textCapWords"
+                        android:text="@{info.vendor_name}"
                         android:textSize="@dimen/text_size_15sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -98,9 +98,9 @@
                         android:drawableEnd="@drawable/ic_arrow_down"
                         android:focusable="false"
                         android:hint="@string/garden_mandatory"
-                        android:text="@{info.garden_name}"
                         android:imeOptions="actionNext"
                         android:inputType="textCapWords"
+                        android:text="@{info.garden_name}"
                         android:textSize="@dimen/text_size_15sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -146,9 +146,9 @@
                         android:drawableEnd="@drawable/ic_arrow_down"
                         android:focusable="false"
                         android:hint="@string/grade_mandatory"
-                        android:text="@{info.tea_grade_name}"
                         android:imeOptions="actionNext"
                         android:inputType="textCapWords"
+                        android:text="@{info.tea_grade_name}"
                         android:textSize="@dimen/text_size_15sp" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -193,10 +193,32 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/weight_in_kg_mandatory"
                         android:imeOptions="actionNext"
-                        android:inputType="number"
+                        android:inputType="numberDecimal"
                         android:text="@={info.weight}"
                         android:textSize="@dimen/text_size_15sp" />
 
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutTotalQuantity"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_20dp"
+                    android:layout_marginEnd="@dimen/size_20dp"
+                    android:layout_marginBottom="@dimen/size_12dp"
+                    android:textColorHint="@color/colorHint"
+                    app:errorIconDrawable="@null">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtTotalQuantity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/total_quantity_in_kg_mandatory"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:text="@={info.total_quantity}"
+                        android:textSize="@dimen/text_size_15sp" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -222,46 +244,23 @@
 
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/layoutTotalQuantity"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/size_20dp"
-                    android:layout_marginEnd="@dimen/size_20dp"
-                    android:layout_marginBottom="@dimen/size_12dp"
-                    android:textColorHint="@color/colorHint"
-                    app:errorIconDrawable="@null">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/edtTotalQuantity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/total_quantity_in_kg_mandatory"
-                        android:imeOptions="actionDone"
-                        android:focusable="false"
-                        android:inputType="number"
-                        android:text="@={info.total_quantity}"
-                        android:textSize="@dimen/text_size_15sp" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_marginStart="@dimen/size_20dp"
                     android:layout_marginTop="@dimen/size_14dp"
                     android:layout_marginEnd="@dimen/size_20dp"
-                    android:layout_marginBottom="@dimen/size_20dp"
-                    android:layout_height="wrap_content">
+                    android:layout_marginBottom="@dimen/size_20dp">
 
                     <com.balysv.materialripple.MaterialRippleLayout
                         android:id="@+id/btnSaveAndAdd"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/save_button_height_50dp"
                         android:layout_gravity="center_horizontal"
-                        android:backgroundTint="@color/colorPrimary"
                         android:layout_marginEnd="@dimen/size_16dp"
-                        android:visibility="visible"
                         android:layout_weight="1"
+                        android:backgroundTint="@color/colorPrimary"
+                        android:visibility="visible"
                         app:mrl_rippleColor="@color/colorRippleColor"
                         app:mrl_rippleDelayClick="true"
                         app:mrl_rippleDuration="@string/ripple_duration"
@@ -282,10 +281,10 @@
 
                     <com.balysv.materialripple.MaterialRippleLayout
                         android:id="@+id/btnAdd"
-                        android:layout_weight="1"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/save_button_height_50dp"
                         android:layout_gravity="center_horizontal"
+                        android:layout_weight="1"
                         android:backgroundTint="@color/colorPrimary"
                         android:visibility="visible"
                         app:mrl_rippleColor="@color/colorRippleColor"

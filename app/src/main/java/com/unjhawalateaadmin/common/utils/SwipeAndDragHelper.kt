@@ -15,13 +15,12 @@ class SwipeAndDragHelper(private val contract: ActionCompletionContract) :
         return makeMovementFlags(dragFlags, swipeFlags)
     }
 
-
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
         target: RecyclerView.ViewHolder
     ): Boolean {
-        contract.onViewMove(viewHolder.bindingAdapterPosition, target.bindingAdapterPosition)
+        contract.onViewMove(viewHolder.adapterPosition, target.adapterPosition)
         return true
     }
 
@@ -47,7 +46,7 @@ class SwipeAndDragHelper(private val contract: ActionCompletionContract) :
     }
 
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-        contract.onViewSwiped(viewHolder.bindingAdapterPosition)
+        contract.onViewSwiped(viewHolder.adapterPosition)
     }
 
     override fun isLongPressDragEnabled(): Boolean {

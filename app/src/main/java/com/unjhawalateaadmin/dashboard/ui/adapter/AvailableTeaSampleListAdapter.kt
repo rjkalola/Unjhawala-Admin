@@ -94,9 +94,9 @@ class AvailableTeaSampleListAdapter(
             for (wp in listAll) {
                 try {
                     val vendor = wp.vendor_name
-                    if (vendor!!.lowercase(Locale.getDefault())
-                            .contains(charText)
-                    ) {
+                    val displayName = wp.display_name
+                    if (vendor!!.lowercase(Locale.getDefault()).contains(charText)
+                        || displayName!!.lowercase(Locale.getDefault()).contains(charText)) {
                         list.add(wp)
                     }
                 } catch (e: Exception) {

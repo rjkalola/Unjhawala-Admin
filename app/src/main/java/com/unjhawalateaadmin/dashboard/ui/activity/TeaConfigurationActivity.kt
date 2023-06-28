@@ -2,25 +2,17 @@ package com.unjhawalateaadmin.dashboard.ui.activity
 
 import android.app.Activity
 import android.content.Context
-import android.graphics.RectF
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.imateplus.imagepickers.transformation.RoundedCornersTransformation
 import com.unjhawalateaadmin.R
 import com.unjhawalateaadmin.common.callback.SelectItemListener
 import com.unjhawalateaadmin.common.data.model.ModuleInfo
-import com.unjhawalateaadmin.common.data.model.SwipeItemInfo
 import com.unjhawalateaadmin.common.ui.activity.BaseActivity
 import com.unjhawalateaadmin.common.utils.AppConstants
-import com.unjhawalateaadmin.common.utils.SwipeAndDragHelper
-import com.unjhawalateaadmin.dashboard.data.ui.adapter.GardenAreaManagePositionListAdapter
 import com.unjhawalateaadmin.dashboard.data.ui.adapter.TeaConfigurationAdapter
-import com.unjhawalateaadmin.dashboard.ui.dialog.GardenAreaManagePositionDialog
 import com.unjhawalateaadmin.dashboard.ui.viewmodel.DashboardViewModel
 import com.unjhawalateaadmin.databinding.ActivityTeaConfigurationListBinding
 import com.unjhawalateaadminadmin.dashboard.ui.activity.TeaSourceLevelActivity
@@ -32,7 +24,6 @@ class TeaConfigurationActivity : BaseActivity(), View.OnClickListener, SelectIte
     private lateinit var mContext: Context
     private val dashboardViewModel: DashboardViewModel by viewModel()
     private var adapter: TeaConfigurationAdapter? = null
-    private var adapterSwipe: GardenAreaManagePositionListAdapter? = null
     var visibleItemCount = 0
     var totalItemCount = 0
     var pastVisibleItems = 0
